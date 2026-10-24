@@ -182,4 +182,25 @@ Each is run one at a time from the primary cell. A tornado plot covers CC and SO
 - Out of scope: embodied emissions, water and local air pollution.
 
 ## 11. Changes after freeze
-(none yet)
+**2026-10-24, before any BTM-vs-grid comparison was computed.** Central parameters were fixed from `sources/lookup2/FINDINGS2.md`. HHV = LHV × 1.108. Vendor efficiencies were assumed to be LHV where the source does not say.
+| Case | Central HR (HHV) | Range | Basis |
+|---|---|---|---|
+| Recip 4SLB | 8.40 | 7.70–8.85 | Cat G3520H 7,583 Btu/ekWh (LHV) → 8.40. Jenbacher J920 48.7% → 7.76. Wärtsilä 34SG 48.9% → 7.73. EIA IC 2025 tested 8.853 = ceiling. |
+| Simple cycle / aero | 9.80 | 9.2–11.0 | LM6000PF+ 8,328 LHV → 9.23. LM2500XPRESS 8,669 → 9.61. Titan 250 8,775 → 9.72 [U]. Titan 130 9,695 → 10.74. EIA GT 10.975. Hot-ambient derate and fuel compression push real values up. |
+| BTM combined cycle | 6.60 | 6.4–7.0 | unchanged |
+| SOFC (Bloom) | 6.40 | 5.81–7.13 | Feb 2026 datasheet: "Cumulative electrical efficiency 65-53% (LHV net AC)", 5,811–7,127 Btu/kWh HHV. Central = midpoint (59% LHV), the BTM-favourable end. The brochure's "average lifetime electrical efficiency 54%" (7.0 HHV) is a sensitivity. No CH4 data exists, so slip is 0. |
+| Rich-burn small genset | 11.6 | 11.0–12.5 | Generac SG500 prime 5,238 scf/h at 450 kW × 1,000 Btu/scf (assumed) |
+| Grid NGCC (ref B) | 6.20 | | NETL H-class 6.196 |
+
+- Coal-mine CH4: 0.199 kg CH4 per MMBtu of coal (EPA GHGI 1990–2023, 1,623 kt in 2023, ÷ EIA 2023 coal consumption 8.17 quads). Abandoned mines are excluded; including them gives 0.226, which moves the grid by about 1 kg/MWh.
+- Transmission loss stays at 3%, the BTM-favourable choice. The lookup found no primary transmission-only figure; its judgment is ~2% (1–3%). Sensitivities: 2% and 5% T&D.
+
+**2026-10-24, V3 result: FaIR does not cleanly reproduce the AR6 CH4 metrics on an SSP2-4.5 2030 background.**
+- GWP100-like: 37.2 (5–95%: 29–47), against AR6 non-fossil 27.0 ± 11 [from memory, verify].
+- GTP100-like: 8.0 (3.2–15.2), against 4.7 ± 2.8.
+- Diagnosis:
+  - Ozone forcing per pulse is 0.61× the direct CH4 forcing.
+  - The perturbation e-folding is 13.2 yr.
+  - CO2 AGWP100 is 7.95e-14, against AR6 8.95e-14.
+- Consequence: FaIR weights CH4 more heavily than GWP100 does, which works against BTM. The FaIR results stay a complement and are labelled with this calibration
+  offset. GWP100 remains primary. The optional AR6 AGTP convolution is promoted to "do if time permits" as the AR6-consistent cross-check.

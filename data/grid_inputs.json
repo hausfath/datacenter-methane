@@ -1,0 +1,93 @@
+{
+ "egrid": {
+  "ERCOT": {
+   "co2e_kg_mwh": 334.19733277623004,
+   "co2_kg_mwh": 332.93816035711006,
+   "nonbaseload_co2e_kg_mwh": 567.55155626169,
+   "gas_share": 0.494,
+   "coal_share": 0.128,
+   "gas_mmbtu_per_mwh": 3.632985383141438,
+   "coal_mmbtu_per_mwh": 1.4322479688883756,
+   "gas_hr": 7.354221423363234,
+   "coal_hr": 11.189437256940433
+  },
+  "PJM": {
+   "co2e_kg_mwh": 326.31661893985,
+   "co2_kg_mwh": 324.81296023330003,
+   "nonbaseload_co2e_kg_mwh": 649.11290749613,
+   "gas_share": 0.455,
+   "coal_share": 0.138,
+   "gas_mmbtu_per_mwh": 3.344488194650502,
+   "coal_mmbtu_per_mwh": 1.4969469767441863,
+   "gas_hr": 7.350523504726378,
+   "coal_hr": 10.847441860465118
+  },
+  "US": {
+   "co2e_kg_mwh": 349.66710055508,
+   "co2_kg_mwh": 348.00014859533,
+   "nonbaseload_co2e_kg_mwh": 625.5755458244599,
+   "gas_share": 0.432,
+   "coal_share": 0.161,
+   "gas_mmbtu_per_mwh": 3.266183194422251,
+   "coal_mmbtu_per_mwh": 1.7394067723461724,
+   "gas_hr": 7.560609246347803,
+   "coal_hr": 10.803768772336474
+  },
+  "sub_RFCE": {
+   "co2e_kg_mwh": 271.7789403329,
+   "co2_kg_mwh": 270.75110002248,
+   "nonbaseload_co2e_kg_mwh": 535.45898889945,
+   "gas_share": 0.541,
+   "coal_share": 0.047,
+   "gas_mmbtu_per_mwh": 3.9244495694591732,
+   "coal_mmbtu_per_mwh": 0.5600342358514085,
+   "gas_hr": 7.254065747613998,
+   "coal_hr": 11.915622039391671
+  },
+  "sub_RFCW": {
+   "co2e_kg_mwh": 415.51510490798,
+   "co2_kg_mwh": 413.41497223488,
+   "nonbaseload_co2e_kg_mwh": 801.93452724231,
+   "gas_share": 0.378,
+   "coal_share": 0.25,
+   "gas_mmbtu_per_mwh": 2.8382706986017743,
+   "coal_mmbtu_per_mwh": 2.640282977422929,
+   "gas_hr": 7.508652641803636,
+   "coal_hr": 10.561131909691715
+  },
+  "sub_ERCT": {
+   "co2e_kg_mwh": 334.12929392073005,
+   "co2_kg_mwh": 332.87420383294,
+   "nonbaseload_co2e_kg_mwh": 565.8673677918799,
+   "gas_share": 0.496,
+   "coal_share": 0.127,
+   "gas_mmbtu_per_mwh": 3.648170635559813,
+   "coal_mmbtu_per_mwh": 1.421058531631435,
+   "gas_hr": 7.3551827329834945,
+   "coal_hr": 11.189437256940433
+  }
+ },
+ "cambium_lrmer_2027_2046": {
+  "ERCOT": {
+   "Mid-case": 147.24790019999998,
+   "Low Renewable Energy Costs": 160.86330290000004,
+   "High Renewable Energy Costs": 172.23957460000003,
+   "Low Natural Gas Prices": 161.32989119999996,
+   "High Natural Gas Prices": 130.3779082,
+   "High Demand Growth": 167.4609644,
+   "Low Renewable Energy Costs with High Natural Gas Prices": 141.86299119999998,
+   "High Renewable Energy Costs with Low Natural Gas Prices": 161.8485612
+  },
+  "PJM": {
+   "Mid-case": 234.78603805,
+   "Low Renewable Energy Costs": 228.38308884999998,
+   "High Renewable Energy Costs": 262.924851,
+   "Low Natural Gas Prices": 240.49062214999998,
+   "High Natural Gas Prices": 192.7355188,
+   "High Demand Growth": 239.59539654999998,
+   "Low Renewable Energy Costs with High Natural Gas Prices": 170.65718075,
+   "High Renewable Energy Costs with Low Natural Gas Prices": 257.93917915
+  }
+ },
+ "notes": "eGRID2023 rev2 (6/12/2025). Gas/coal MMBtu per grid MWh = share x (CO2 output rate / CO2 input rate). Cambium 2024 (Aug 2024 policies, pre-OBBBA), 2027-2046 simple mean, combustion+precombustion, AR6 GWP100, end-use."
+}
