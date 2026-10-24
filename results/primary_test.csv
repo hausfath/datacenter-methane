@@ -1,0 +1,16 @@
+region,case,co2_only_vs_A,co2_only_vs_B,worse_than_grid_co2_only,full_vs_A,full_vs_B,worse_than_grid_full,p_above_A,p_above_B
+ERCOT,Recip engines (lean-burn),above,above,True,above,above,True,1.000,1.000
+ERCOT,Simple-cycle turbines,above,above,True,above,above,True,1.000,1.000
+ERCOT,Fuel cells (Bloom SOFC),tied,tied,False,tied,tied,False,0.929,0.533
+ERCOT,Combined cycle (on site),above,tied,False,above,tied,False,1.000,0.912
+ERCOT,Small rich-burn gensets,above,above,True,above,above,True,1.000,1.000
+PJM,Recip engines (lean-burn),above,above,True,above,above,True,1.000,1.000
+PJM,Simple-cycle turbines,above,above,True,above,above,True,1.000,1.000
+PJM,Fuel cells (Bloom SOFC),tied,tied,False,above,tied,False,0.994,0.533
+PJM,Combined cycle (on site),above,tied,False,above,tied,False,1.000,0.912
+PJM,Small rich-burn gensets,above,above,True,above,above,True,1.000,1.000
+US,Recip engines (lean-burn),above,above,True,above,above,True,1.000,1.000
+US,Simple-cycle turbines,above,above,True,above,above,True,1.000,1.000
+US,Fuel cells (Bloom SOFC),tied,tied,False,tied,tied,False,0.817,0.533
+US,Combined cycle (on site),tied,tied,False,above,tied,False,1.000,0.912
+US,Small rich-burn gensets,above,above,True,above,above,True,1.000,1.000

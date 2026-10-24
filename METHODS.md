@@ -106,13 +106,34 @@ generation share × (CO2 output rate ÷ CO2 input rate) for each fuel.
 
   | Parameter | Distribution |
   |---|---|
-  | L | Normal(2.3%, 0.35%) |
+  | L | Normal(2.3%, 0.35%): a judgment spread, wider than the Alvarez 95% CI (+0.4/−0.3, sd ≈ 0.18%); the extra width widens tie bands, which works in BTM's favor |
   | CH4 mass fraction | U(0.884, 0.970) |
   | f | U(0.08, 0.11) |
   | GWP100 CH4 | Normal(29.8, 6.7) |
   | Grid loss | U(2%, 5%) |
   | BTM heat rate | uniform over the case range |
   | Recip slip | U(0.24, 0.65) |
+
+## Primary test (pre-registered: BTM is worse than the grid only if it is above both the grid average and a new grid NGCC)
+`results/primary_test.csv`, GWP100, L = 2.3%, MC-widened tie bands:
+
+| Case | ERCOT | PJM | US | Does methane change the verdict? |
+|---|---|---|---|---|
+| Recip engines | worse (already on CO2 alone) | worse (already on CO2 alone) | worse (already on CO2 alone) | no: it widens the gap by 159–188 kg/MWh |
+| Simple-cycle turbines | worse (already on CO2 alone) | worse | worse | no: +47–75 kg/MWh |
+| Small rich-burn gensets | worse (already on CO2 alone) | worse | worse | no |
+| On-site combined cycle | not worse (above A, tied with B) | not worse (above A, tied B) | not worse (tied A on CO2, above A with CH4; tied B) | not under the primary test; against A alone, CH4 flips the US cell from tied to above |
+| Bloom SOFC | not worse (tied A and B) | not worse (tied A on CO2, above A with CH4; tied B) | not worse (tied both) | not under the primary test; against A alone, CH4 flips PJM from tied to above |
+
+Methane changes **no** primary verdict. Against a new grid NGCC (B), the efficient options burn about the same gas, so CH4 adds only 0.2–3.6 kg/MWh to that gap.
+The MC probabilities of being above are:
+
+| Case | P(above A) by region | P(above B) |
+|---|---|---|
+| SOFC | 0.93 (ERCOT), 0.99 (PJM), 0.82 (US) | 0.53 |
+| CC | 1.00 | 0.91 |
+
+The SOFC result mainly reflects heat rate: the start-to-end-of-life efficiency band, 5.81–7.13 MMBtu/MWh, drives the spread.
 
 ## Results (GWP100, L = 2.3%)
 | | kg CO2e/MWh | vs grid averages (ERCOT, PJM, US) | vs new grid NGCC |

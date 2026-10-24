@@ -95,9 +95,9 @@ eff = d[d.case.isin(['Fuel cells (Bloom SOFC)', 'Combined cycle (on site)'])]
 elo, ehi = [int(v * 100 + 0.5) for v in (eff.rel_gap_full.min(), eff.rel_gap_full.max())]
 fig.text(0.04, 0.955, f'Off-grid gas engines and turbines emit {lo:.0f}–{hi:.0f}% more per MWh than the grid',
          fontsize=19, fontweight='bold', color=INK, va='top')
-fig.text(0.04, 0.898, f'Life-cycle emissions of power for a data center. Methane widens a gap that CO$_2$ alone already sets.\n'
-         f'Fuel cells and on-site combined cycle land {elo:.0f}–{ehi:.0f}% above grid averages, close to a new grid gas plant.',
-         fontsize=13, color=INK2, va='top')
+fig.text(0.04, 0.898, f'Life-cycle emissions of power for a data center. For engines and turbines, methane widens a gap that CO$_2$ alone already sets.\n'
+         f'Fuel cells and on-site combined cycle: {elo}–{ehi}% above grid averages (within uncertainty for fuel cells), level with a new grid gas plant.',
+         fontsize=12.5, color=INK2, va='top', linespacing=1.4)
 fig.text(0.04, 0.035,
          'Same gas supply on both sides: 2.3% of methane production leaked (Alvarez et al. 2018). Grid: EPA eGRID2023 balancing-authority averages,\n'
          'plus upstream gas and coal-mine methane and 3% transmission loss. Engine slip: EPA 40 CFR 98 Table W-7. Heat rates: Cat G3520H, GE LM6000/LM2500,\n'

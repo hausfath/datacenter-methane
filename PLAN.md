@@ -208,3 +208,11 @@ Each is run one at a time from the primary cell. A tornado plot covers CC and SO
 **2026-10-24, after the first run of `cases.py`: how the tie band is applied.** §7 said to widen the 5% band "if the MC 90% interval of the difference is larger" but did not say how.
 Implemented as follows: each cell's band is max(5%, half-width of that cell's MC 90% interval of the relative gap, full state), and the same band is applied to the CO2-only and full states.
 Both the 5%-band and the widened-band verdicts are kept in `results/decision_table.csv` (`state_*` and `state_*_band`).
+
+**Prediction vs outcome (recorded 2026-10-24 after the run):**
+| Prediction (§7) | Outcome |
+|---|---|
+| Recip, simple cycle and rich-burn are above in every primary cell, already in the CO2-only state | **Correct.** All are above A and B in all regions on CO2 alone (+31–93%) |
+| Against B, every BTM case is above or tied | **Correct.** CC and SOFC are tied with B (+4.3%, +1.0%) |
+| Against A in ERCOT/PJM, CC and SOFC are tied or slightly below on CO2 and move toward above with CH4 | **Partly wrong.** CC is already above A on CO2 in ERCOT (+6.9% vs band 5.9%) and PJM (+9.9% vs 6.2%). SOFC is tied on CO2 (+3.6%, +6.5%), stays tied in ERCOT and becomes above in PJM. Neither is below anywhere |
+| Methane is what decides it for the efficient options | **Wrong under the primary two-condition test.** No primary verdict changes, because the efficient options tie a new grid NGCC with or without CH4. Against A alone, CH4 flips 2 of 6 efficient-case cells (SOFC/PJM, CC/US) from tied to above |

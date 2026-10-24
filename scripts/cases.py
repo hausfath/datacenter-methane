@@ -150,7 +150,7 @@ be.to_csv(OUT / 'breakeven.csv', index=False)
 # ---------------------------------------------------------------- 4. within-cell correlated Monte Carlo (primary cells)
 rng = np.random.default_rng(20261024)
 N = 20000
-L_d = np.clip(rng.normal(L_PRIMARY, 0.0035, N), 0.001, None)       # Alvarez 2.3% (+0.4/-0.3)
+L_d = np.clip(rng.normal(L_PRIMARY, 0.0035, N), 0.001, None)       # judgment spread (wider than Alvarez's 95% CI +0.4/-0.3, sd~0.18%)
 mf_d = rng.uniform(0.884, 0.970, N)
 f_d = rng.uniform(0.08, 0.11, N)
 gch4_d = np.clip(rng.normal(29.8, 11 / 1.645, N), 5, None)         # AR6 GWP100 fossil CH4 +/- 11 (5-95%)
@@ -184,6 +184,19 @@ dec['state_co2_band'] = [band_verdict(a, b, w) for a, b, w in zip(dec.btm_co2, d
 dec['state_full_band'] = [band_verdict(a, b, w) for a, b, w in zip(dec.btm_full, dec.ref_full, dec.tie_band)]
 dec.to_csv(OUT / 'decision_table.csv', index=False, float_format='%.3f')
 
+# pre-registered primary test (PLAN §6): BTM is worse than the grid iff it is 'above' both reference A and reference B
+prim = []
+for (reg, c), g in dec.groupby(['region', 'case'], sort=False):
+    a_, b_ = g.set_index('reference').loc['A'], g.set_index('reference').loc['B']
+    prim.append(dict(region=reg, case=c,
+                     co2_only_vs_A=a_.state_co2_band, co2_only_vs_B=b_.state_co2_band,
+                     worse_than_grid_co2_only=(a_.state_co2_band == 'above') and (b_.state_co2_band == 'above'),
+                     full_vs_A=a_.state_full_band, full_vs_B=b_.state_full_band,
+                     worse_than_grid_full=(a_.state_full_band == 'above') and (b_.state_full_band == 'above'),
+                     p_above_A=a_.p_btm_above, p_above_B=b_.p_btm_above))
+prim = pd.DataFrame(prim)
+prim.to_csv(OUT / 'primary_test.csv', index=False, float_format='%.3f')
+
 # ---------------------------------------------------------------- 5. one-at-a-time sensitivities (efficient cases)
 sens = []
 for c in ['Fuel cells (Bloom SOFC)', 'Combined cycle (on site)']:
@@ -214,6 +227,7 @@ pd.DataFrame(sens).to_csv(OUT / 'sensitivities.csv', index=False, float_format='
 
 if __name__ == '__main__':
     pd.set_option('display.width', 250, 'display.max_columns', 30, 'display.max_rows', 200)
+    print(prim.to_string())
     print(dec[['region', 'reference', 'case', 'rel_gap_co2', 'rel_gap_full', 'tie_band', 'state_co2_band', 'state_full_band',
                'gap_from_ch4', 'p_btm_above']].round(3).to_string())
     print(be[(be.gwp == 'AR6_20')].to_string())
