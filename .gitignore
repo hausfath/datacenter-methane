@@ -1,0 +1,5 @@
+data/egrid/*.xlsx
+data/cambium/*.xlsx
+data/fair_calib/calibrated_constrained_parameters.csv
+__pycache__/
+*.pdf
