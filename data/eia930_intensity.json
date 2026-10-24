@@ -1,0 +1,371 @@
+{
+ "EPE": {
+  "2023": {
+   "production_kg_mwh": 370.25432877287955,
+   "consumption_kg_mwh": 373.5250351637951,
+   "days": 365,
+   "consumed_TWh": 9.15372,
+   "generated_TWh": 5.90756,
+   "coal_share_gen_co2": 0.0,
+   "gas_share_gen_co2": 0.999017323179558,
+   "coal_gen_TWh": 0.0,
+   "gas_gen_TWh": 5.342802,
+   "imported_co2_Mt": 1.6443132260923887,
+   "exported_co2_Mt": 0.4124693036983654
+  },
+  "2024": {
+   "production_kg_mwh": 367.6277600138802,
+   "consumption_kg_mwh": 352.5385126239421,
+   "days": 366,
+   "consumed_TWh": 9.263613,
+   "generated_TWh": 6.444646,
+   "coal_share_gen_co2": 0.0,
+   "gas_share_gen_co2": 0.9989391619901985,
+   "coal_gen_TWh": 0.0,
+   "gas_gen_TWh": 5.784257,
+   "imported_co2_Mt": 1.2031238945690885,
+   "exported_co2_Mt": 0.3065743190876873
+  },
+  "2025": {
+   "production_kg_mwh": 345.3881365393418,
+   "consumption_kg_mwh": 347.4098440943295,
+   "days": 365,
+   "consumed_TWh": 9.170148,
+   "generated_TWh": 6.794183,
+   "coal_share_gen_co2": 0.0,
+   "gas_share_gen_co2": 0.9958647090136855,
+   "coal_gen_TWh": 0.0,
+   "gas_gen_TWh": 5.720382,
+   "imported_co2_Mt": 0.9687934602368361,
+   "exported_co2_Mt": 0.12962397891218372
+  }
+ },
+ "PNM": {
+  "2023": {
+   "production_kg_mwh": 320.1575845188479,
+   "consumption_kg_mwh": 365.5534332833696,
+   "days": 365,
+   "consumed_TWh": 14.733922,
+   "generated_TWh": 16.450079,
+   "coal_share_gen_co2": 0.5213532307045798,
+   "gas_share_gen_co2": 0.47268198556114255,
+   "coal_gen_TWh": 2.649914,
+   "gas_gen_TWh": 5.554271,
+   "imported_co2_Mt": 2.5191115676730846,
+   "exported_co2_Mt": 2.399693352627943
+  },
+  "2024": {
+   "production_kg_mwh": 230.77266044213286,
+   "consumption_kg_mwh": 286.68930508785036,
+   "days": 366,
+   "consumed_TWh": 15.081966,
+   "generated_TWh": 15.797018,
+   "coal_share_gen_co2": 0.5220637046130132,
+   "gas_share_gen_co2": 0.46732968306414907,
+   "coal_gen_TWh": 1.835831,
+   "gas_gen_TWh": 3.801518,
+   "imported_co2_Mt": 2.181374979584416,
+   "exported_co2_Mt": 1.503056498598094
+  },
+  "2025": {
+   "production_kg_mwh": 186.75138063146946,
+   "consumption_kg_mwh": 249.31497287866466,
+   "days": 365,
+   "consumed_TWh": 15.40647,
+   "generated_TWh": 16.18228,
+   "coal_share_gen_co2": 0.6095088119063874,
+   "gas_share_gen_co2": 0.3655233444226535,
+   "coal_gen_TWh": 1.777447,
+   "gas_gen_TWh": 2.529859,
+   "imported_co2_Mt": 2.0320472474475344,
+   "exported_co2_Mt": 1.2130467290065876
+  }
+ },
+ "WACM": {
+  "2023": {
+   "production_kg_mwh": 674.971837471872,
+   "consumption_kg_mwh": 643.3122565117208,
+   "days": 360,
+   "consumed_TWh": 31.913918,
+   "generated_TWh": 36.911425,
+   "coal_share_gen_co2": 0.9484303298024642,
+   "gas_share_gen_co2": 0.049802531311771696,
+   "coal_gen_TWh": 22.52348,
+   "gas_gen_TWh": 2.819884,
+   "imported_co2_Mt": 1.850110381237058,
+   "exported_co2_Mt": 6.233668134482181
+  },
+  "2024": {
+   "production_kg_mwh": 633.3080799182801,
+   "consumption_kg_mwh": 592.9525280987997,
+   "days": 366,
+   "consumed_TWh": 33.957543,
+   "generated_TWh": 35.619397,
+   "coal_share_gen_co2": 0.9452697614501772,
+   "gas_share_gen_co2": 0.05260071844260668,
+   "coal_gen_TWh": 20.300269,
+   "gas_gen_TWh": 2.69717,
+   "imported_co2_Mt": 1.7960604224251076,
+   "exported_co2_Mt": 4.218901374468352
+  },
+  "2025": {
+   "production_kg_mwh": 645.1104694078017,
+   "consumption_kg_mwh": 603.709746837034,
+   "days": 365,
+   "consumed_TWh": 34.285476,
+   "generated_TWh": 35.350941,
+   "coal_share_gen_co2": 0.9416335173000965,
+   "gas_share_gen_co2": 0.05636609614307927,
+   "coal_gen_TWh": 20.445231,
+   "gas_gen_TWh": 2.91921,
+   "imported_co2_Mt": 1.843432950487326,
+   "exported_co2_Mt": 3.9502190568576023
+  }
+ },
+ "PACE": {
+  "2023": {
+   "production_kg_mwh": 607.1036828549095,
+   "consumption_kg_mwh": 595.7702355398549,
+   "days": 365,
+   "consumed_TWh": 50.768329,
+   "generated_TWh": 52.221314,
+   "coal_share_gen_co2": 0.8365604614088284,
+   "gas_share_gen_co2": 0.16156877790883553,
+   "coal_gen_TWh": 24.684556,
+   "gas_gen_TWh": 11.952996,
+   "imported_co2_Mt": 5.374032166859047,
+   "exported_co2_Mt": 6.8315248934868285
+  },
+  "2024": {
+   "production_kg_mwh": 568.6215816809273,
+   "consumption_kg_mwh": 560.4771187180119,
+   "days": 366,
+   "consumed_TWh": 52.77,
+   "generated_TWh": 53.811121,
+   "coal_share_gen_co2": 0.8337813897783917,
+   "gas_share_gen_co2": 0.16393143229721188,
+   "coal_gen_TWh": 23.716773,
+   "gas_gen_TWh": 11.706169,
+   "imported_co2_Mt": 4.052127803859412,
+   "exported_co2_Mt": 5.073914984153663
+  },
+  "2025": {
+   "production_kg_mwh": 552.4150235831844,
+   "consumption_kg_mwh": 547.9202305403236,
+   "days": 365,
+   "consumed_TWh": 53.600083,
+   "generated_TWh": 61.251421,
+   "coal_share_gen_co2": 0.8593520440072184,
+   "gas_share_gen_co2": 0.13802394323876968,
+   "coal_gen_TWh": 27.033699,
+   "gas_gen_TWh": 10.888998,
+   "imported_co2_Mt": 2.511407196777168,
+   "exported_co2_Mt": 6.979042538655245
+  }
+ },
+ "TVA": {
+  "2023": {
+   "production_kg_mwh": 269.6564223935834,
+   "consumption_kg_mwh": 287.37402869532025,
+   "days": 364,
+   "consumed_TWh": 158.592347,
+   "generated_TWh": 155.610721,
+   "coal_share_gen_co2": 0.5745375554547475,
+   "gas_share_gen_co2": 0.41759250649131835,
+   "coal_gen_TWh": 23.284199,
+   "gas_gen_TWh": 45.629399,
+   "imported_co2_Mt": 7.585652443560264,
+   "exported_co2_Mt": 3.9717610768701905
+  },
+  "2024": {
+   "production_kg_mwh": 290.36968015202655,
+   "consumption_kg_mwh": 308.2894982748977,
+   "days": 365,
+   "consumed_TWh": 165.791762,
+   "generated_TWh": 158.391067,
+   "coal_share_gen_co2": 0.552205468114923,
+   "gas_share_gen_co2": 0.4410795908803313,
+   "coal_gen_TWh": 24.491908,
+   "gas_gen_TWh": 52.821375,
+   "imported_co2_Mt": 9.318493956230652,
+   "exported_co2_Mt": 4.198598294867659
+  },
+  "2025": {
+   "production_kg_mwh": 306.33149469364514,
+   "consumption_kg_mwh": 322.85715434853535,
+   "days": 364,
+   "consumed_TWh": 172.601852,
+   "generated_TWh": 164.312744,
+   "coal_share_gen_co2": 0.5707878269184274,
+   "gas_share_gen_co2": 0.4230533374336936,
+   "coal_gen_TWh": 27.708551,
+   "gas_gen_TWh": 55.382894,
+   "imported_co2_Mt": 9.456045213841199,
+   "exported_co2_Mt": 4.064470908568429
+  }
+ },
+ "SWPP": {
+  "2023": {
+   "production_kg_mwh": 423.32933057855865,
+   "consumption_kg_mwh": 422.91205523050166,
+   "days": 361,
+   "consumed_TWh": 277.220672,
+   "generated_TWh": 281.814106,
+   "coal_share_gen_co2": 0.6933793709120344,
+   "gas_share_gen_co2": 0.3008617811378715,
+   "coal_gen_TWh": 77.724819,
+   "gas_gen_TWh": 75.777387,
+   "imported_co2_Mt": 1.6757233078961613,
+   "exported_co2_Mt": 3.7359360005704096
+  },
+  "2024": {
+   "production_kg_mwh": 404.10933824794944,
+   "consumption_kg_mwh": 404.4961300545824,
+   "days": 351,
+   "consumed_TWh": 278.072936,
+   "generated_TWh": 280.080883,
+   "coal_share_gen_co2": 0.6593728049198881,
+   "gas_share_gen_co2": 0.3354482208490331,
+   "coal_gen_TWh": 70.021321,
+   "gas_gen_TWh": 80.123042,
+   "imported_co2_Mt": 2.1444986885989126,
+   "exported_co2_Mt": 2.848372488714738
+  },
+  "2025": {
+   "production_kg_mwh": 431.6587971626829,
+   "consumption_kg_mwh": 429.7246120626492,
+   "days": 326,
+   "consumed_TWh": 267.36107,
+   "generated_TWh": 269.247815,
+   "coal_share_gen_co2": 0.7126753132245227,
+   "gas_share_gen_co2": 0.2831532482145396,
+   "coal_gen_TWh": 77.74007,
+   "gas_gen_TWh": 69.388947,
+   "imported_co2_Mt": 1.7911619629752498,
+   "exported_co2_Mt": 3.1227178381509373
+  }
+ },
+ "ERCO": {
+  "2023": {
+   "production_kg_mwh": 343.0958013359598,
+   "consumption_kg_mwh": 343.6678695168064,
+   "days": 360,
+   "consumed_TWh": 441.06672,
+   "generated_TWh": 440.211813,
+   "coal_share_gen_co2": 0.4452430440225292,
+   "gas_share_gen_co2": 0.550234270228213,
+   "coal_gen_TWh": 61.473521,
+   "gas_gen_TWh": 199.257862,
+   "imported_co2_Mt": 0.8330438590640595,
+   "exported_co2_Mt": 0.28740862068913386
+  },
+  "2024": {
+   "production_kg_mwh": 324.1269055937336,
+   "consumption_kg_mwh": 324.35100975014865,
+   "days": 365,
+   "consumed_TWh": 463.444886,
+   "generated_TWh": 463.551829,
+   "coal_share_gen_co2": 0.4284409988973197,
+   "gas_share_gen_co2": 0.5664723797459411,
+   "coal_gen_TWh": 58.761482,
+   "gas_gen_TWh": 203.979954,
+   "imported_co2_Mt": 0.4626526154030013,
+   "exported_co2_Mt": 0.39345579384593893
+  },
+  "2025": {
+   "production_kg_mwh": 310.9092706096713,
+   "consumption_kg_mwh": 311.17291630081974,
+   "days": 362,
+   "consumed_TWh": 491.230796,
+   "generated_TWh": 490.938427,
+   "coal_share_gen_co2": 0.4509935568816802,
+   "gas_share_gen_co2": 0.5432835230226215,
+   "coal_gen_TWh": 62.836491,
+   "gas_gen_TWh": 198.581281,
+   "imported_co2_Mt": 0.4461394171726036,
+   "exported_co2_Mt": 0.22572830190904067
+  }
+ },
+ "PJM": {
+  "2023": {
+   "production_kg_mwh": 322.27336896182135,
+   "consumption_kg_mwh": 321.7225366122674,
+   "days": 362,
+   "consumed_TWh": 764.589348,
+   "generated_TWh": 817.286479,
+   "coal_share_gen_co2": 0.4564692647419255,
+   "gas_share_gen_co2": 0.5290404521612635,
+   "coal_gen_TWh": 120.021378,
+   "gas_gen_TWh": 358.134091,
+   "imported_co2_Mt": 5.9777537402096375,
+   "exported_co2_Mt": 23.381796229204593
+  },
+  "2024": {
+   "production_kg_mwh": 322.04368110138626,
+   "consumption_kg_mwh": 322.3833851931585,
+   "days": 363,
+   "consumed_TWh": 798.893697,
+   "generated_TWh": 839.557513,
+   "coal_share_gen_co2": 0.4528525501957309,
+   "gas_share_gen_co2": 0.5280045072379875,
+   "coal_gen_TWh": 122.034908,
+   "gas_gen_TWh": 366.89096,
+   "imported_co2_Mt": 6.49656741995569,
+   "exported_co2_Mt": 19.320704954463157
+  },
+  "2025": {
+   "production_kg_mwh": 338.26035195046046,
+   "consumption_kg_mwh": 338.20975032986786,
+   "days": 363,
+   "consumed_TWh": 839.917676,
+   "generated_TWh": 869.741743,
+   "coal_share_gen_co2": 0.49520426286850194,
+   "gas_share_gen_co2": 0.48332014202274587,
+   "coal_gen_TWh": 145.2314,
+   "gas_gen_TWh": 365.093895,
+   "imported_co2_Mt": 5.4807418183635255,
+   "exported_co2_Mt": 15.611542413947454
+  }
+ },
+ "MISO": {
+  "2023": {
+   "production_kg_mwh": 460.4920976926927,
+   "consumption_kg_mwh": 449.6689885184632,
+   "days": 365,
+   "consumed_TWh": 654.449235,
+   "generated_TWh": 616.536629,
+   "coal_share_gen_co2": 0.6350664527476063,
+   "gas_share_gen_co2": 0.36224774442072405,
+   "coal_gen_TWh": 174.95122,
+   "gas_gen_TWh": 241.230964,
+   "imported_co2_Mt": 19.501152069371546,
+   "exported_co2_Mt": 9.125872122830849
+  },
+  "2024": {
+   "production_kg_mwh": 441.7244381021228,
+   "consumption_kg_mwh": 434.38493862783344,
+   "days": 363,
+   "consumed_TWh": 655.923807,
+   "generated_TWh": 632.899385,
+   "coal_share_gen_co2": 0.6141727255990205,
+   "gas_share_gen_co2": 0.3828935518735762,
+   "coal_gen_TWh": 166.344387,
+   "gas_gen_TWh": 251.044157,
+   "imported_co2_Mt": 16.538902047746408,
+   "exported_co2_Mt": 11.182604613820711
+  },
+  "2025": {
+   "production_kg_mwh": 452.9192309594256,
+   "consumption_kg_mwh": 447.21646065151356,
+   "days": 365,
+   "consumed_TWh": 678.415221,
+   "generated_TWh": 659.460072,
+   "coal_share_gen_co2": 0.6638130947088834,
+   "gas_share_gen_co2": 0.33320335850431765,
+   "coal_gen_TWh": 192.097848,
+   "gas_gen_TWh": 233.216887,
+   "imported_co2_Mt": 16.08177754402915,
+   "exported_co2_Mt": 11.365472214981944
+  }
+ }
+}

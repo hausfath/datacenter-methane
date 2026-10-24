@@ -53,6 +53,42 @@
    ],
    "gas_boe_share": 0.47,
    "src": "Lin et al. 2021 6-8% (2015-20); Sherwin SI 5.55% (2020); MacKay 2026 7.7% (2023)"
+  },
+  "Anadarko (high: Permian TX)": {
+   "L": [
+    0.014,
+    0.017,
+    0.036
+   ],
+   "gas_boe_share": 0.77,
+   "src": "Varon 2026 2.1\u00b10.5%; MacKay 2026 1.4%; central 1.7% (BASINS.md); high = Permian TX 3.6% (Panhandle sites can draw Permian gas via Waha)"
+  },
+  "Permian (Delaware, NM+TX)": {
+   "L": [
+    0.012,
+    0.024,
+    0.036
+   ],
+   "gas_boe_share": 0.39,
+   "src": "central: MacKay 2026 basin-wide 2.4% (2023); low: MethaneSAT NM 1.2% (not peer reviewed); high: TX side 3.6% (Bridger/Varon). El Paso (TX) and Santa Teresa (NM) straddle the state line"
+  },
+  "Rockies: DJ central (most BTM-favourable), GGR high": {
+   "L": [
+    0.01,
+    0.012,
+    0.052
+   ],
+   "gas_boe_share": 0.52,
+   "src": "same values as the R1 DJ entry; relabelled per review M5: DJ is the most BTM-favourable defensible basin; Cheyenne hub aggregates GGR/Piceance/PRB/DJ gas; GGR 5.2% (MacKay, 44% coverage, low confidence)"
+  },
+  "Rockies via Kern River: GGR central, Uinta/Piceance high": {
+   "L": [
+    0.012,
+    0.052,
+    0.077
+   ],
+   "gas_boe_share": 0.94,
+   "src": "review M4: Uinta (276 Bcf/yr) cannot supply 4-12 GW; Rockies pipeline gas; central GGR 5.2% (MacKay, low confidence), high Uinta 7.7% (MacKay 2023), low DJ-like 1.2% (certified Rockies supply)"
   }
  },
  "regions": {
@@ -115,5 +151,92 @@
    "basin": "Uinta"
   }
  },
- "note": "L = CH4 emitted / CH4 produced, whole basin, unallocated; denominators differ by study (gross, dry, covered, marketed gas) and are not harmonized. Sources: sources/basins/BASINS.md. Fixed 2026-10-24 before any regional run."
+ "note": "L = CH4 emitted / CH4 produced, whole basin, unallocated; denominators differ by study (gross, dry, covered, marketed gas) and are not harmonized. Sources: sources/basins/BASINS.md. Fixed 2026-10-24 before any regional run.",
+ "regions_R2": {
+  "West Texas": {
+   "label": "West Texas, ERCOT (Abilene, Frontier)",
+   "ba": "ERCO",
+   "egrid_ba": "ERCOT",
+   "egrid_sub": "sub_ERCT",
+   "basin": "Permian (Texas)",
+   "cmm": [
+    0.02,
+    0.04,
+    0.06
+   ]
+  },
+  "Texas Panhandle": {
+   "label": "Texas Panhandle, SPP (Fermi Matador, Goodnight)",
+   "ba": "SWPP",
+   "egrid_ba": "ba_SWPP",
+   "egrid_sub": "sub_SPSO",
+   "basin": "Anadarko (high: Permian TX)",
+   "cmm": [
+    0.02,
+    0.04,
+    0.06
+   ]
+  },
+  "El Paso / S. NM": {
+   "label": "El Paso / Santa Teresa NM, EPE (Jupiter, Meta El Paso)",
+   "ba": "EPE",
+   "egrid_ba": "ba_EPE",
+   "egrid_sub": "sub_AZNM",
+   "basin": "Permian (Delaware, NM+TX)",
+   "cmm": [
+    0.02,
+    0.04,
+    0.06
+   ]
+  },
+  "PJM": {
+   "label": "Ohio / PA / WV / VA, PJM",
+   "ba": "PJM",
+   "egrid_ba": "PJM",
+   "egrid_sub": "sub_RFCW",
+   "basin": "Appalachia (Marcellus/Utica)",
+   "cmm": [
+    0.15,
+    0.25,
+    0.3
+   ]
+  },
+  "Memphis": {
+   "label": "Memphis, TVA (xAI Colossus 1 & 2)",
+   "ba": "TVA",
+   "egrid_ba": "ba_TVA",
+   "egrid_sub": "sub_SRTV",
+   "basin": "Haynesville",
+   "cmm": [
+    0.08,
+    0.15,
+    0.25
+   ]
+  },
+  "Cheyenne": {
+   "label": "Cheyenne WY, WACM (Crusoe/Tallgrass Jade)",
+   "ba": "WACM",
+   "egrid_ba": "ba_WACM",
+   "egrid_sub": "sub_RMPA",
+   "basin": "Rockies: DJ central (most BTM-favourable), GGR high",
+   "cmm": [
+    0.02,
+    0.04,
+    0.1
+   ]
+  },
+  "Central Utah": {
+   "label": "Central Utah, PacifiCorp East (Joule, Delta)",
+   "ba": "PACE",
+   "egrid_ba": "ba_PACE",
+   "egrid_sub": "sub_NWPP",
+   "basin": "Rockies via Kern River: GGR central, Uinta/Piceance high",
+   "cmm": [
+    0.06,
+    0.13,
+    0.2
+   ]
+  }
+ },
+ "cmm_note": "kg CH4 per MMBtu coal (low, central, high). Derived 2026-10-24: EPA GHGI 2023 (Table 3-36) underground net+post-mining 1,365 kt over EIA ACR 2023 underground production 217.9 Mst x ~24.5 MMBtu/st = 0.26; surface+post-mining 257 kt over 360.0 Mst (PRB 252 Mst at ~17.6 MMBtu/st) = 0.04. Regional weights are judgment from the coal supply of each grid (PRB/lignite surface: ERCOT, SPP, EPE/AZNM, WACM; Utah underground + Wyoming surface: PACE; Illinois basin + PRB: TVA; Appalachian underground: PJM). Main analysis used the national 0.199 everywhere."
 }

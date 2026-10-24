@@ -1,86 +1,91 @@
-# Addendum: regional sensitivity (pre-analysis plan, draft R1)
+# Addendum: regional sensitivity (pre-analysis plan R2, frozen 2026-10-24 before any regional result was inspected)
 
-Requested by Zeke on 2026-10-24, after the main analysis. These choices are his:
-- regions are the hotspots where Cleanview's BTM projects are sited;
-- supply pairing is matched, with a local-gas sensitivity;
-- outputs are a heatmap and basin-range bars;
-- the process is this addendum plus one combined reviewer.
+Zeke requested this on 2026-10-24 and made four choices: project-hotspot regions; matched pairing plus a local-gas sensitivity; a heatmap plus basin-range bars; and an addendum with one review.
+R1 was reviewed in `reviews/review_regional_v1.md`; the reviewed text is `reviews/PLAN_regional_R1_as_reviewed.md`. R2 adopts every must-fix item and most should-fix items. Exceptions are listed in §9.
+`regional.py` ran once as a smoke test before the review. Its outputs were deleted uninspected.
 
-Everything in `PLAN.md` carries over unless this file says otherwise: the emissions function, heat rates, slip, f, the 1% BTM and 3% transmission losses, GWP100 as primary, and the two-condition test. The main analysis
-results do not change.
+The main analysis (`PLAN.md`, `METHODS.md`) carries over unchanged: emissions function, heat rates, slip, f = 0.093, 1% BTM loss and 3% grid transmission loss, and GWP100 primary.
 
 ## 1. Question
-The main analysis showed recips and turbines are worse than the grid in ERCOT, PJM and the US. Fuel cells and on-site CC tie a new grid NGCC. This addendum asks whether those verdicts hold in every region where BTM data centers are actually being built,
-once each region's own grid mix and the leak rate of its supplying basin are used. The Mountain West (coal-heavy grids) is the obvious place for them to flip.
+Do the main verdicts hold in each region where BTM data centers are being sited, once that region's grid and its supplying basin's leak rate are used? The main verdicts are that recips and turbines are worse than the grid, and that fuel cells and on-site CC tie a new grid NGCC.
 
-## 2. Regions, grid factors and basin pairings (eGRID2023 rev2)
-| Region | Projects (Cleanview) | Grid, primary | Grid, alternative | Supply basin (matched) |
+## 2. Regions (corrected per review M1, M2)
+| Region | Sites (Cleanview) | EIA-930 BA (primary) | eGRID bracket: BA / subregion | Supply basin, low / central / high L |
 |---|---|---|---|---|
-| West Texas | Stargate Abilene, Frontier, Crusoe Goodnight | ERCO BA (334 kg CO2e/MWh) | ERCT subregion (334) | Permian, Texas side |
-| Southern New Mexico / El Paso | Stargate Jupiter, Meta El Paso | AZNM subregion (320) | EPE BA (459), PNM BA (179) | Permian, New Mexico side (Delaware) |
-| Ohio / PA / WV / VA / NJ | Meta and EdgeConneX New Albany, Monarch, Homer City, Vineland, Sterling | PJM BA (326) | RFCW (416), RFCE (272) | Appalachia (Marcellus/Utica) |
-| Memphis / N. Mississippi | xAI Colossus 1 (TVA), Colossus 2 Southaven (MISO / Entergy MS) | TVA BA (292); MISO BA (448) for Southaven | SRTV (410), SRMV (336) | Haynesville / Gulf Coast |
-| Wyoming | Crusoe Project Jade (Cheyenne) | WACM BA (854) | RMPA subregion (473) | Green River / Powder River / DJ (from BASINS.md) |
-| Utah | Joule (Millard County), Delta Gigasite | PACE BA (644) | NWPP subregion (288) | Uinta (from BASINS.md) |
+| West Texas | Stargate Abilene, Frontier (Shackelford) | ERCO | ERCO / ERCT | Permian TX 2.4 / 3.6 / 4.2% |
+| Texas Panhandle | Fermi Matador (Amarillo, up to 17 GW), Crusoe Goodnight (Armstrong Co.) | SWPP | SWPP / SPSO | Anadarko 1.4 / 1.7 / 3.6% (high = Permian TX via Waha) |
+| El Paso / Santa Teresa NM | Stargate Jupiter, Meta El Paso | EPE | EPE / AZNM | Permian Delaware 1.2 / 2.4 / 3.6% |
+| Ohio / PA / WV / VA | Meta and EdgeConneX New Albany, Monarch, Homer City, Sterling | PJM | PJM / RFCW | Appalachia 0.4 / 0.6 / 0.9% |
+| Memphis | xAI Colossus 1 and 2 (data halls in Memphis; Colossus 2 turbines at Southaven MS) | TVA | TVA / SRTV | Haynesville 0.4 / 0.7 / 1.0% |
+| Cheyenne WY | Crusoe/Tallgrass Project Jade | WACM | WACM / RMPA | Rockies, DJ central: 1.0 / 1.2 / 5.2% (DJ is labelled **the most BTM-favourable defensible basin**; GGR is the high case) |
+| Central Utah | Joule (Millard Co.), Delta | PACE | PACE / NWPP | Rockies via Kern River, GGR central: 1.2 / 5.2 / 7.7% (Uinta alone could not supply 4–12 GW) |
 
-**Grid-factor rule (for review).** Large ISO/RTO and TVA BAs use their own BA rate, where production and consumption are close. Small or net-exporting BAs (EPE, PNM, PACE, WACM) have
-production-based rates that can differ a lot from what local load consumes, because coal-heavy WACM and PACE export power. For these, both the BA and the eGRID subregion are reported. The
-**primary is the subregion for NM/El Paso. For Wyoming and Utah, the primary is the BA, with the subregion as the low-side sensitivity.** In the Mountain West the subregion is the choice that favors the grid, while the BA is
-conservative toward BTM. Reviewer: is this asymmetric rule defensible, or should the BA be primary everywhere, or the subregion everywhere?
+The MISO row is dropped. Colossus 2's load is in Memphis/TVA (review M2, Cleanview text). Southaven/SRMV is shown only as a note.
 
-## 3. Leak rates per basin
-Central, low and high values per basin come from `sources/basins/BASINS.md` and are fixed in §6 before any regional run. The definitions are those in METHODS (CH4 emitted per CH4 in production,
-whole chain), with no oil/gas allocation. An energy-allocated value is a labelled sensitivity for oil-weighted basins (Permian, DJ, Uinta if oil-weighted).
+## 3. Grid reference A (review M3, M8)
+- **Primary: EIA-930 consumption-based CO2 intensity** for the BA, 2025, from EIA's MRIO allocation of interchange in the per-BA workbooks (`scripts/eia930_intensity.py` → `data/eia930_intensity.json`). One rule applies to every region.
+  - Validation: EIA-930 2023 production intensity vs eGRID2023 BA. ERCO +3%, PJM −1%, MISO +3% (pass). Smaller BAs: SWPP +7%, TVA −7%, PACE −5%, WACM −21%, EPE −19%, PNM +80%.
+  - The small-BA gaps come from attributing jointly owned and dynamically scheduled units, which is what makes the consumption basis preferable there. This is stated as a caveat.
+- **Bracket:** eGRID2023 BA production and eGRID subregion (the §2 table).
+- **Grid upstream on consumed MWh.** Gas and coal fuel are derived from consumed CO2 × the BA's generation CO2 share by fuel, divided by 53.06 (gas) and 96 (coal) kg CO2/MMBtu. This assumes imports have the BA's own fuel mix. Terms added:
+  - gas supply CO2 (f) and upstream CH4 at the pairing's L;
+  - **regional coal-mine CH4** (range in `data/basin_leak_rates.json` cmm_note): surface/PRB/lignite 0.04 (0.02–0.06), underground 0.26. PJM 0.25, TVA 0.15, PACE 0.13, others 0.04;
+  - **coal supply-chain CO2** at 2% (1–3%) of coal combustion CO2;
+  - all divided by (1 − 0.03).
+- EIA-930 is CO2 only. Combustion CH4/N2O (<0.5% of the total) is omitted on the grid side and kept on the BTM side, which works slightly against BTM. The effect is noted.
 
-## 4. Supply pairing
-- **Matched (primary):** BTM and grid gas both at the basin's central L.
-- **Local vs national (sensitivity):** BTM at the basin's L (central, low and high), grid gas at the national 2.3%. This shows where siting next to a leaky or a clean basin matters.
+## 4. Reference B and pairings (review S3)
+- **B:** new H-class NGCC (HR 6.2), burning the **local basin's** gas in every pairing. A new grid plant in the region would take the same pipeline supply.
+- **Matched (primary):** BTM, grid A gas and B all at the basin L.
+- **Local vs national (sensitivity):** BTM and B at the basin L; grid A gas at the national 2.3%, because the existing fleet burns a pipeline mix.
+- **Energy-allocation sensitivity:** L × gas share of boe (MacKay 2026 Table 1) on all sides.
 
-## 5. Outputs and decision rule
-- For each region × prime mover (recip, simple cycle, SOFC, on-site CC; rich-burn as secondary): kg CO2e/MWh, % gap vs grid A (primary grid factor) and vs B (new NGCC), verdicts under
-  the two-condition test, and the CO2-only state.
-- **Tie band.** Reuse the main analysis's MC-widened band per prime mover. Each prime mover gets the largest band it had across the three main regions vs A, because the band is driven mostly by heat rate, f, GWP and
-  loss, not region. This avoids re-running the MC 6 × 5 times. Reviewer: acceptable?
-- **Heatmap:** regions (rows) × prime movers (columns), colored by % gap vs the primary regional grid at matched central L. A diverging palette centered at 0, cells marked tied / above / below, and the CO2-only
-  verdict noted.
-- **Basin-range bars:** per region, the BTM total for each prime mover across the basin's low–high L (matched), with the regional grid A as a band that moves with L, plus grid B.
-- **GWP20** as a secondary heatmap or annotation.
+## 5. Classification (review M6, M7)
+Each region × case gets one of four mutually exclusive states. They are defined with cell-specific tie bands from a per-region MC (§6):
+- **Worse:** above A and above B.
+- **Between:** above one reference and below or tied with the other. The output names which one.
+- **Better:** below both.
+- **Tied:** within the band of both.
 
-## 6. Parameters fixed before running
-Fixed 2026-10-24 from `sources/basins/BASINS.md`, before any regional run; stored in `data/basin_leak_rates.json`.
+The pre-registered "worse" verdict from the main analysis (above A AND above B) is unchanged. Where A > B (coal-heavy grids), that test reduces to "above A". The four-state view stops a recip that sits below a coal-heavy 2023 average from being reported simply as "not worse".
 
-| Basin | Low / central / high L | Gas share of boe (MacKay 2026 Table 1) | Sources |
-|---|---|---|---|
-| Permian (Texas) | 2.4 / 3.6 / 4.2% | 0.39 | central: Bridger LiDAR 2024 TX 3.6% (ES&T 2026) = Varon et al. 2026 TROPOMI TX 3.6% (2023); low: MacKay et al. 2026 basin-wide 2.4% (2023); high: Sherwin SI Permian 2019 campaign 4.23% / Varon 2023 upper ~4.1 |
-| Permian (New Mexico / Delaware) | 1.2 / 2.1 / 4.5% | 0.39 | central: Bridger 2024 NM 2.1% = Varon 2026 NM 2.1% (2023); low: MethaneSAT 2024-25 via EDF 1.2% (not peer reviewed); high: Varon NM 2019 4.5% |
-| Appalachia (Marcellus/Utica) | 0.4 / 0.6 / 0.9% | 0.97 | central 0.6%: AMI 2026 0.52% (via EDF/AMI release), MethaneSAT 0.6%, Sherwin PA 0.71%; high: MacKay 2026 0.9%; low 0.4% (AMI CI, Barkley 2017 NE PA 0.36%) |
-| Haynesville | 0.4 / 0.7 / 1.0% | 0.99 | Varon 2026 0.5±0.1% (2022-23); MacKay 2026 0.9% (2023); Peischl 2018 1.0±0.5% |
-| Denver-Julesburg (high: Greater Green River) | 1.0 / 1.2 / 5.2% | 0.52 | central: Sherwin SI DJ 1.10% (2021), MacKay 1.3%; low 1.0%; high: MacKay Greater Green River 5.2% (44% coverage, low confidence) as the Wyoming-supply upper case |
-| Uinta | 5.5 / 6.5 / 8.0% | 0.47 | Lin et al. 2021 6-8% (2015-20); Sherwin SI 5.55% (2020); MacKay 2026 7.7% (2023) |
+**Pre-registered headline wording for "Between" cells** where BTM < A and BTM > B: *"Against the [region] grid's 2023–25 average, which is coal-heavy, gas on site comes out ahead. It still emits X% more than a new gas plant on the grid would. Large new load can also delay coal retirements, which would make connecting to the grid worse than the average implies, and the comparison shifts as coal retires."* X is computed.
 
-Region pairing (final):
+## 6. Per-region Monte Carlo (review S1)
+N = 20,000 correlated draws per region:
+- **L:** triangular(low, central, high), shared across BTM, A and B under matched pairing.
+- **CMM factor:** uniform over the region's range.
+- **Coal supply-chain f:** U(1%, 3%).
+- **Main-analysis draws:** CH4 mass fraction, gas f, GWP CH4, grid loss, BTM heat rate and recip slip, as in the main analysis.
 
-| Region | Primary grid | Alternatives | Basin |
-|---|---|---|---|
-| West Texas | ERCOT | sub_ERCT | Permian (Texas) |
-| NM / El Paso | sub_AZNM | ba_EPE, ba_PNM | Permian (New Mexico / Delaware) |
-| PJM | PJM | sub_RFCW, sub_RFCE | Appalachia (Marcellus/Utica) |
-| Memphis (TVA) | ba_TVA | sub_SRTV | Haynesville |
-| N. Mississippi (MISO) | ba_MISO | sub_SRMV | Haynesville |
-| Wyoming | ba_WACM | sub_RMPA | Denver-Julesburg (high: Greater Green River) |
-| Utah | ba_PACE | sub_NWPP | Uinta |
+The grid factor is kept out of the MC because it is structural and is handled by the bracket. Each cell's tie band = max(5%, half-width of the 90% interval of the relative gap), computed separately for A and B.
 
-Judgment calls for review:
-- Cheyenne sits on the northern edge of the DJ basin, so DJ is the central basin, with Greater Green River (5.2%, low confidence) as the high case.
-- The Utah sites (Millard County) are assumed to take Uinta gas. They could also take Wyoming gas via Kern River, which makes Uinta the conservative choice toward the grid.
-- The Memphis and Southaven sites take Haynesville gas.
-- Denominators are not harmonized across studies (MacKay gross, Varon dry, Sherwin covered, AMI marketed). That changes values by a few percent, relative.
-- Energy-allocation sensitivity: L × gas share of boe.
+## 7. Outputs
+- **Heatmap:** regions × the four primary prime movers, colored by % gap vs A (primary) at matched central L. Each cell shows its four-state label, and a side column gives % vs B.
+- **Basin-range bars:** for each region, BTM totals across basin L (low / central / high) for each prime mover, with grid A as a band over the same L range and B as a marker.
+- **Tables:** `results/regional/*.csv`, including the GWP20 and eGRID-bracket variants and Cambium 2024 LRMER for each site's GEA region (context, pre-OBBBA).
 
-## 7. Predictions recorded before running
-- Recips and turbines stay worse than grid A and B in Texas, NM/El Paso, PJM and Memphis.
-- In Wyoming and Utah, against the coal-heavy BA averages, every BTM option including recips may come out **below** grid A. They remain above or tied with B, so the two-condition verdict is
-  still "not worse", and in those regions the binding comparison becomes B.
-- Basin leak rates change totals by tens of kg/MWh. For efficient options this can matter relative to B only through the local-vs-national asymmetry.
+| Region | Cambium GEA |
+|---|---|
+| West Texas | ERCOT |
+| Texas Panhandle | SPP_South |
+| El Paso / S. NM | WestConnect_South |
+| PJM | PJM_West |
+| Memphis | SERTP |
+| Cheyenne | WestConnect_North |
+| Central Utah | NorthernGrid_South |
 
-Note: `regional.py` was executed once as a smoke test (2026-10-24) before review. Its outputs were deleted uninspected.
+## 8. Predictions (recorded before running)
+- **Recips and simple cycle:** "Worse" in West Texas, PJM and Memphis. Probably "Worse" in the Panhandle and El Paso as well, since SWPP and EPE consumption intensities (430, 347) sit below recip CO2 alone (≈492).
+- **Cheyenne and Central Utah:** A (consumption basis 604 and 548, plus upstream) may sit near or above recip totals, so recips could be "Between" or "Worse" depending on L. CC and SOFC are likely "Between": below A, tied with or above B.
+- **El Paso:** EPE's grid burns about as much gas per MWh as SOFC/CC, so methane can move those cells either way (review M6). No direction is predicted.
+- **Leak rate:** at Uinta/GGR rates (5–8%) upstream CH4 adds about 100–250 kg/MWh to BTM at GWP100 (review M6 correction). The basin range will dominate the bars for the Rockies regions.
+
+## 9. Review items not adopted, or adopted partly
+- **Post-retirement sensitivity for PACE/WACM** (S4): not built. Cambium LRMER serves as the forward-looking context instead. The "Between" wording already flags retirements.
+- **Regional T&D** (S6): the flat 3% is kept, as the reviewer recommended.
+- **Plant-level CMM** from EIA-923 coal receipts joined to GHGRP FF (M8 route 2): not built. Region-level mine-type ranges are used instead.
+- **Main-analysis latent issues** (flagged, not changed):
+  - The national CMM factor overstates ERCOT's grid by about 7 kg/MWh (1.7% of A), which favors BTM.
+  - Coal supply-chain CO2 is omitted, by about 3 kg/MWh in ERCOT/PJM, which favors the grid.
+  - These partly offset, and neither changes a main verdict. They are recorded in METHODS.
