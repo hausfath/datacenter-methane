@@ -9,15 +9,15 @@ West Texas,Combined cycle (on site),A,0.2135,0.2874,0.3647,1.0000,0.0756
 West Texas,Combined cycle (on site),B,-0.0070,0.0452,0.0987,0.9135,0.0529
 West Texas,Small rich-burn gensets,A,1.1271,1.2937,1.4675,1.0000,0.1702
 West Texas,Small rich-burn gensets,B,0.7417,0.8618,0.9848,1.0000,0.1216
-Texas Panhandle,Recip engines (lean-burn),A,0.2276,0.4040,0.6127,1.0000,0.1926
+Texas Panhandle,Recip engines (lean-burn),A,0.2898,0.4710,0.6840,1.0000,0.1971
 Texas Panhandle,Recip engines (lean-burn),B,0.3665,0.5230,0.7080,1.0000,0.1708
-Texas Panhandle,Simple-cycle turbines,A,0.3071,0.4518,0.6105,1.0000,0.1517
+Texas Panhandle,Simple-cycle turbines,A,0.3731,0.5214,0.6812,1.0000,0.1541
 Texas Panhandle,Simple-cycle turbines,B,0.4430,0.5755,0.7112,1.0000,0.1341
-Texas Panhandle,Fuel cells (Bloom SOFC),A,-0.1724,-0.0717,0.0380,0.1500,0.1052
+Texas Panhandle,Fuel cells (Bloom SOFC),A,-0.1309,-0.0275,0.0838,0.3640,0.1074
 Texas Panhandle,Fuel cells (Bloom SOFC),B,-0.0884,0.0080,0.1047,0.5381,0.0966
-Texas Panhandle,Combined cycle (on site),A,-0.1046,-0.0385,0.0422,0.2052,0.0734
+Texas Panhandle,Combined cycle (on site),A,-0.0584,0.0077,0.0866,0.5675,0.0725
 Texas Panhandle,Combined cycle (on site),B,-0.0070,0.0448,0.0983,0.9147,0.0526
-Texas Panhandle,Small rich-burn gensets,A,0.5725,0.7163,0.8788,1.0000,0.1531
+Texas Panhandle,Small rich-burn gensets,A,0.6528,0.7988,0.9600,1.0000,0.1536
 Texas Panhandle,Small rich-burn gensets,B,0.7447,0.8647,0.9859,1.0000,0.1206
 El Paso / S. NM,Recip engines (lean-burn),A,0.3109,0.4548,0.6268,1.0000,0.1579
 El Paso / S. NM,Recip engines (lean-burn),B,0.3674,0.5194,0.7008,1.0000,0.1667

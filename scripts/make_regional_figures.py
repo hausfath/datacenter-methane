@@ -89,7 +89,7 @@ fig.text(0.04, 0.898, 'Life-cycle emissions of off-grid gas vs the regional grid
 fig.text(0.04, 0.03,
          'Grid: EIA-930 2025 consumption-based CO$_2$ intensity by balancing authority, plus upstream gas leaks, coal-mine methane and 3% transmission loss. '
          '"Tied" = within\nthe 90% Monte Carlo range. Leak rates: MacKay et al. 2026, Varon et al. 2026, Bridger 2024, AMI 2026, Sherwin et al. 2024 (corrected). '
-         'Wyoming uses DJ-basin gas, the case most\nfavourable to on-site gas. Engine slip: EPA 40 CFR 98 Table W-7.   Analysis: Zeke Hausfather / The Climate Brink',
+         'Wyoming uses DJ-basin gas, the case most\nfavourable to on-site gas; Utah\'s verdict depends on the Green River leak rate (low confidence). SPP uses 2024. Analysis: Zeke Hausfather / The Climate Brink',
          fontsize=9.3, color=MUTED, va='bottom', linespacing=1.45)
 fig.savefig(OUT / 'regional_heatmap.png', dpi=150, facecolor=SURF)
 plt.close(fig)

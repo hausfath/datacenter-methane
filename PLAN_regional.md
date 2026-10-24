@@ -95,3 +95,5 @@ The grid factor is kept out of the MC because it is structural and is handled by
   It now gets its own labels, "Below A, tied B" and "Tied A, below B". It occurs where BTM is below a coal-heavy average and tied with a new grid NGCC. No threshold or input was changed.
 
 - **Outcome vs §8 predictions:** recorded in METHODS.md, "Regional sensitivity".
+- **2026-10-24, after the R2 run, prompted by a final review.** SWPP's 2025 EIA-930 data are missing all of December plus 8 other days. SWPP therefore uses 2024 (351 days); every other BA uses 2025.
+  The pre-registered "Between" wording says "2023–25 average". Since the primary grid factor is 2025 consumption, the published text reads "2025 average".

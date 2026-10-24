@@ -13,9 +13,9 @@ Texas Panhandle,Recip engines (lean-burn),A,BTM above at all L (0-20%),"[1.4, 1.
 Texas Panhandle,Recip engines (lean-burn),B,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
 Texas Panhandle,Simple-cycle turbines,A,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
 Texas Panhandle,Simple-cycle turbines,B,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
-Texas Panhandle,Fuel cells (Bloom SOFC),A,3.78,"[1.4, 1.7, 3.6]",True
+Texas Panhandle,Fuel cells (Bloom SOFC),A,2.91,"[1.4, 1.7, 3.6]",True
 Texas Panhandle,Fuel cells (Bloom SOFC),B,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
-Texas Panhandle,Combined cycle (on site),A,3.12,"[1.4, 1.7, 3.6]",True
+Texas Panhandle,Combined cycle (on site),A,2.23,"[1.4, 1.7, 3.6]",True
 Texas Panhandle,Combined cycle (on site),B,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
 Texas Panhandle,Small rich-burn gensets,A,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
 Texas Panhandle,Small rich-burn gensets,B,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True

@@ -213,67 +213,113 @@ Because FaIR's CH4 metric runs about 38% above AR6 GWP100 on this background (37
 - **Measurement gaps.** No CH4 measurement exists for Bloom SOFC exhaust (0 assumed). No aeroderivative slip measurements were found (W-7 turbine factor used).
 - **Cambium.** LRMER is pre-OBBBA and, by NREL's own guidance, not for 2020s conditions. It is shown for context only.
 
+# Regional sensitivity (PLAN_regional.md R2)
+Scripts: `scripts/regional.py`, `scripts/eia930_intensity.py`, `scripts/make_regional_figures.py`, `scripts/write_regional_methods.py`. Figures: `figures/regional_heatmap.png`, `figures/regional_basin_ranges.png`.
 
-# Regional sensitivity (PLAN_regional.md R2; `scripts/regional.py`, `scripts/eia930_intensity.py`, `scripts/make_regional_figures.py`)
+## Setup
+- **Regions.** Seven hotspot regions, taken from Cleanview project locations. Each is paired with its supplying basin's leak rate, matched on both sides. Leak rates are in `data/basin_leak_rates.json`, compiled in `sources/basins/BASINS.md`. Sources:
+  - MacKay et al. 2026, ACP (MethaneAIR, 12 basins)
+  - Varon et al. 2026, ES&T (TROPOMI)
+  - Bridger 2024 inventory
+  - AMI 2026
+  - Sherwin et al. 2024, corrected SI
+- **Grid A.** The EIA-930 consumption-based CO2 intensity of each balancing authority, which allocates interchange with an MRIO model (per-BA workbooks). The year is 2025, except SPP, where 2025 lacks December and 2024 is used. Added to it:
+  - upstream gas CH4 and supply-chain CO2;
+  - regional coal-mine CH4: surface/PRB/lignite mines 0.04 and underground mines 0.26 kg CH4/MMBtu (EPA GHGI 2023 Table 3-36; EIA ACR 2023 Table 1);
+  - coal supply-chain CO2 at 2%;
+  - the total is then divided by 0.97 (3% transmission loss).
+- **Grid B.** A new H-class NGCC burning local gas.
+- **States.** Four states with per-region MC tie bands (N = 20,000; L drawn triangular over the basin range).
 
-**Setup.**
-- **Seven hotspot regions** from Cleanview project locations, each paired with its supplying basin's leak rate (matched on both sides). Leak rates come from `sources/basins/BASINS.md`: MacKay et al. 2026 ACP (MethaneAIR, 12 basins), Varon et al. 2026 ES&T (TROPOMI), Bridger 2024 inventory, AMI 2026, and the Sherwin et al. 2024 corrected SI. The values are in `data/basin_leak_rates.json`.
-- **Grid A** is the EIA-930 2025 consumption-based CO2 intensity of each balancing authority (MRIO interchange allocation, per-BA workbooks), plus:
-  - upstream gas CH4 and supply CO2;
-  - regional coal-mine CH4: surface/PRB/lignite 0.04 and underground 0.26 kg CH4/MMBtu, from EPA GHGI 2023 Table 3-36 and EIA ACR 2023 Table 1;
-  - coal supply CO2 at 2%;
-  - all divided by 0.97.
-- **Grid B** is a new H-class NGCC on the local basin's gas.
-- **Classification.** Each cell gets one of four states, using per-region MC tie bands (N = 20,000, L drawn triangular over the basin range).
-
-**EIA-930 validation** (2023 production intensity vs eGRID2023 BA): ERCO 343; PJM 322; MISO 460; SWPP 423; TVA 270; PACE 607; WACM 675; EPE 370; PNM 320 kg/MWh. Compare eGRID: ERCO 333, PJM 325, MISO 445, SWPP 395, TVA 291, PACE 640, WACM 848, EPE 458, PNM 179.
+## Grid data checks
+EIA-930 2023 production intensity vs eGRID2023 BA CO2 (kg/MWh): ERCO 343 vs 333; PJM 322 vs 325; MISO 460 vs 445; SWPP 423 vs 395; TVA 270 vs 291; PACE 607 vs 640; WACM 675 vs 848; EPE 370 vs 458; PNM 320 vs 179.
 - Large ISOs agree within ±3%.
-- Small and exporting BAs differ by up to 80%, because jointly owned and dynamically scheduled units are attributed differently. The eGRID BA and subregion bracket is reported for every cell.
+- Small and exporting BAs differ by up to about 80%. The two datasets attribute jointly owned and dynamically scheduled units differently. The eGRID BA and subregion bracket is reported for every cell.
 
-2025 consumption intensities, kg CO2/MWh:
+Consumption intensity used, kg CO2/MWh:
 
-| ERCO | SWPP | EPE | PJM | TVA | WACM | PACE |
+| ERCO (2025) | SWPP (2024) | EPE (2025) | PJM (2025) | TVA (2025) | WACM (2025) | PACE (2025) |
 |---|---|---|---|---|---|---|
-| 311 | 430 | 347 | 338 | 323 | 604 | 548 |
+| 311 | 404 | 347 | 338 | 323 | 604 | 548 |
 
-**Primary results** (matched central L, GWP100; state with % vs A / % vs B):
+## Primary results
+Matched central L, GWP100. Each cell gives the state, then % vs A / % vs B.
 
 | Region | Grid A / B (kg/MWh) | Recip | Simple cycle | SOFC | On-site CC |
 |---|---|---|---|---|---|
 | West Texas | 410 / 505 | Worse (+95% / +59%) | Worse (+91% / +55%) | Between (above A) (+24% / +1%) | Between (above A) (+28% / +4%) |
-| Texas Panhandle | 488 / 433 | Worse (+45% / +63%) | Worse (+38% / +55%) | Tied (-10% / +1%) | Below A, tied B (-7% / +4%) |
+| Texas Panhandle | 464 / 433 | Worse (+52% / +63%) | Worse (+44% / +55%) | Tied (-6% / +1%) | Tied (-3% / +4%) |
 | El Paso / S. NM | 483 / 459 | Worse (+53% / +61%) | Worse (+47% / +55%) | Tied (-4% / +1%) | Tied (-1% / +4%) |
 | PJM | 392 / 393 | Worse (+67% / +66%) | Worse (+55% / +55%) | Tied (+1% / +1%) | Tied (+5% / +4%) |
 | Memphis | 369 / 397 | Worse (+78% / +66%) | Worse (+67% / +55%) | Tied (+9% / +1%) | Between (above A) (+12% / +4%) |
 | Cheyenne | 649 / 415 | Between (above B) (+5% / +64%) | Between (above B) (-1% / +55%) | Below A, tied B (-35% / +1%) | Below A, tied B (-33% / +4%) |
 | Central Utah | 646 / 567 | Worse (+37% / +56%) | Worse (+36% / +55%) | Tied (-11% / +1%) | Tied (-8% / +4%) |
 
-**Robustness.** Recips and simple cycle are "Worse" in this many of the 22 variants per region (11 variants × 2 cases; the variants are matched low/central/high, local vs national, energy-allocated, EIA-930 2023, eGRID BA, eGRID subregion and GWP20): {'Central Utah': '15/22', 'Cheyenne': '7/22', 'El Paso / S. NM': '21/22', 'Memphis': '22/22', 'PJM': '22/22', 'Texas Panhandle': '22/22', 'West Texas': '22/22'}.
-- **Cheyenne** (WACM, the coal-heavy grid) is the one region where engines and turbines are not "Worse" at central assumptions.
-  - On DJ-basin gas, the case most favorable to on-site gas, they come out level with the 2023–25 average and 55–64% above a new grid gas plant.
-  - On Green River gas (5.2%) they are "Worse".
-  - The pre-registered "Between" wording applies.
-- **Fuel cells and on-site CC** tie a new grid NGCC in every region. Against regional averages they range from above (West Texas +24–28%) to below (Cheyenne −33 to −35%).
-- **El Paso.** EPE's grid burns more gas per MWh than SOFC/CC, so higher leak rates move those cells toward "below". As predicted, methane can cut either way there.
+## Reconciliation with the main analysis (West Texas fuel cells)
+In the main analysis, SOFC was +9% vs ERCOT and "tied". In the regional run it is +24% and "above average". Each step's effect, applied in order:
 
-**Prediction vs outcome** (PLAN_regional §8):
+| Step | SOFC vs ERCOT average |
+|---|---|
+| Main-analysis basis | +9.3% |
+| Regional coal-mine CH4 and coal supply CO2 | +10.4% |
+| EIA-930 2025 consumption instead of eGRID 2023 | +19.5% |
+| Permian TX 3.6% instead of national 2.3%, matched | +24.3% |
 
+ERCOT's lower 2025 intensity is the main driver. ERCOT's EIA-930 production intensity fell from 343 in 2023 to 311 in 2025.
+A higher matched L also widens the gap, because BTM burns more gas per MWh than the grid. For a site in West Texas today, the regional view is the more current one. The main analysis keeps eGRID 2023 so that all three regions share one basis.
+
+## Robustness
+For recips and simple cycle, the table counts how many of the 22 variants per region come out "Worse". The 22 are 11 variants × 2 cases. The variants are:
+- matched pairing at low, central and high L;
+- local BTM gas vs national grid gas, at low, central and high L;
+- energy-allocated L;
+- EIA-930 2023 instead of 2025;
+- eGRID BA;
+- eGRID subregion;
+- GWP20.
+
+| Region | Variants "Worse" |
+|---|---|
+| West Texas | 22/22 |
+| Texas Panhandle | 22/22 |
+| El Paso / S. NM | 21/22 |
+| PJM | 22/22 |
+| Memphis | 22/22 |
+| Cheyenne | 7/22 |
+| Central Utah | 15/22 |
+
+**Cheyenne** (WACM, a coal-heavy grid) is the one region where engines and turbines are not "Worse" at central assumptions.
+- On DJ-basin gas, the case most favorable to on-site gas, recips are +5% and simple cycle -1% vs the 2025 average. Both are within the band, so they are tied with it.
+- They are +64% and +55% vs a new grid gas plant.
+- On Green River gas (5.2%) they are "Worse".
+- The pre-registered "Between" wording applies.
+
+**Central Utah's** "Worse" verdict depends on the Green River leak rate (5.2%), which is low confidence: MacKay covers 44% of production. Recips by L level: low Between (above B), central Worse, high Worse. The heatmap title's "6 of 7" counts Utah.
+
+**Fuel cells and on-site CC** tie a new grid NGCC in every region. Against regional averages they range from above (West Texas) to below (Cheyenne).
+
+**El Paso.** EPE's grid burns more gas per MWh than SOFC or CC, so higher leak rates push those cells toward "below". As predicted, methane can cut either way there.
+
+## Prediction vs outcome (PLAN_regional §8)
 | Prediction | Outcome |
 |---|---|
 | Recips/SC "Worse" in West Texas, PJM, Memphis, Panhandle, El Paso | Correct |
-| Cheyenne/Utah recips "Between" or "Worse" | Cheyenne "Between (above B)"; Utah "Worse" at central (GGR 5.2%), "Between" at low L |
-| CC/SOFC "Between" in Cheyenne and Utah | Cheyenne "Below A, tied B" (a state missing from the §5 definitions; see §10); Utah "Tied" |
-| Basin range dominates the Rockies bars | Correct: up to 393 kg/MWh swing in Utah, though the 1.2% low end is a judgment |
+| Cheyenne/Utah recips "Between" or "Worse" | Cheyenne "Between (above B)". Utah "Worse" at central L, "Between" at low L |
+| CC/SOFC "Between" in Cheyenne/Utah | Cheyenne "Below A, tied B", a state missing from the §5 definitions (PLAN_regional §10). Utah "Tied" |
+| Basin range dominates the Rockies bars | Correct. The Utah swing reaches 393 kg/MWh, but its 1.2% low end is a judgment call |
 
-**Main-analysis latent issues found by the regional review** (flagged, main numbers not changed):
-1. The national coal-mine CH4 factor (0.199) overstates ERCOT's grid. Its coal is surface lignite and PRB, at about 0.04. The effect is about +7 kg/MWh on grid A (1.7%), which favors BTM.
-2. The grid side omits coal supply-chain CO2, about −3 kg/MWh in ERCOT/PJM, which favors the grid.
+## Latent issues in the main analysis found by the regional review
+These are flagged only. The main numbers are unchanged.
+1. **Coal-mine CH4 factor.** The main analysis uses the national factor (0.199) everywhere. ERCOT's coal is surface lignite and PRB, at about 0.04. The national factor adds about 7 kg/MWh to ERCOT's grid (1.7% of A), which favors BTM.
+2. **Coal supply-chain CO2.** It is missing on the grid side, about −3 kg/MWh in ERCOT and PJM, which favors the grid.
 
-They partly offset, and neither changes a main verdict.
+The two partly offset, and neither changes a main verdict.
 
-**Caveats.**
-- The EIA-930 consumption basis assumes imports carry the BA's own fuel mix when scaling the upstream terms.
-- EIA-930 is CO2 only. Combustion CH4/N2O are omitted on the grid side (<0.5%).
-- The basin denominators are not harmonized (gross, dry, covered or marketed gas).
-- The Rockies basin values are low confidence (GGR covers 44% of production in MacKay). Powder River and San Juan have no verified rate.
-- Cambium 2024 LRMER for each site's GEA region is in `results/regional/regional_cases.csv` as pre-OBBBA context.
+## Caveats
+- **Upstream scaling.** The consumption basis scales the grid's upstream terms by the BA's own fuel mix, which assumes imports have the same mix.
+- **CO2 only.** EIA-930 reports CO2 only, so combustion CH4 and N2O are omitted on the grid side (<0.5%).
+- **Basin rates.**
+  - Denominators are not harmonized (gross, dry, covered or marketed gas).
+  - Rockies values are low confidence.
+  - Powder River and San Juan have no verified rate.
+- **Cambium.** The 2024 LRMER for each site's GEA region is in `results/regional/regional_cases.csv` as pre-OBBBA context only.

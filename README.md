@@ -7,6 +7,7 @@ upstream leakage count? Does methane change the ranking, or only the size of the
 - Reciprocating engines and simple-cycle turbines emit 63–80% more than the ERCOT, PJM and US grid averages. They are already 31–63% higher on CO2 alone, so methane widens the gap without creating it.
 - Fuel cells and on-site combined cycle come in 7–17% above the grid averages and level with a new grid combined-cycle plant.
 - Methane changes no verdict under the pre-registered test.
+- **Regional sensitivity** (seven data-center hotspots, each with its own grid and supply-basin leak rate): engines and turbines are worse than the local grid in 6 of 7. The exception is coal-heavy Cheyenne, WY, where they are level with the grid average but still about 60% above a new grid gas plant. Utah's verdict rests on a low-confidence Rockies leak rate.
 
 See `METHODS.md` for the full results and caveats and `PLAN.md` for the frozen pre-analysis plan and its change log.
 
@@ -22,6 +23,12 @@ python3.13 cases.py              # case table, primary test, break-even leak rat
 python3.13 v3_fair_metrics.py    # FaIR pulse check vs AR6 metrics
 python3.13 fair_fleet.py         # FaIR fleet-scale runs (~5 min)
 python3.13 make_figure.py        # figures/offgrid_gas_vs_grid.png
+
+# regional sensitivity (PLAN_regional.md)
+python3.13 eia930_intensity.py   # streams EIA-930 per-BA workbooks -> data/eia930_intensity.json (~10 min, deletes raw)
+python3.13 regional.py           # hotspot regions x basin leak rates, per-region MC, four-state classification
+python3.13 make_regional_figures.py   # figures/regional_heatmap.png, figures/regional_basin_ranges.png
+python3.13 write_regional_methods.py  # regenerates the regional section of METHODS.md
 ```
 Requirements: Python 3.13, numpy, pandas, scipy, matplotlib, openpyxl, and fair==2.2.2.
 

@@ -25,6 +25,7 @@ CAMB = cs.GRID['cambium_lrmer_gea_2027_2046']
 GEA = {'West Texas': 'ERCOT', 'Texas Panhandle': 'SPP_South', 'El Paso / S. NM': 'WestConnect_South', 'PJM': 'PJM_West',
        'Memphis': 'SERTP', 'Cheyenne': 'WestConnect_North', 'Central Utah': 'NorthernGrid_South'}
 EIA_YEAR = '2025'
+EIA_YEAR_OVERRIDE = {'SWPP': '2024'}   # SWPP 2025 lacks all of December + 8 other days (PLAN_regional §10)
 EF_COAL = 96.0          # kg CO2/MMBtu, coal blend (EIA: bituminous 93.3, subbituminous 97.2, lignite 97.7)
 PRIMARY = [c for c, v in cs.CASES.items() if v[3]]
 CENTRAL = dict(mf=em.CH4_MASS_FRAC, f=cs.F_SUPPLY, gch4=29.8, loss=cs.GRID_LOSS, fc=0.02)
@@ -34,7 +35,7 @@ def grid_fuel(region, basis):
     """(combustion kg CO2(e)/MWh, gas MMBtu/MWh, coal MMBtu/MWh) for the grid basis."""
     r = REGIONS[region]
     if basis == 'EIA-930 consumption 2025':
-        e = EIA[r['ba']][EIA_YEAR]
+        e = EIA[r['ba']][EIA_YEAR_OVERRIDE.get(r['ba'], EIA_YEAR)]
         cons = e['consumption_kg_mwh']
         return cons, cons * e['gas_share_gen_co2'] / em.EF_CO2, cons * e['coal_share_gen_co2'] / EF_COAL
     if basis == 'EIA-930 consumption 2023':
