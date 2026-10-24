@@ -1,0 +1,119 @@
+{
+ "basins": {
+  "Permian (Texas)": {
+   "L": [
+    0.024,
+    0.036,
+    0.042
+   ],
+   "gas_boe_share": 0.39,
+   "src": "central: Bridger LiDAR 2024 TX 3.6% (ES&T 2026) = Varon et al. 2026 TROPOMI TX 3.6% (2023); low: MacKay et al. 2026 basin-wide 2.4% (2023); high: Sherwin SI Permian 2019 campaign 4.23% / Varon 2023 upper ~4.1"
+  },
+  "Permian (New Mexico / Delaware)": {
+   "L": [
+    0.012,
+    0.021,
+    0.045
+   ],
+   "gas_boe_share": 0.39,
+   "src": "central: Bridger 2024 NM 2.1% = Varon 2026 NM 2.1% (2023); low: MethaneSAT 2024-25 via EDF 1.2% (not peer reviewed); high: Varon NM 2019 4.5%"
+  },
+  "Appalachia (Marcellus/Utica)": {
+   "L": [
+    0.004,
+    0.006,
+    0.009
+   ],
+   "gas_boe_share": 0.97,
+   "src": "central 0.6%: AMI 2026 0.52% (via EDF/AMI release), MethaneSAT 0.6%, Sherwin PA 0.71%; high: MacKay 2026 0.9%; low 0.4% (AMI CI, Barkley 2017 NE PA 0.36%)"
+  },
+  "Haynesville": {
+   "L": [
+    0.004,
+    0.007,
+    0.01
+   ],
+   "gas_boe_share": 0.99,
+   "src": "Varon 2026 0.5\u00b10.1% (2022-23); MacKay 2026 0.9% (2023); Peischl 2018 1.0\u00b10.5%"
+  },
+  "Denver-Julesburg (high: Greater Green River)": {
+   "L": [
+    0.01,
+    0.012,
+    0.052
+   ],
+   "gas_boe_share": 0.52,
+   "src": "central: Sherwin SI DJ 1.10% (2021), MacKay 1.3%; low 1.0%; high: MacKay Greater Green River 5.2% (44% coverage, low confidence) as the Wyoming-supply upper case"
+  },
+  "Uinta": {
+   "L": [
+    0.055,
+    0.065,
+    0.08
+   ],
+   "gas_boe_share": 0.47,
+   "src": "Lin et al. 2021 6-8% (2015-20); Sherwin SI 5.55% (2020); MacKay 2026 7.7% (2023)"
+  }
+ },
+ "regions": {
+  "West Texas": {
+   "label": "West Texas (ERCOT)",
+   "grid": "ERCOT",
+   "alt_grids": [
+    "sub_ERCT"
+   ],
+   "basin": "Permian (Texas)"
+  },
+  "NM / El Paso": {
+   "label": "S. New Mexico / El Paso",
+   "grid": "sub_AZNM",
+   "alt_grids": [
+    "ba_EPE",
+    "ba_PNM"
+   ],
+   "basin": "Permian (New Mexico / Delaware)"
+  },
+  "PJM": {
+   "label": "Ohio / PA / WV / VA (PJM)",
+   "grid": "PJM",
+   "alt_grids": [
+    "sub_RFCW",
+    "sub_RFCE"
+   ],
+   "basin": "Appalachia (Marcellus/Utica)"
+  },
+  "Memphis (TVA)": {
+   "label": "Memphis (TVA)",
+   "grid": "ba_TVA",
+   "alt_grids": [
+    "sub_SRTV"
+   ],
+   "basin": "Haynesville"
+  },
+  "N. Mississippi (MISO)": {
+   "label": "Southaven, MS (MISO)",
+   "grid": "ba_MISO",
+   "alt_grids": [
+    "sub_SRMV"
+   ],
+   "basin": "Haynesville"
+  },
+  "Wyoming": {
+   "label": "Cheyenne, WY (WACM)",
+   "grid": "ba_WACM",
+   "alt_grids": [
+    "sub_RMPA"
+   ],
+   "basin": "Denver-Julesburg (high: Greater Green River)"
+  },
+  "Utah": {
+   "label": "Central Utah (PacifiCorp East)",
+   "grid": "ba_PACE",
+   "alt_grids": [
+    "sub_NWPP"
+   ],
+   "basin": "Uinta"
+  }
+ },
+ "note": "L = CH4 emitted / CH4 produced, whole basin, unallocated; denominators differ by study (gross, dry, covered, marketed gas) and are not harmonized. Sources: sources/basins/BASINS.md. Fixed 2026-10-24 before any regional run."
+}

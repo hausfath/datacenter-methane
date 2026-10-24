@@ -65,6 +65,127 @@
    "coal_mmbtu_per_mwh": 1.421058531631435,
    "gas_hr": 7.3551827329834945,
    "coal_hr": 11.189437256940433
+  },
+  "sub_AZNM": {
+   "co2e_kg_mwh": 320.32194217793,
+   "co2_kg_mwh": 319.19431154611,
+   "nonbaseload_co2e_kg_mwh": 534.83121705937,
+   "gas_share": 0.487,
+   "coal_share": 0.111,
+   "gas_mmbtu_per_mwh": 3.7473598374340207,
+   "coal_mmbtu_per_mwh": 1.2190324727452924,
+   "gas_hr": 7.694784060439468,
+   "coal_hr": 10.982274529236868
+  },
+  "sub_RMPA": {
+   "co2e_kg_mwh": 472.88773582743,
+   "co2_kg_mwh": 470.1943043343701,
+   "nonbaseload_co2e_kg_mwh": 738.82395284236,
+   "gas_share": 0.264,
+   "coal_share": 0.317,
+   "gas_mmbtu_per_mwh": 2.2112374140672992,
+   "coal_mmbtu_per_mwh": 3.6636442240779408,
+   "gas_hr": 8.375899295709466,
+   "coal_hr": 11.557237299930412
+  },
+  "sub_NWPP": {
+   "co2e_kg_mwh": 288.15226411279,
+   "co2_kg_mwh": 286.55017586195004,
+   "nonbaseload_co2e_kg_mwh": 736.20128175902,
+   "gas_share": 0.248,
+   "coal_share": 0.164,
+   "gas_mmbtu_per_mwh": 1.9432783075742626,
+   "coal_mmbtu_per_mwh": 1.879635257358987,
+   "gas_hr": 7.835799627315575,
+   "coal_hr": 11.46119059365236
+  },
+  "sub_SRTV": {
+   "co2e_kg_mwh": 409.73270937522005,
+   "co2_kg_mwh": 407.36178205723,
+   "nonbaseload_co2e_kg_mwh": 760.2244408589601,
+   "gas_share": 0.298,
+   "coal_share": 0.282,
+   "gas_mmbtu_per_mwh": 2.178809220595821,
+   "coal_mmbtu_per_mwh": 3.1132945648005665,
+   "gas_hr": 7.311440337569869,
+   "coal_hr": 11.04005164822896
+  },
+  "sub_SRMV": {
+   "co2e_kg_mwh": 336.44805811617,
+   "co2_kg_mwh": 335.53134793640004,
+   "nonbaseload_co2e_kg_mwh": 521.3563485237801,
+   "gas_share": 0.652,
+   "coal_share": 0.082,
+   "gas_mmbtu_per_mwh": 4.663971830273179,
+   "coal_mmbtu_per_mwh": 0.9443027051964115,
+   "gas_hr": 7.153331028026348,
+   "coal_hr": 11.515886648736725
+  },
+  "ba_EPE": {
+   "co2e_kg_mwh": 458.92434830935,
+   "co2_kg_mwh": 458.44172602767003,
+   "nonbaseload_co2e_kg_mwh": 518.36037091993,
+   "gas_share": 0.886,
+   "coal_share": 0,
+   "gas_mmbtu_per_mwh": 8.64369344825817,
+   "coal_mmbtu_per_mwh": 0.0,
+   "gas_hr": 9.755861679749628,
+   "coal_hr": 0.0
+  },
+  "ba_PNM": {
+   "co2e_kg_mwh": 179.01340396709,
+   "co2_kg_mwh": 178.82788468776,
+   "nonbaseload_co2e_kg_mwh": 492.2339040003001,
+   "gas_share": 0.404,
+   "coal_share": 0,
+   "gas_mmbtu_per_mwh": 3.316156607949907,
+   "coal_mmbtu_per_mwh": 0.0,
+   "gas_hr": 8.208308435519571,
+   "coal_hr": 0.0
+  },
+  "ba_TVA": {
+   "co2e_kg_mwh": 292.07765248277,
+   "co2_kg_mwh": 290.76087383266,
+   "nonbaseload_co2e_kg_mwh": 689.2041227109501,
+   "gas_share": 0.338,
+   "coal_share": 0.137,
+   "gas_mmbtu_per_mwh": 2.462510148655166,
+   "coal_mmbtu_per_mwh": 1.66437190618427,
+   "gas_hr": 7.285532984186881,
+   "coal_hr": 12.148700045140655
+  },
+  "ba_MISO": {
+   "co2e_kg_mwh": 447.89434264806,
+   "co2_kg_mwh": 445.41954267734,
+   "nonbaseload_co2e_kg_mwh": 703.0931210803501,
+   "gas_share": 0.385,
+   "coal_share": 0.285,
+   "gas_mmbtu_per_mwh": 2.9133096881110423,
+   "coal_mmbtu_per_mwh": 2.9703144443175975,
+   "gas_hr": 7.567038150937772,
+   "coal_hr": 10.422155944974028
+  },
+  "ba_WACM": {
+   "co2e_kg_mwh": 853.7860318341201,
+   "co2_kg_mwh": 848.0077186326901,
+   "nonbaseload_co2e_kg_mwh": 1002.71265389911,
+   "gas_share": 0.094,
+   "coal_share": 0.728,
+   "gas_mmbtu_per_mwh": 0.7911318764509943,
+   "coal_mmbtu_per_mwh": 8.455003216698067,
+   "gas_hr": 8.4162965579893,
+   "coal_hr": 11.61401540755229
+  },
+  "ba_PACE": {
+   "co2e_kg_mwh": 643.60085301589,
+   "co2_kg_mwh": 639.5811174329501,
+   "nonbaseload_co2e_kg_mwh": 954.95663481603,
+   "gas_share": 0.245,
+   "coal_share": 0.479,
+   "gas_mmbtu_per_mwh": 1.883330383480826,
+   "coal_mmbtu_per_mwh": 5.606852005114042,
+   "gas_hr": 7.687062789717657,
+   "coal_hr": 11.705327776856038
   }
  },
  "cambium_lrmer_2027_2046": {

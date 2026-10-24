@@ -41,8 +41,10 @@ def egrid_inputs():
     for name, code in REGIONS.items():
         one(ba[code], 'BA', name)
     one(us, 'US', 'US')
-    for s in ['RFCE', 'RFCW', 'ERCT']:
+    for s in ['RFCE', 'RFCW', 'ERCT', 'AZNM', 'RMPA', 'NWPP', 'SRTV', 'SRMV']:
         one(srl[s], 'SR', f'sub_{s}')
+    for code in ['EPE', 'PNM', 'TVA', 'MISO', 'WACM', 'PACE']:      # regional addendum (PLAN_regional.md)
+        one(ba[code], 'BA', f'ba_{code}')
     return out
 
 
