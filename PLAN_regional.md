@@ -82,3 +82,5 @@ Judgment calls for review:
 - In Wyoming and Utah, against the coal-heavy BA averages, every BTM option including recips may come out **below** grid A. They remain above or tied with B, so the two-condition verdict is
   still "not worse", and in those regions the binding comparison becomes B.
 - Basin leak rates change totals by tens of kg/MWh. For efficient options this can matter relative to B only through the local-vs-national asymmetry.
+
+Note: `regional.py` was executed once as a smoke test (2026-10-24) before review. Its outputs were deleted uninspected.
