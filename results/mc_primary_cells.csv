@@ -1,0 +1,31 @@
+region,reference,case,rel_gap_p05,rel_gap_p50,rel_gap_p95,p_btm_above,tie_band
+ERCOT,A,Recip engines (lean-burn),0.480,0.659,0.868,1.000,0.194
+ERCOT,B,Recip engines (lean-burn),0.367,0.522,0.703,1.000,0.168
+PJM,A,Recip engines (lean-burn),0.525,0.712,0.929,1.000,0.202
+PJM,B,Recip engines (lean-burn),0.367,0.522,0.703,1.000,0.168
+US,A,Recip engines (lean-burn),0.438,0.616,0.824,1.000,0.193
+US,B,Recip engines (lean-burn),0.367,0.522,0.703,1.000,0.168
+ERCOT,A,Simple-cycle turbines,0.572,0.717,0.865,1.000,0.147
+ERCOT,B,Simple-cycle turbines,0.441,0.575,0.710,1.000,0.134
+PJM,A,Simple-cycle turbines,0.621,0.772,0.927,1.000,0.153
+PJM,B,Simple-cycle turbines,0.441,0.575,0.710,1.000,0.134
+US,A,Simple-cycle turbines,0.528,0.673,0.822,1.000,0.147
+US,B,Simple-cycle turbines,0.441,0.575,0.710,1.000,0.134
+ERCOT,A,Fuel cells (Bloom SOFC),-0.007,0.097,0.205,0.929,0.106
+ERCOT,B,Fuel cells (Bloom SOFC),-0.089,0.006,0.105,0.533,0.097
+PJM,A,Fuel cells (Bloom SOFC),0.025,0.132,0.244,0.994,0.110
+PJM,B,Fuel cells (Bloom SOFC),-0.089,0.006,0.105,0.533,0.097
+US,A,Fuel cells (Bloom SOFC),-0.034,0.069,0.176,0.817,0.105
+US,B,Fuel cells (Bloom SOFC),-0.089,0.006,0.105,0.533,0.097
+ERCOT,A,Combined cycle (on site),0.082,0.139,0.199,1.000,0.059
+ERCOT,B,Combined cycle (on site),-0.007,0.045,0.098,0.912,0.053
+PJM,A,Combined cycle (on site),0.115,0.176,0.239,1.000,0.062
+PJM,B,Combined cycle (on site),-0.007,0.045,0.098,0.912,0.053
+US,A,Combined cycle (on site),0.051,0.110,0.172,1.000,0.061
+US,B,Combined cycle (on site),-0.007,0.045,0.098,0.912,0.053
+ERCOT,A,Small rich-burn gensets,0.898,1.034,1.171,1.000,0.136
+ERCOT,B,Small rich-burn gensets,0.745,0.865,0.988,1.000,0.122
+PJM,A,Small rich-burn gensets,0.958,1.098,1.243,1.000,0.143
+PJM,B,Small rich-burn gensets,0.745,0.865,0.988,1.000,0.122
+US,A,Small rich-burn gensets,0.845,0.981,1.122,1.000,0.138
+US,B,Small rich-burn gensets,0.745,0.865,0.988,1.000,0.122

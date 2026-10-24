@@ -1,0 +1,31 @@
+region,reference,case,primary,btm_co2,ref_co2,gap_co2,state_co2,btm_full,ref_full,gap_full,state_full,gap_from_ch4,tie_band,p_btm_above,rel_gap_co2,rel_gap_full,state_co2_band,state_full_band
+ERCOT,A,Recip engines (lean-burn),True,492.075,361.717,130.358,above,735.601,420.904,314.697,above,184.339,0.194,1.000,0.360,0.748,above,above
+ERCOT,A,Simple-cycle turbines,True,574.088,361.717,212.371,above,705.397,420.904,284.493,above,72.122,0.147,1.000,0.587,0.676,above,above
+ERCOT,A,Fuel cells (Bloom SOFC),True,374.914,361.717,13.198,tied,459.897,420.904,38.993,above,25.795,0.106,0.929,0.036,0.093,tied,tied
+ERCOT,A,Combined cycle (on site),True,386.631,361.717,24.914,above,475.063,420.904,54.159,above,29.245,0.059,1.000,0.069,0.129,above,above
+ERCOT,A,Small rich-burn gensets,False,679.532,361.717,317.816,above,849.275,420.904,428.371,above,110.556,0.136,1.000,0.879,1.018,above,above
+ERCOT,B,Recip engines (lean-burn),True,492.075,370.687,121.388,above,735.601,455.473,280.128,above,158.740,0.168,1.000,0.327,0.615,above,above
+ERCOT,B,Simple-cycle turbines,True,574.088,370.687,203.401,above,705.397,455.473,249.924,above,46.523,0.134,1.000,0.549,0.549,above,above
+ERCOT,B,Fuel cells (Bloom SOFC),True,374.914,370.687,4.227,tied,459.897,455.473,4.424,tied,0.196,0.097,0.533,0.011,0.010,tied,tied
+ERCOT,B,Combined cycle (on site),True,386.631,370.687,15.944,tied,475.063,455.473,19.590,tied,3.647,0.053,0.912,0.043,0.043,tied,tied
+ERCOT,B,Small rich-burn gensets,False,679.532,370.687,308.845,above,849.275,455.473,393.803,above,84.957,0.122,1.000,0.833,0.865,above,above
+PJM,A,Recip engines (lean-burn),True,492.075,351.873,140.202,above,735.601,407.806,327.795,above,187.593,0.202,1.000,0.398,0.804,above,above
+PJM,A,Simple-cycle turbines,True,574.088,351.873,222.215,above,705.397,407.806,297.591,above,75.376,0.153,1.000,0.632,0.730,above,above
+PJM,A,Fuel cells (Bloom SOFC),True,374.914,351.873,23.042,above,459.897,407.806,52.091,above,29.049,0.110,0.994,0.065,0.128,tied,above
+PJM,A,Combined cycle (on site),True,386.631,351.873,34.758,above,475.063,407.806,67.257,above,32.499,0.062,1.000,0.099,0.165,above,above
+PJM,A,Small rich-burn gensets,False,679.532,351.873,327.660,above,849.275,407.806,441.470,above,113.810,0.143,1.000,0.931,1.083,above,above
+PJM,B,Recip engines (lean-burn),True,492.075,370.687,121.388,above,735.601,455.473,280.128,above,158.740,0.168,1.000,0.327,0.615,above,above
+PJM,B,Simple-cycle turbines,True,574.088,370.687,203.401,above,705.397,455.473,249.924,above,46.523,0.134,1.000,0.549,0.549,above,above
+PJM,B,Fuel cells (Bloom SOFC),True,374.914,370.687,4.227,tied,459.897,455.473,4.424,tied,0.196,0.097,0.533,0.011,0.010,tied,tied
+PJM,B,Combined cycle (on site),True,386.631,370.687,15.944,tied,475.063,455.473,19.590,tied,3.647,0.053,0.912,0.043,0.043,tied,tied
+PJM,B,Small rich-burn gensets,False,679.532,370.687,308.845,above,849.275,455.473,393.803,above,84.957,0.122,1.000,0.833,0.865,above,above
+US,A,Recip engines (lean-burn),True,492.075,375.379,116.696,above,735.601,431.904,303.698,above,187.001,0.193,1.000,0.311,0.703,above,above
+US,A,Simple-cycle turbines,True,574.088,375.379,198.709,above,705.397,431.904,273.493,above,74.784,0.147,1.000,0.529,0.633,above,above
+US,A,Fuel cells (Bloom SOFC),True,374.914,375.379,-0.464,tied,459.897,431.904,27.993,above,28.457,0.105,0.817,-0.001,0.065,tied,tied
+US,A,Combined cycle (on site),True,386.631,375.379,11.252,tied,475.063,431.904,43.160,above,31.908,0.061,1.000,0.030,0.100,tied,above
+US,A,Small rich-burn gensets,False,679.532,375.379,304.154,above,849.275,431.904,417.372,above,113.218,0.138,1.000,0.810,0.966,above,above
+US,B,Recip engines (lean-burn),True,492.075,370.687,121.388,above,735.601,455.473,280.128,above,158.740,0.168,1.000,0.327,0.615,above,above
+US,B,Simple-cycle turbines,True,574.088,370.687,203.401,above,705.397,455.473,249.924,above,46.523,0.134,1.000,0.549,0.549,above,above
+US,B,Fuel cells (Bloom SOFC),True,374.914,370.687,4.227,tied,459.897,455.473,4.424,tied,0.196,0.097,0.533,0.011,0.010,tied,tied
+US,B,Combined cycle (on site),True,386.631,370.687,15.944,tied,475.063,455.473,19.590,tied,3.647,0.053,0.912,0.043,0.043,tied,tied
+US,B,Small rich-burn gensets,False,679.532,370.687,308.845,above,849.275,455.473,393.803,above,84.957,0.122,1.000,0.833,0.865,above,above

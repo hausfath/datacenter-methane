@@ -1,0 +1,30 @@
+/Users/hausfath/Desktop/Climate Science/The Climate Brink/Data center methane/scripts/fair_fleet.py:68: RuntimeWarning: invalid value encountered in divide
+  ratio = dT[name] / dT[refn]
+/Users/hausfath/Desktop/Climate Science/The Climate Brink/Data center methane/scripts/fair_fleet.py:68: RuntimeWarning: invalid value encountered in divide
+  ratio = dT[name] / dT[refn]
+/Users/hausfath/Desktop/Climate Science/The Climate Brink/Data center methane/scripts/fair_fleet.py:68: RuntimeWarning: invalid value encountered in divide
+  ratio = dT[name] / dT[refn]
+ssp126 Recip engines (lean-burn) 3.42 mK in 2050
+ssp126 Simple-cycle turbines 2.65 mK in 2050
+ssp126 Fuel cells (Bloom SOFC) 1.72 mK in 2050
+ssp126 Combined cycle (on site) 1.78 mK in 2050
+ssp126 ERCOT grid average 1.45 mK in 2050
+ssp126 PJM grid average 1.40 mK in 2050
+ssp126 New grid NGCC 1.71 mK in 2050
+ssp245 Recip engines (lean-burn) 3.38 mK in 2050
+ssp245 Simple-cycle turbines 2.60 mK in 2050
+ssp245 Fuel cells (Bloom SOFC) 1.69 mK in 2050
+ssp245 Combined cycle (on site) 1.75 mK in 2050
+ssp245 ERCOT grid average 1.42 mK in 2050
+ssp245 PJM grid average 1.37 mK in 2050
+ssp245 New grid NGCC 1.68 mK in 2050
+ssp370 Recip engines (lean-burn) 3.21 mK in 2050
+ssp370 Simple-cycle turbines 2.48 mK in 2050
+ssp370 Fuel cells (Bloom SOFC) 1.62 mK in 2050
+ssp370 Combined cycle (on site) 1.67 mK in 2050
+ssp370 ERCOT grid average 1.36 mK in 2050
+ssp370 PJM grid average 1.31 mK in 2050
+ssp370 New grid NGCC 1.60 mK in 2050
+{
+ "linearity_half_over_full_2050": 0.49998948167132007
+}

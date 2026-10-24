@@ -1,0 +1,55 @@
+case,region,test,gap_base,gap,ref,rel_gap
+Fuel cells (Bloom SOFC),ERCOT,HR 5.81,38.993,-3.404,420.904,-0.008
+Fuel cells (Bloom SOFC),ERCOT,HR 7.13,38.993,91.449,420.904,0.217
+Fuel cells (Bloom SOFC),ERCOT,L 0.5% both,38.993,10.934,420.904,0.026
+Fuel cells (Bloom SOFC),ERCOT,L 3.1% both,38.993,51.797,420.904,0.123
+Fuel cells (Bloom SOFC),ERCOT,"BTM certified 0.5%, grid 2.3%",38.993,-27.711,420.904,-0.066
+Fuel cells (Bloom SOFC),ERCOT,grid T loss 2%,38.993,43.287,420.904,0.103
+Fuel cells (Bloom SOFC),ERCOT,grid T&D 5%,38.993,30.131,420.904,0.072
+Fuel cells (Bloom SOFC),ERCOT,f 0.08,38.993,37.117,420.904,0.088
+Fuel cells (Bloom SOFC),ERCOT,f 0.11,38.993,41.445,420.904,0.098
+Fuel cells (Bloom SOFC),ERCOT,CH4 mass frac 0.884,38.993,37.228,420.904,0.088
+Fuel cells (Bloom SOFC),ERCOT,CH4 mass frac 0.970,38.993,40.527,420.904,0.096
+Fuel cells (Bloom SOFC),ERCOT,GWP20,38.993,86.593,420.904,0.206
+Fuel cells (Bloom SOFC),ERCOT,CMM incl. abandoned (0.226),38.993,37.805,420.904,0.090
+Fuel cells (Bloom SOFC),ERCOT,Bloom lifetime avg 54% LHV (7.0),38.993,82.108,420.904,0.195
+Fuel cells (Bloom SOFC),PJM,HR 5.81,52.091,9.694,407.806,0.024
+Fuel cells (Bloom SOFC),PJM,HR 7.13,52.091,104.548,407.806,0.256
+Fuel cells (Bloom SOFC),PJM,L 0.5% both,52.091,20.964,407.806,0.051
+Fuel cells (Bloom SOFC),PJM,L 3.1% both,52.091,66.296,407.806,0.163
+Fuel cells (Bloom SOFC),PJM,"BTM certified 0.5%, grid 2.3%",52.091,-14.612,407.806,-0.036
+Fuel cells (Bloom SOFC),PJM,grid T loss 2%,52.091,56.252,407.806,0.138
+Fuel cells (Bloom SOFC),PJM,grid T&D 5%,52.091,43.505,407.806,0.107
+Fuel cells (Bloom SOFC),PJM,f 0.08,52.091,50.010,407.806,0.123
+Fuel cells (Bloom SOFC),PJM,f 0.11,52.091,54.812,407.806,0.134
+Fuel cells (Bloom SOFC),PJM,CH4 mass frac 0.884,52.091,50.133,407.806,0.123
+Fuel cells (Bloom SOFC),PJM,CH4 mass frac 0.970,52.091,53.793,407.806,0.132
+Fuel cells (Bloom SOFC),PJM,GWP20,52.091,105.892,407.806,0.260
+Fuel cells (Bloom SOFC),PJM,CMM incl. abandoned (0.226),52.091,50.849,407.806,0.125
+Fuel cells (Bloom SOFC),PJM,Bloom lifetime avg 54% LHV (7.0),52.091,95.206,407.806,0.233
+Combined cycle (on site),ERCOT,HR 6.4,54.159,39.763,420.904,0.094
+Combined cycle (on site),ERCOT,HR 7.0,54.159,82.951,420.904,0.197
+Combined cycle (on site),ERCOT,L 0.5% both,54.159,24.016,420.904,0.057
+Combined cycle (on site),ERCOT,L 3.1% both,54.159,67.915,420.904,0.161
+Combined cycle (on site),ERCOT,"BTM certified 0.5%, grid 2.3%",54.159,-14.629,420.904,-0.035
+Combined cycle (on site),ERCOT,grid T loss 2%,54.159,58.454,420.904,0.139
+Combined cycle (on site),ERCOT,grid T&D 5%,54.159,45.298,420.904,0.108
+Combined cycle (on site),ERCOT,f 0.08,54.159,52.144,420.904,0.124
+Combined cycle (on site),ERCOT,f 0.11,54.159,56.794,420.904,0.135
+Combined cycle (on site),ERCOT,CH4 mass frac 0.884,54.159,52.263,420.904,0.124
+Combined cycle (on site),ERCOT,CH4 mass frac 0.970,54.159,55.807,420.904,0.133
+Combined cycle (on site),ERCOT,GWP20,54.159,107.852,420.904,0.256
+Combined cycle (on site),ERCOT,CMM incl. abandoned (0.226),54.159,52.971,420.904,0.126
+Combined cycle (on site),PJM,HR 6.4,67.257,52.861,407.806,0.130
+Combined cycle (on site),PJM,HR 7.0,67.257,96.049,407.806,0.236
+Combined cycle (on site),PJM,L 0.5% both,67.257,34.046,407.806,0.083
+Combined cycle (on site),PJM,L 3.1% both,67.257,82.414,407.806,0.202
+Combined cycle (on site),PJM,"BTM certified 0.5%, grid 2.3%",67.257,-1.531,407.806,-0.004
+Combined cycle (on site),PJM,grid T loss 2%,67.257,71.418,407.806,0.175
+Combined cycle (on site),PJM,grid T&D 5%,67.257,58.672,407.806,0.144
+Combined cycle (on site),PJM,f 0.08,67.257,65.037,407.806,0.159
+Combined cycle (on site),PJM,f 0.11,67.257,70.161,407.806,0.172
+Combined cycle (on site),PJM,CH4 mass frac 0.884,67.257,65.169,407.806,0.160
+Combined cycle (on site),PJM,CH4 mass frac 0.970,67.257,69.073,407.806,0.169
+Combined cycle (on site),PJM,GWP20,67.257,127.151,407.806,0.312
+Combined cycle (on site),PJM,CMM incl. abandoned (0.226),67.257,66.015,407.806,0.162

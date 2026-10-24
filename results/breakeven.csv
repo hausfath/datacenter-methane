@@ -1,0 +1,93 @@
+gwp,region,reference,case,L_star_pct
+AR6_100,ERCOT,A,Recip engines (lean-burn),none: above at L=0
+AR6_100,ERCOT,A,Simple-cycle turbines,none: above at L=0
+AR6_100,ERCOT,A,Fuel cells (Bloom SOFC),none: above at L=0
+AR6_100,ERCOT,A,Combined cycle (on site),none: above at L=0
+AR6_100,ERCOT,A,Small rich-burn gensets,none: above at L=0
+AR6_100,ERCOT,B,Recip engines (lean-burn),none: above at L=0
+AR6_100,ERCOT,B,Simple-cycle turbines,none: above at L=0
+AR6_100,ERCOT,B,Fuel cells (Bloom SOFC),none: above at L=0
+AR6_100,ERCOT,B,Combined cycle (on site),none: above at L=0
+AR6_100,ERCOT,B,Small rich-burn gensets,none: above at L=0
+AR6_100,PJM,A,Recip engines (lean-burn),none: above at L=0
+AR6_100,PJM,A,Simple-cycle turbines,none: above at L=0
+AR6_100,PJM,A,Fuel cells (Bloom SOFC),none: above at L=0
+AR6_100,PJM,A,Combined cycle (on site),none: above at L=0
+AR6_100,PJM,A,Small rich-burn gensets,none: above at L=0
+AR6_100,PJM,B,Recip engines (lean-burn),none: above at L=0
+AR6_100,PJM,B,Simple-cycle turbines,none: above at L=0
+AR6_100,PJM,B,Fuel cells (Bloom SOFC),none: above at L=0
+AR6_100,PJM,B,Combined cycle (on site),none: above at L=0
+AR6_100,PJM,B,Small rich-burn gensets,none: above at L=0
+AR6_100,US,A,Recip engines (lean-burn),none: above at L=0
+AR6_100,US,A,Simple-cycle turbines,none: above at L=0
+AR6_100,US,A,Fuel cells (Bloom SOFC),0.73
+AR6_100,US,A,Combined cycle (on site),0.01
+AR6_100,US,A,Small rich-burn gensets,none: above at L=0
+AR6_100,US,B,Recip engines (lean-burn),none: above at L=0
+AR6_100,US,B,Simple-cycle turbines,none: above at L=0
+AR6_100,US,B,Fuel cells (Bloom SOFC),none: above at L=0
+AR6_100,US,B,Combined cycle (on site),none: above at L=0
+AR6_100,US,B,Small rich-burn gensets,none: above at L=0
+AR6_100,sub_RFCE,A,Recip engines (lean-burn),none: above at L=0
+AR6_100,sub_RFCE,A,Simple-cycle turbines,none: above at L=0
+AR6_100,sub_RFCE,A,Fuel cells (Bloom SOFC),none: above at L=0
+AR6_100,sub_RFCE,A,Combined cycle (on site),none: above at L=0
+AR6_100,sub_RFCE,A,Small rich-burn gensets,none: above at L=0
+AR6_100,sub_RFCW,A,Recip engines (lean-burn),none: above at L=0
+AR6_100,sub_RFCW,A,Simple-cycle turbines,none: above at L=0
+AR6_100,sub_RFCW,A,Fuel cells (Bloom SOFC),4.08
+AR6_100,sub_RFCW,A,Combined cycle (on site),3.31
+AR6_100,sub_RFCW,A,Small rich-burn gensets,none: above at L=0
+AR6_20,ERCOT,A,Recip engines (lean-burn),none: above at L=0
+AR6_20,ERCOT,A,Simple-cycle turbines,none: above at L=0
+AR6_20,ERCOT,A,Fuel cells (Bloom SOFC),0.29
+AR6_20,ERCOT,A,Combined cycle (on site),none: above at L=0
+AR6_20,ERCOT,A,Small rich-burn gensets,none: above at L=0
+AR6_20,ERCOT,B,Recip engines (lean-burn),none: above at L=0
+AR6_20,ERCOT,B,Simple-cycle turbines,none: above at L=0
+AR6_20,ERCOT,B,Fuel cells (Bloom SOFC),none: above at L=0
+AR6_20,ERCOT,B,Combined cycle (on site),none: above at L=0
+AR6_20,ERCOT,B,Small rich-burn gensets,none: above at L=0
+AR6_20,PJM,A,Recip engines (lean-burn),none: above at L=0
+AR6_20,PJM,A,Simple-cycle turbines,none: above at L=0
+AR6_20,PJM,A,Fuel cells (Bloom SOFC),0.08
+AR6_20,PJM,A,Combined cycle (on site),none: above at L=0
+AR6_20,PJM,A,Small rich-burn gensets,none: above at L=0
+AR6_20,PJM,B,Recip engines (lean-burn),none: above at L=0
+AR6_20,PJM,B,Simple-cycle turbines,none: above at L=0
+AR6_20,PJM,B,Fuel cells (Bloom SOFC),none: above at L=0
+AR6_20,PJM,B,Combined cycle (on site),none: above at L=0
+AR6_20,PJM,B,Small rich-burn gensets,none: above at L=0
+AR6_20,US,A,Recip engines (lean-burn),none: above at L=0
+AR6_20,US,A,Simple-cycle turbines,none: above at L=0
+AR6_20,US,A,Fuel cells (Bloom SOFC),0.65
+AR6_20,US,A,Combined cycle (on site),0.34
+AR6_20,US,A,Small rich-burn gensets,none: above at L=0
+AR6_20,US,B,Recip engines (lean-burn),none: above at L=0
+AR6_20,US,B,Simple-cycle turbines,none: above at L=0
+AR6_20,US,B,Fuel cells (Bloom SOFC),none: above at L=0
+AR6_20,US,B,Combined cycle (on site),none: above at L=0
+AR6_20,US,B,Small rich-burn gensets,none: above at L=0
+AR6_20,sub_RFCE,A,Recip engines (lean-burn),none: above at L=0
+AR6_20,sub_RFCE,A,Simple-cycle turbines,none: above at L=0
+AR6_20,sub_RFCE,A,Fuel cells (Bloom SOFC),none: above at L=0
+AR6_20,sub_RFCE,A,Combined cycle (on site),none: above at L=0
+AR6_20,sub_RFCE,A,Small rich-burn gensets,none: above at L=0
+AR6_20,sub_RFCW,A,Recip engines (lean-burn),none: above at L=0
+AR6_20,sub_RFCW,A,Simple-cycle turbines,none: above at L=0
+AR6_20,sub_RFCW,A,Fuel cells (Bloom SOFC),2.02
+AR6_20,sub_RFCW,A,Combined cycle (on site),1.68
+AR6_20,sub_RFCW,A,Small rich-burn gensets,none: above at L=0
+AR6_100,ERCOT,A,Fuel cells (Bloom SOFC) [facility leak*],none: above at 0
+AR6_100,ERCOT,B,Fuel cells (Bloom SOFC) [facility leak*],none: above at 0
+AR6_100,PJM,A,Fuel cells (Bloom SOFC) [facility leak*],none: above at 0
+AR6_100,PJM,B,Fuel cells (Bloom SOFC) [facility leak*],none: above at 0
+AR6_100,US,A,Fuel cells (Bloom SOFC) [facility leak*],none: above at 0
+AR6_100,US,B,Fuel cells (Bloom SOFC) [facility leak*],none: above at 0
+AR6_100,ERCOT,A,Combined cycle (on site) [facility leak*],none: above at 0
+AR6_100,ERCOT,B,Combined cycle (on site) [facility leak*],none: above at 0
+AR6_100,PJM,A,Combined cycle (on site) [facility leak*],none: above at 0
+AR6_100,PJM,B,Combined cycle (on site) [facility leak*],none: above at 0
+AR6_100,US,A,Combined cycle (on site) [facility leak*],none: above at 0
+AR6_100,US,B,Combined cycle (on site) [facility leak*],none: above at 0

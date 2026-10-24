@@ -204,3 +204,7 @@ Each is run one at a time from the primary cell. A tornado plot covers CC and SO
   - CO2 AGWP100 is 7.95e-14, against AR6 8.95e-14.
 - Consequence: FaIR weights CH4 more heavily than GWP100 does, which works against BTM. The FaIR results stay a complement and are labelled with this calibration
   offset. GWP100 remains primary. The optional AR6 AGTP convolution is promoted to "do if time permits" as the AR6-consistent cross-check.
+
+**2026-10-24, after the first run of `cases.py`: how the tie band is applied.** §7 said to widen the 5% band "if the MC 90% interval of the difference is larger" but did not say how.
+Implemented as follows: each cell's band is max(5%, half-width of that cell's MC 90% interval of the relative gap, full state), and the same band is applied to the CO2-only and full states.
+Both the 5%-band and the widened-band verdicts are kept in `results/decision_table.csv` (`state_*` and `state_*_band`).

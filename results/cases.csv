@@ -1,0 +1,109 @@
+kind,name,region,leak,L,gwp,total,co2_combustion,co2_supply,ch4_slip,ch4_upstream,ch4_facility,n2o,ch4_coal_mine
+BTM,Recip engines (lean-burn),,Low-leak supply (0.5%),0.01,AR6_100,648.05,450.21,41.87,131.99,23.76,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,Low-leak supply (0.5%),0.01,AR6_100,603.26,525.24,48.85,1.18,27.72,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,Low-leak supply (0.5%),0.01,AR6_100,393.19,343.01,31.90,0.00,18.10,0.00,0.18,0.00
+BTM,Combined cycle (on site),,Low-leak supply (0.5%),0.01,AR6_100,406.28,353.73,32.90,0.79,18.67,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,Low-leak supply (0.5%),0.01,AR6_100,728.38,621.71,57.82,15.71,32.81,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,Low-leak supply (0.5%),0.01,AR6_100,382.26,344.53,18.48,0.00,10.49,0.00,0.00,8.76
+grid A (average),PJM grid average,PJM,Low-leak supply (0.5%),0.01,AR6_100,372.23,336.41,17.01,0.00,9.65,0.00,0.00,9.15
+grid A (average),US grid average,US,Low-leak supply (0.5%),0.01,AR6_100,397.16,360.48,16.62,0.00,9.43,0.00,0.00,10.63
+grid B (new NGCC),New grid NGCC,,Low-leak supply (0.5%),0.01,AR6_100,389.52,339.15,31.54,0.76,17.90,0.00,0.17,0.00
+BTM,Recip engines (lean-burn),,National measured (2.3%),0.02,AR6_100,735.60,450.21,41.87,131.99,111.31,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,National measured (2.3%),0.02,AR6_100,705.40,525.24,48.85,1.18,129.86,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,National measured (2.3%),0.02,AR6_100,459.90,343.01,31.90,0.00,84.81,0.00,0.18,0.00
+BTM,Combined cycle (on site),,National measured (2.3%),0.02,AR6_100,475.06,353.73,32.90,0.79,87.46,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,National measured (2.3%),0.02,AR6_100,849.28,621.71,57.82,15.71,153.71,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,National measured (2.3%),0.02,AR6_100,420.90,344.53,18.48,0.00,49.13,0.00,0.00,8.76
+grid A (average),PJM grid average,PJM,National measured (2.3%),0.02,AR6_100,407.81,336.41,17.01,0.00,45.23,0.00,0.00,9.15
+grid A (average),US grid average,US,National measured (2.3%),0.02,AR6_100,431.90,360.48,16.62,0.00,44.17,0.00,0.00,10.63
+grid B (new NGCC),New grid NGCC,,National measured (2.3%),0.02,AR6_100,455.47,339.15,31.54,0.76,83.85,0.00,0.17,0.00
+BTM,Recip engines (lean-burn),,Sherwin six-region (2.43%),0.02,AR6_100,742.05,450.21,41.87,131.99,117.76,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,Sherwin six-region (2.43%),0.02,AR6_100,712.92,525.24,48.85,1.18,137.38,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,Sherwin six-region (2.43%),0.02,AR6_100,464.81,343.01,31.90,0.00,89.72,0.00,0.18,0.00
+BTM,Combined cycle (on site),,Sherwin six-region (2.43%),0.02,AR6_100,480.13,353.73,32.90,0.79,92.52,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,Sherwin six-region (2.43%),0.02,AR6_100,858.18,621.71,57.82,15.71,162.61,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,Sherwin six-region (2.43%),0.02,AR6_100,423.75,344.53,18.48,0.00,51.98,0.00,0.00,8.76
+grid A (average),PJM grid average,PJM,Sherwin six-region (2.43%),0.02,AR6_100,410.43,336.41,17.01,0.00,47.85,0.00,0.00,9.15
+grid A (average),US grid average,US,Sherwin six-region (2.43%),0.02,AR6_100,434.46,360.48,16.62,0.00,46.73,0.00,0.00,10.63
+grid B (new NGCC),New grid NGCC,,Sherwin six-region (2.43%),0.02,AR6_100,460.33,339.15,31.54,0.76,88.71,0.00,0.17,0.00
+BTM,Recip engines (lean-burn),,Permian (3.1%),0.03,AR6_100,775.56,450.21,41.87,131.99,151.26,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,Permian (3.1%),0.03,AR6_100,752.01,525.24,48.85,1.18,176.47,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,Permian (3.1%),0.03,AR6_100,490.34,343.01,31.90,0.00,115.25,0.00,0.18,0.00
+BTM,Combined cycle (on site),,Permian (3.1%),0.03,AR6_100,506.46,353.73,32.90,0.79,118.85,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,Permian (3.1%),0.03,AR6_100,904.45,621.71,57.82,15.71,208.89,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,Permian (3.1%),0.03,AR6_100,438.54,344.53,18.48,0.00,66.77,0.00,0.00,8.76
+grid A (average),PJM grid average,PJM,Permian (3.1%),0.03,AR6_100,424.04,336.41,17.01,0.00,61.47,0.00,0.00,9.15
+grid A (average),US grid average,US,Permian (3.1%),0.03,AR6_100,447.76,360.48,16.62,0.00,60.03,0.00,0.00,10.63
+grid B (new NGCC),New grid NGCC,,Permian (3.1%),0.03,AR6_100,485.57,339.15,31.54,0.76,113.95,0.00,0.17,0.00
+BTM,Recip engines (lean-burn),,Irzak Permian (4%),0.04,AR6_100,821.30,450.21,41.87,131.99,197.01,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,Irzak Permian (4%),0.04,AR6_100,805.38,525.24,48.85,1.18,229.84,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,Irzak Permian (4%),0.04,AR6_100,525.19,343.01,31.90,0.00,150.10,0.00,0.18,0.00
+BTM,Combined cycle (on site),,Irzak Permian (4%),0.04,AR6_100,542.40,353.73,32.90,0.79,154.79,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,Irzak Permian (4%),0.04,AR6_100,967.62,621.71,57.82,15.71,272.06,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,Irzak Permian (4%),0.04,AR6_100,458.73,344.53,18.48,0.00,86.96,0.00,0.00,8.76
+grid A (average),PJM grid average,PJM,Irzak Permian (4%),0.04,AR6_100,442.63,336.41,17.01,0.00,80.06,0.00,0.00,9.15
+grid A (average),US grid average,US,Irzak Permian (4%),0.04,AR6_100,465.91,360.48,16.62,0.00,78.18,0.00,0.00,10.63
+grid B (new NGCC),New grid NGCC,,Irzak Permian (4%),0.04,AR6_100,520.03,339.15,31.54,0.76,148.41,0.00,0.17,0.00
+BTM,Recip engines (lean-burn),,NM Permian 2018-20 (9.4%),0.09,AR6_100,1114.85,450.21,41.87,131.99,490.56,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,NM Permian 2018-20 (9.4%),0.09,AR6_100,1147.86,525.24,48.85,1.18,572.32,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,NM Permian 2018-20 (9.4%),0.09,AR6_100,748.85,343.01,31.90,0.00,373.76,0.00,0.18,0.00
+BTM,Combined cycle (on site),,NM Permian 2018-20 (9.4%),0.09,AR6_100,773.05,353.73,32.90,0.79,385.44,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,NM Permian 2018-20 (9.4%),0.09,AR6_100,1373.00,621.71,57.82,15.71,677.44,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,NM Permian 2018-20 (9.4%),0.09,AR6_100,588.31,344.53,18.48,0.00,216.54,0.00,0.00,8.76
+grid A (average),PJM grid average,PJM,NM Permian 2018-20 (9.4%),0.09,AR6_100,561.92,336.41,17.01,0.00,199.34,0.00,0.00,9.15
+grid A (average),US grid average,US,NM Permian 2018-20 (9.4%),0.09,AR6_100,582.41,360.48,16.62,0.00,194.68,0.00,0.00,10.63
+grid B (new NGCC),New grid NGCC,,NM Permian 2018-20 (9.4%),0.09,AR6_100,741.17,339.15,31.54,0.76,369.54,0.00,0.17,0.00
+BTM,Recip engines (lean-burn),,Low-leak supply (0.5%),0.01,AR6_20,923.48,450.21,41.87,365.40,65.78,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,Low-leak supply (0.5%),0.01,AR6_20,654.36,525.24,48.85,3.27,76.74,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,Low-leak supply (0.5%),0.01,AR6_20,425.21,343.01,31.90,0.00,50.12,0.00,0.18,0.00
+BTM,Combined cycle (on site),,Low-leak supply (0.5%),0.01,AR6_20,440.69,353.73,32.90,2.20,51.68,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,Low-leak supply (0.5%),0.01,AR6_20,814.19,621.71,57.82,43.50,90.84,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,Low-leak supply (0.5%),0.01,AR6_20,416.29,344.53,18.48,0.00,29.04,0.00,0.00,24.24
+grid A (average),PJM grid average,PJM,Low-leak supply (0.5%),0.01,AR6_20,405.49,336.41,17.01,0.00,26.73,0.00,0.00,25.34
+grid A (average),US grid average,US,Low-leak supply (0.5%),0.01,AR6_20,432.64,360.48,16.62,0.00,26.10,0.00,0.00,29.44
+grid B (new NGCC),New grid NGCC,,Low-leak supply (0.5%),0.01,AR6_20,422.52,339.15,31.54,2.11,49.55,0.00,0.17,0.00
+BTM,Recip engines (lean-burn),,National measured (2.3%),0.02,AR6_20,1165.86,450.21,41.87,365.40,308.15,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,National measured (2.3%),0.02,AR6_20,937.13,525.24,48.85,3.27,359.51,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,National measured (2.3%),0.02,AR6_20,609.87,343.01,31.90,0.00,234.78,0.00,0.18,0.00
+BTM,Combined cycle (on site),,National measured (2.3%),0.02,AR6_20,631.13,353.73,32.90,2.20,242.12,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,National measured (2.3%),0.02,AR6_20,1148.89,621.71,57.82,43.50,425.54,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,National measured (2.3%),0.02,AR6_20,523.28,344.53,18.48,0.00,136.02,0.00,0.00,24.24
+grid A (average),PJM grid average,PJM,National measured (2.3%),0.02,AR6_20,503.98,336.41,17.01,0.00,125.22,0.00,0.00,25.34
+grid A (average),US grid average,US,National measured (2.3%),0.02,AR6_20,528.83,360.48,16.62,0.00,122.29,0.00,0.00,29.44
+grid B (new NGCC),New grid NGCC,,National measured (2.3%),0.02,AR6_20,605.10,339.15,31.54,2.11,232.13,0.00,0.17,0.00
+BTM,Recip engines (lean-burn),,Sherwin six-region (2.43%),0.02,AR6_20,1183.71,450.21,41.87,365.40,326.00,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,Sherwin six-region (2.43%),0.02,AR6_20,957.96,525.24,48.85,3.27,380.33,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,Sherwin six-region (2.43%),0.02,AR6_20,623.47,343.01,31.90,0.00,248.38,0.00,0.18,0.00
+BTM,Combined cycle (on site),,Sherwin six-region (2.43%),0.02,AR6_20,645.16,353.73,32.90,2.20,256.14,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,Sherwin six-region (2.43%),0.02,AR6_20,1173.54,621.71,57.82,43.50,450.19,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,Sherwin six-region (2.43%),0.02,AR6_20,531.16,344.53,18.48,0.00,143.90,0.00,0.00,24.24
+grid A (average),PJM grid average,PJM,Sherwin six-region (2.43%),0.02,AR6_20,511.23,336.41,17.01,0.00,132.47,0.00,0.00,25.34
+grid A (average),US grid average,US,Sherwin six-region (2.43%),0.02,AR6_20,535.91,360.48,16.62,0.00,129.37,0.00,0.00,29.44
+grid B (new NGCC),New grid NGCC,,Sherwin six-region (2.43%),0.02,AR6_20,618.55,339.15,31.54,2.11,245.58,0.00,0.17,0.00
+BTM,Recip engines (lean-burn),,Permian (3.1%),0.03,AR6_20,1276.47,450.21,41.87,365.40,418.76,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,Permian (3.1%),0.03,AR6_20,1066.18,525.24,48.85,3.27,488.56,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,Permian (3.1%),0.03,AR6_20,694.15,343.01,31.90,0.00,319.06,0.00,0.18,0.00
+BTM,Combined cycle (on site),,Permian (3.1%),0.03,AR6_20,718.04,353.73,32.90,2.20,329.03,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,Permian (3.1%),0.03,AR6_20,1301.64,621.71,57.82,43.50,578.29,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,Permian (3.1%),0.03,AR6_20,572.10,344.53,18.48,0.00,184.85,0.00,0.00,24.24
+grid A (average),PJM grid average,PJM,Permian (3.1%),0.03,AR6_20,548.93,336.41,17.01,0.00,170.17,0.00,0.00,25.34
+grid A (average),US grid average,US,Permian (3.1%),0.03,AR6_20,572.72,360.48,16.62,0.00,166.18,0.00,0.00,29.44
+grid B (new NGCC),New grid NGCC,,Permian (3.1%),0.03,AR6_20,688.43,339.15,31.54,2.11,315.46,0.00,0.17,0.00
+BTM,Recip engines (lean-burn),,Irzak Permian (4%),0.04,AR6_20,1403.11,450.21,41.87,365.40,545.40,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,Irzak Permian (4%),0.04,AR6_20,1213.93,525.24,48.85,3.27,636.30,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,Irzak Permian (4%),0.04,AR6_20,790.64,343.01,31.90,0.00,415.55,0.00,0.18,0.00
+BTM,Combined cycle (on site),,Irzak Permian (4%),0.04,AR6_20,817.54,353.73,32.90,2.20,428.53,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,Irzak Permian (4%),0.04,AR6_20,1476.53,621.71,57.82,43.50,753.18,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,Irzak Permian (4%),0.04,AR6_20,628.01,344.53,18.48,0.00,240.75,0.00,0.00,24.24
+grid A (average),PJM grid average,PJM,Irzak Permian (4%),0.04,AR6_20,600.39,336.41,17.01,0.00,221.63,0.00,0.00,25.34
+grid A (average),US grid average,US,Irzak Permian (4%),0.04,AR6_20,622.98,360.48,16.62,0.00,216.44,0.00,0.00,29.44
+grid B (new NGCC),New grid NGCC,,Irzak Permian (4%),0.04,AR6_20,783.83,339.15,31.54,2.11,410.86,0.00,0.17,0.00
+BTM,Recip engines (lean-burn),,NM Permian 2018-20 (9.4%),0.09,AR6_20,2215.80,450.21,41.87,365.40,1358.09,0.00,0.23,0.00
+BTM,Simple-cycle turbines,,NM Permian 2018-20 (9.4%),0.09,AR6_20,2162.06,525.24,48.85,3.27,1584.44,0.00,0.27,0.00
+BTM,Fuel cells (Bloom SOFC),,NM Permian 2018-20 (9.4%),0.09,AR6_20,1409.83,343.01,31.90,0.00,1034.74,0.00,0.18,0.00
+BTM,Combined cycle (on site),,NM Permian 2018-20 (9.4%),0.09,AR6_20,1456.08,353.73,32.90,2.20,1067.07,0.00,0.18,0.00
+BTM,Small rich-burn gensets,,NM Permian 2018-20 (9.4%),0.09,AR6_20,2598.81,621.71,57.82,43.50,1875.46,0.00,0.32,0.00
+grid A (average),ERCOT grid average,ERCOT,NM Permian 2018-20 (9.4%),0.09,AR6_20,986.74,344.53,18.48,0.00,599.48,0.00,0.00,24.24
+grid A (average),PJM grid average,PJM,NM Permian 2018-20 (9.4%),0.09,AR6_20,930.64,336.41,17.01,0.00,551.88,0.00,0.00,25.34
+grid A (average),US grid average,US,NM Permian 2018-20 (9.4%),0.09,AR6_20,945.49,360.48,16.62,0.00,538.96,0.00,0.00,29.44
+grid B (new NGCC),New grid NGCC,,NM Permian 2018-20 (9.4%),0.09,AR6_20,1396.04,339.15,31.54,2.11,1023.07,0.00,0.17,0.00
