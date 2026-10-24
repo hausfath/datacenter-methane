@@ -89,3 +89,9 @@ The grid factor is kept out of the MC because it is structural and is handled by
   - The national CMM factor overstates ERCOT's grid by about 7 kg/MWh (1.7% of A), which favors BTM.
   - Coal supply-chain CO2 is omitted, by about 3 kg/MWh in ERCOT/PJM, which favors the grid.
   - These partly offset, and neither changes a main verdict. They are recorded in METHODS.
+
+## 10. Changes after freeze
+- **2026-10-24, after the first R2 run: a gap in the §5 definitions.** The four states do not cover "below one reference and tied with the other". The first run's code silently classed that case as "Better".
+  It now gets its own labels, "Below A, tied B" and "Tied A, below B". It occurs where BTM is below a coal-heavy average and tied with a new grid NGCC. No threshold or input was changed.
+
+- **Outcome vs §8 predictions:** recorded in METHODS.md, "Regional sensitivity".

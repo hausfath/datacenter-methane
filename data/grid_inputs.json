@@ -232,5 +232,77 @@
    "High Renewable Energy Costs with Low Natural Gas Prices": 257.93917915
   }
  },
+ "cambium_lrmer_gea_2027_2046": {
+  "ERCOT": {
+   "Mid-case": 147.24790019999998,
+   "Low Renewable Energy Costs": 160.86330290000004,
+   "High Renewable Energy Costs": 172.23957460000003,
+   "Low Natural Gas Prices": 161.32989119999996,
+   "High Natural Gas Prices": 130.3779082,
+   "High Demand Growth": 167.4609644,
+   "Low Renewable Energy Costs with High Natural Gas Prices": 141.86299119999998,
+   "High Renewable Energy Costs with Low Natural Gas Prices": 161.8485612
+  },
+  "SPP_South": {
+   "Mid-case": 217.44541880000006,
+   "Low Renewable Energy Costs": 202.1563055,
+   "High Renewable Energy Costs": 288.3650397,
+   "Low Natural Gas Prices": 226.80016629999994,
+   "High Natural Gas Prices": 190.66237180000002,
+   "High Demand Growth": 221.38442879999997,
+   "Low Renewable Energy Costs with High Natural Gas Prices": 167.400737,
+   "High Renewable Energy Costs with Low Natural Gas Prices": 271.8834879
+  },
+  "WestConnect_South": {
+   "Mid-case": 197.80110969999998,
+   "Low Renewable Energy Costs": 205.61716450000003,
+   "High Renewable Energy Costs": 241.5527802,
+   "Low Natural Gas Prices": 217.60434679999997,
+   "High Natural Gas Prices": 167.00209679999998,
+   "High Demand Growth": 207.6068376,
+   "Low Renewable Energy Costs with High Natural Gas Prices": 144.69360830000002,
+   "High Renewable Energy Costs with Low Natural Gas Prices": 205.58191029999998
+  },
+  "PJM_West": {
+   "Mid-case": 198.0069053,
+   "Low Renewable Energy Costs": 195.7646586,
+   "High Renewable Energy Costs": 222.87779579999997,
+   "Low Natural Gas Prices": 199.8393672,
+   "High Natural Gas Prices": 140.1870729,
+   "High Demand Growth": 199.70413159999998,
+   "Low Renewable Energy Costs with High Natural Gas Prices": 142.20533329999998,
+   "High Renewable Energy Costs with Low Natural Gas Prices": 218.17766109999997
+  },
+  "SERTP": {
+   "Mid-case": 242.3815315,
+   "Low Renewable Energy Costs": 199.80263179999997,
+   "High Renewable Energy Costs": 309.57134470000005,
+   "Low Natural Gas Prices": 256.4906372,
+   "High Natural Gas Prices": 223.86418360000002,
+   "High Demand Growth": 259.9244972,
+   "Low Renewable Energy Costs with High Natural Gas Prices": 187.22861500000002,
+   "High Renewable Energy Costs with Low Natural Gas Prices": 277.5670568
+  },
+  "WestConnect_North": {
+   "Mid-case": 144.8247867,
+   "Low Renewable Energy Costs": 166.14172670000002,
+   "High Renewable Energy Costs": 226.00472409999998,
+   "Low Natural Gas Prices": 172.7697425,
+   "High Natural Gas Prices": 144.401079,
+   "High Demand Growth": 181.4622641,
+   "Low Renewable Energy Costs with High Natural Gas Prices": 140.15178239999997,
+   "High Renewable Energy Costs with Low Natural Gas Prices": 203.83012399999998
+  },
+  "NorthernGrid_South": {
+   "Mid-case": 205.4016349,
+   "Low Renewable Energy Costs": 207.77904170000002,
+   "High Renewable Energy Costs": 250.9776764,
+   "Low Natural Gas Prices": 225.2092786,
+   "High Natural Gas Prices": 169.8171885,
+   "High Demand Growth": 230.60977350000002,
+   "Low Renewable Energy Costs with High Natural Gas Prices": 152.8032338,
+   "High Renewable Energy Costs with Low Natural Gas Prices": 251.27457450000003
+  }
+ },
  "notes": "eGRID2023 rev2 (6/12/2025). Gas/coal MMBtu per grid MWh = share x (CO2 output rate / CO2 input rate). Cambium 2024 (Aug 2024 policies, pre-OBBBA), 2027-2046 simple mean, combustion+precombustion, AR6 GWP100, end-use."
 }

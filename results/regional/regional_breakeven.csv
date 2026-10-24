@@ -1,0 +1,71 @@
+region,case,reference,L_star_pct,basin_low_mid_high_pct,btm_rises_faster
+West Texas,Recip engines (lean-burn),A,BTM above at all L (0-20%),"[2.4, 3.6, 4.2]",True
+West Texas,Recip engines (lean-burn),B,BTM above at all L (0-20%),"[2.4, 3.6, 4.2]",True
+West Texas,Simple-cycle turbines,A,BTM above at all L (0-20%),"[2.4, 3.6, 4.2]",True
+West Texas,Simple-cycle turbines,B,BTM above at all L (0-20%),"[2.4, 3.6, 4.2]",True
+West Texas,Fuel cells (Bloom SOFC),A,BTM above at all L (0-20%),"[2.4, 3.6, 4.2]",True
+West Texas,Fuel cells (Bloom SOFC),B,BTM above at all L (0-20%),"[2.4, 3.6, 4.2]",True
+West Texas,Combined cycle (on site),A,BTM above at all L (0-20%),"[2.4, 3.6, 4.2]",True
+West Texas,Combined cycle (on site),B,BTM above at all L (0-20%),"[2.4, 3.6, 4.2]",True
+West Texas,Small rich-burn gensets,A,BTM above at all L (0-20%),"[2.4, 3.6, 4.2]",True
+West Texas,Small rich-burn gensets,B,BTM above at all L (0-20%),"[2.4, 3.6, 4.2]",True
+Texas Panhandle,Recip engines (lean-burn),A,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
+Texas Panhandle,Recip engines (lean-burn),B,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
+Texas Panhandle,Simple-cycle turbines,A,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
+Texas Panhandle,Simple-cycle turbines,B,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
+Texas Panhandle,Fuel cells (Bloom SOFC),A,3.78,"[1.4, 1.7, 3.6]",True
+Texas Panhandle,Fuel cells (Bloom SOFC),B,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
+Texas Panhandle,Combined cycle (on site),A,3.12,"[1.4, 1.7, 3.6]",True
+Texas Panhandle,Combined cycle (on site),B,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
+Texas Panhandle,Small rich-burn gensets,A,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
+Texas Panhandle,Small rich-burn gensets,B,BTM above at all L (0-20%),"[1.4, 1.7, 3.6]",True
+El Paso / S. NM,Recip engines (lean-burn),A,BTM above at all L (0-20%),"[1.2, 2.4, 3.6]",True
+El Paso / S. NM,Recip engines (lean-burn),B,BTM above at all L (0-20%),"[1.2, 2.4, 3.6]",True
+El Paso / S. NM,Simple-cycle turbines,A,BTM above at all L (0-20%),"[1.2, 2.4, 3.6]",True
+El Paso / S. NM,Simple-cycle turbines,B,BTM above at all L (0-20%),"[1.2, 2.4, 3.6]",True
+El Paso / S. NM,Fuel cells (Bloom SOFC),A,BTM below at all L (0-20%),"[1.2, 2.4, 3.6]",False
+El Paso / S. NM,Fuel cells (Bloom SOFC),B,BTM above at all L (0-20%),"[1.2, 2.4, 3.6]",True
+El Paso / S. NM,Combined cycle (on site),A,BTM below at all L (0-20%),"[1.2, 2.4, 3.6]",False
+El Paso / S. NM,Combined cycle (on site),B,BTM above at all L (0-20%),"[1.2, 2.4, 3.6]",True
+El Paso / S. NM,Small rich-burn gensets,A,BTM above at all L (0-20%),"[1.2, 2.4, 3.6]",True
+El Paso / S. NM,Small rich-burn gensets,B,BTM above at all L (0-20%),"[1.2, 2.4, 3.6]",True
+PJM,Recip engines (lean-burn),A,BTM above at all L (0-20%),"[0.4, 0.6, 0.9]",True
+PJM,Recip engines (lean-burn),B,BTM above at all L (0-20%),"[0.4, 0.6, 0.9]",True
+PJM,Simple-cycle turbines,A,BTM above at all L (0-20%),"[0.4, 0.6, 0.9]",True
+PJM,Simple-cycle turbines,B,BTM above at all L (0-20%),"[0.4, 0.6, 0.9]",True
+PJM,Fuel cells (Bloom SOFC),A,0.33,"[0.4, 0.6, 0.9]",True
+PJM,Fuel cells (Bloom SOFC),B,BTM above at all L (0-20%),"[0.4, 0.6, 0.9]",True
+PJM,Combined cycle (on site),A,BTM above at all L (0-20%),"[0.4, 0.6, 0.9]",True
+PJM,Combined cycle (on site),B,BTM above at all L (0-20%),"[0.4, 0.6, 0.9]",True
+PJM,Small rich-burn gensets,A,BTM above at all L (0-20%),"[0.4, 0.6, 0.9]",True
+PJM,Small rich-burn gensets,B,BTM above at all L (0-20%),"[0.4, 0.6, 0.9]",True
+Memphis,Recip engines (lean-burn),A,BTM above at all L (0-20%),"[0.4, 0.7, 1.0]",True
+Memphis,Recip engines (lean-burn),B,BTM above at all L (0-20%),"[0.4, 0.7, 1.0]",True
+Memphis,Simple-cycle turbines,A,BTM above at all L (0-20%),"[0.4, 0.7, 1.0]",True
+Memphis,Simple-cycle turbines,B,BTM above at all L (0-20%),"[0.4, 0.7, 1.0]",True
+Memphis,Fuel cells (Bloom SOFC),A,BTM above at all L (0-20%),"[0.4, 0.7, 1.0]",True
+Memphis,Fuel cells (Bloom SOFC),B,BTM above at all L (0-20%),"[0.4, 0.7, 1.0]",True
+Memphis,Combined cycle (on site),A,BTM above at all L (0-20%),"[0.4, 0.7, 1.0]",True
+Memphis,Combined cycle (on site),B,BTM above at all L (0-20%),"[0.4, 0.7, 1.0]",True
+Memphis,Small rich-burn gensets,A,BTM above at all L (0-20%),"[0.4, 0.7, 1.0]",True
+Memphis,Small rich-burn gensets,B,BTM above at all L (0-20%),"[0.4, 0.7, 1.0]",True
+Cheyenne,Recip engines (lean-burn),A,0.46,"[1.0, 1.2, 5.2]",True
+Cheyenne,Recip engines (lean-burn),B,BTM above at all L (0-20%),"[1.0, 1.2, 5.2]",True
+Cheyenne,Simple-cycle turbines,A,1.32,"[1.0, 1.2, 5.2]",True
+Cheyenne,Simple-cycle turbines,B,BTM above at all L (0-20%),"[1.0, 1.2, 5.2]",True
+Cheyenne,Fuel cells (Bloom SOFC),A,7.69,"[1.0, 1.2, 5.2]",True
+Cheyenne,Fuel cells (Bloom SOFC),B,BTM above at all L (0-20%),"[1.0, 1.2, 5.2]",True
+Cheyenne,Combined cycle (on site),A,7.13,"[1.0, 1.2, 5.2]",True
+Cheyenne,Combined cycle (on site),B,BTM above at all L (0-20%),"[1.0, 1.2, 5.2]",True
+Cheyenne,Small rich-burn gensets,A,BTM above at all L (0-20%),"[1.0, 1.2, 5.2]",True
+Cheyenne,Small rich-burn gensets,B,BTM above at all L (0-20%),"[1.0, 1.2, 5.2]",True
+Central Utah,Recip engines (lean-burn),A,BTM above at all L (0-20%),"[1.2, 5.2, 7.7]",True
+Central Utah,Recip engines (lean-burn),B,BTM above at all L (0-20%),"[1.2, 5.2, 7.7]",True
+Central Utah,Simple-cycle turbines,A,0.55,"[1.2, 5.2, 7.7]",True
+Central Utah,Simple-cycle turbines,B,BTM above at all L (0-20%),"[1.2, 5.2, 7.7]",True
+Central Utah,Fuel cells (Bloom SOFC),A,7.52,"[1.2, 5.2, 7.7]",True
+Central Utah,Fuel cells (Bloom SOFC),B,BTM above at all L (0-20%),"[1.2, 5.2, 7.7]",True
+Central Utah,Combined cycle (on site),A,6.87,"[1.2, 5.2, 7.7]",True
+Central Utah,Combined cycle (on site),B,BTM above at all L (0-20%),"[1.2, 5.2, 7.7]",True
+Central Utah,Small rich-burn gensets,A,BTM above at all L (0-20%),"[1.2, 5.2, 7.7]",True
+Central Utah,Small rich-burn gensets,B,BTM above at all L (0-20%),"[1.2, 5.2, 7.7]",True

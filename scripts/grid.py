@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LB = 0.45359237
 REGIONS = {'ERCOT': 'ERCO', 'PJM': 'PJM'}          # eGRID BA codes; US from US23
 CAMBIUM_REGIONS = {'ERCOT': ['ERCOT'], 'PJM': ['PJM_East', 'PJM_West']}
+CAMBIUM_GEA_REGIONAL = ['ERCOT', 'SPP_South', 'WestConnect_South', 'PJM_West', 'SERTP', 'WestConnect_North', 'NorthernGrid_South']
 
 
 def _sheet(wb, name, key):
@@ -48,7 +49,7 @@ def egrid_inputs():
     return out
 
 
-def cambium_lrmer(start=2027, years=20):
+def cambium_lrmer(start=2027, years=20, regions=None):
     """Simple-mean (0% discount) LRMER, combustion + precombustion, AR6 GWP100, end-use basis, kg CO2e/MWh."""
     wb = openpyxl.load_workbook(ROOT / 'data/cambium/Cambium24_Workbook.xlsx', read_only=True, data_only=True)
     rows = list(wb['Data - Annual'].iter_rows(values_only=True))
@@ -60,7 +61,7 @@ def cambium_lrmer(start=2027, years=20):
     target = np.arange(start, start + years)
     g = em.GWP['AR6_100']
     out = {}
-    for reg, gea_list in CAMBIUM_REGIONS.items():
+    for reg, gea_list in (regions or CAMBIUM_REGIONS).items():
         out[reg] = {}
         for k, s in enumerate(scen):
             vals = []
@@ -75,6 +76,7 @@ def cambium_lrmer(start=2027, years=20):
 
 if __name__ == '__main__':
     res = dict(egrid=egrid_inputs(), cambium_lrmer_2027_2046=cambium_lrmer(),
+               cambium_lrmer_gea_2027_2046=cambium_lrmer(regions={g: [g] for g in CAMBIUM_GEA_REGIONAL}),
                notes='eGRID2023 rev2 (6/12/2025). Gas/coal MMBtu per grid MWh = share x (CO2 output rate / CO2 input rate). '
                      'Cambium 2024 (Aug 2024 policies, pre-OBBBA), 2027-2046 simple mean, combustion+precombustion, AR6 GWP100, end-use.')
     json.dump(res, open(ROOT / 'data/grid_inputs.json', 'w'), indent=1)
