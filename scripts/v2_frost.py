@@ -1,4 +1,5 @@
-"""V2: consistency of Frost Methane's fleet numbers (Latitude Catalyst, 22 Oct 2026; transcript in sources/).
+"""V2: consistency of Frost Methane's fleet numbers (Latitude Catalyst, 22 Oct 2026,
+https://www.latitudemedia.com/news/catalyst-data-centers-looming-methane-surge/).
 
 Stated: 50 GW; "7.5% of methane ends up in the atmosphere"; 380 Mt CO2e (100-yr) and 724 Mt (20-yr) "in the next 18 months";
 "between 50 and 60% is CO2 and between 40 and 50% is methane"; GWPs "28 ... 84" (AR5).

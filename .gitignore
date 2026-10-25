@@ -3,3 +3,21 @@ data/cambium/*.xlsx
 data/fair_calib/calibrated_constrained_parameters.csv
 __pycache__/
 *.pdf
+
+# kept locally, not redistributed
+_private/
+draft_post.md
+sources/*
+!sources/lit_scan/
+sources/lit_scan/*
+!sources/lit_scan/FINDINGS.md
+!sources/lookup2/
+sources/lookup2/*
+!sources/lookup2/FINDINGS2.md
+!sources/basins/
+sources/basins/*
+!sources/basins/BASINS.md
+!sources/coal/
+sources/coal/*
+!sources/coal/acr_table1.xlsx
+.DS_Store
