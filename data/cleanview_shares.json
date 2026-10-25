@@ -1,0 +1,18 @@
+{
+  "source": "Cleanview, 'Bypassing the Grid' full report, https://cleanview.co/reports/behind-the-meter-data-centers/full-report (saved sources/lit_scan/cleanview_btm.html; data to ~mid-2026)",
+  "basis": "Market share by OEM of permitted/identified behind-the-meter equipment (~27 GW of ~90 GW planned). Cleanview does not report shares by technology; the split below is ours.",
+  "oem_mw": {"Caterpillar": 8829, "GE Vernova": 8615, "Bloom": 3852, "INNIO Jenbacher": 2847, "ProEnergy": 1050},
+  "caterpillar_share": 0.33,
+  "solar_turbines_mw": 2700,
+  "quotes": {
+    "caterpillar": "Caterpillar has the highest market share (33%) of projects we track. We found more than 8.8 GW of permitted Caterpillar engines and Solar Turbines.",
+    "solar": "We identified 122 permitted Solar Turbines installations with a combined capacity of 2.7 GW.",
+    "combined_cycle": "only one of the behind-the-meter data center projects we reviewed plans to use heavy-duty turbines onsite"
+  },
+  "technology_map": {
+    "Recip engines (lean-burn)": ["Caterpillar minus Solar Turbines", "INNIO Jenbacher"],
+    "Simple-cycle turbines": ["GE Vernova", "Solar Turbines", "ProEnergy"],
+    "Fuel cells (Bloom SOFC)": ["Bloom"],
+    "Combined cycle (on site)": []
+  }
+}

@@ -1,7 +1,9 @@
 """Main 16:9 figure: life-cycle kg CO2e per MWh delivered, off-grid gas options vs grid, at matched L = 2.3%, GWP100.
 
-All displayed numbers are computed from results/cases.csv and results/decision_table.csv.
+All displayed numbers are computed from results/cases.csv, results/decision_table.csv and data/cleanview_shares.json.
+The small rich-burn genset case (one project, Meta El Paso) stays in cases.csv and METHODS but is not drawn.
 """
+import json
 from pathlib import Path
 
 import matplotlib
@@ -25,7 +27,15 @@ for d in (c100, c20):
     d['ch4_upstream'] = d['ch4_upstream'] + d.get('ch4_coal_mine', 0) + d['ch4_facility']
     d['co2_combustion'] = d['co2_combustion'] + d['n2o']
 
-btm = c100[c100.kind == 'BTM'].sort_values('total', ascending=True)
+btm = c100[(c100.kind == 'BTM') & (c100.name != 'Small rich-burn gensets')].sort_values('total', ascending=True)
+
+# share of identified planned BTM capacity by technology, derived from Cleanview's OEM shares
+cv = json.load(open(ROOT / 'data/cleanview_shares.json'))
+mw = cv['oem_mw']
+base = mw['Caterpillar'] / cv['caterpillar_share']
+SHARE = {'Recip engines (lean-burn)': (mw['Caterpillar'] - cv['solar_turbines_mw'] + mw['INNIO Jenbacher']) / base,
+         'Simple-cycle turbines': (mw['GE Vernova'] + cv['solar_turbines_mw'] + mw['ProEnergy']) / base,
+         'Fuel cells (Bloom SOFC)': mw['Bloom'] / base}
 grid_names = ['US grid average', 'PJM grid average', 'ERCOT grid average', 'New grid NGCC']
 grid = c100[c100.kind != 'BTM'].set_index('name').loc[grid_names].reset_index()
 LABEL = {'Recip engines (lean-burn)': 'Reciprocating engines (lean-burn)',
@@ -41,7 +51,7 @@ rows = list(grid.itertuples()) + [None] + list(btm.itertuples())
 ypos = list(range(len(rows)))
 
 fig = plt.figure(figsize=(13.33, 7.5), dpi=150, facecolor=SURF)
-ax = fig.add_axes([0.27, 0.19, 0.68, 0.53], facecolor=SURF)
+ax = fig.add_axes([0.27, 0.235, 0.68, 0.485], facecolor=SURF)
 H = 0.62
 for y, r in zip(ypos, rows):
     if r is None:
@@ -56,7 +66,12 @@ for y, r in zip(ypos, rows):
     t20 = c20.set_index('name').loc[r.name, ['co2_combustion', 'co2_supply', 'ch4_upstream', 'ch4_slip']].sum()
     ax.plot([t20], [y], marker='D', ms=7, mfc=SURF, mec=INK2, mew=1.4, zorder=5)
     ax.text(r.total + 12, y, f'{r.total:,.0f}', va='center', ha='left', fontsize=12, color=INK, fontweight='bold')
-    ax.text(-12, y, LABEL[r.name], va='center', ha='right', fontsize=12.5, color=INK)
+    if r.name in SHARE or r.name == 'Combined cycle (on site)':
+        sub = f'~{SHARE[r.name] * 100:.0f}% of planned capacity' if r.name in SHARE else 'almost none planned'
+        ax.text(-12, y + 0.16, LABEL[r.name], va='center', ha='right', fontsize=12.5, color=INK)
+        ax.text(-12, y - 0.30, sub, va='center', ha='right', fontsize=10, color=MUTED)
+    else:
+        ax.text(-12, y, LABEL[r.name], va='center', ha='right', fontsize=12.5, color=INK)
 
 # grid-average reference band (range of the three averages)
 avg = grid[grid.name.str.contains('average')].total
@@ -101,7 +116,8 @@ fig.text(0.04, 0.898, f'Life-cycle emissions of power for a data center. For eng
 fig.text(0.04, 0.035,
          'Same gas supply on both sides: 2.3% of methane production leaked (Alvarez et al. 2018). Grid: EPA eGRID2023 balancing-authority averages,\n'
          'plus upstream gas and coal-mine methane and 3% transmission loss. Engine slip: EPA 40 CFR 98 Table W-7. Heat rates: Cat G3520H, GE LM6000/LM2500,\n'
-         'Bloom datasheet midpoint, NETL H-class. Upstream CO$_2$: NETL 2025. GWPs: IPCC AR6.   Analysis: Zeke Hausfather / The Climate Brink',
+         'Bloom datasheet midpoint, NETL H-class. Upstream CO$_2$: NETL 2025. GWPs: IPCC AR6. Planned capacity: share of the ~27 GW of off-grid data-center\n'
+         'power with identified equipment (Cleanview, mid-2026), by manufacturer, split into technologies by us.   Analysis: Zeke Hausfather / The Climate Brink',
          fontsize=9.5, color=MUTED, va='bottom', linespacing=1.45)
 out = ROOT / 'figures'
 out.mkdir(exist_ok=True)

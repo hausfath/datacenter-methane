@@ -77,5 +77,5 @@
    4.14
   ]
  },
- "note": "Residual = share of produced CH4 lost before the engine implied once fleet slip is removed; Irzak states 4% wellhead + gathering for the Permian. Cleanview identified equipment is ~65% turbines."
+ "note": "Residual = share of produced CH4 lost before the engine implied once fleet slip is removed; Irzak states 4% wellhead + gathering for the Permian. Cleanview identified equipment is ~34% recips, ~46% simple-cycle turbines, ~14% fuel cells (data/cleanview_shares.json)."
 }

@@ -68,7 +68,7 @@ Permian rate to roughly 1.4% attributable to gas. That figure is the domain revi
 | Simple-cycle turbines | 9.80 | 9.2–11.0 (LM6000PF+, LM2500XPRESS, Titan) | 0.004 (W-7 gas turbine) |
 | Bloom SOFC | 6.40 (midpoint of "65-53% LHV" datasheet band) | 5.81–7.13 | 0 (no data) |
 | On-site combined cycle | 6.60 | 6.4–7.0 | 0.004 |
-| Small rich-burn gensets (secondary) | 11.6 (Generac SG500 at prime, 1,000 Btu/scf assumed) | 11.0–12.5 | 0.045 |
+| Small rich-burn gensets (secondary; one project, Meta El Paso / Enchanted Rock; not drawn in the main figure) | 11.6 (Generac SG500 at prime, 1,000 Btu/scf assumed) | 11.0–12.5 | 0.045 |
 | New grid NGCC (reference B) | 6.20 (NETL H-class 6.196) | 6.1–6.4 | 0.004 |
 
 LHV figures are converted to HHV by multiplying by 1.108. Vendor efficiencies are assumed to be LHV where the source does not say. Table W-7 and AP-42 Table 3.2-2 share lineage
@@ -165,6 +165,9 @@ Recips, turbines and rich-burn are above at L = 0 everywhere.
 - GWP20 roughly doubles the gap.
 - **The one case where BTM comes out ahead:** BTM buying certified low-leak gas (0.5%) while the grid stays at 2.3% puts SOFC and CC 0–7% below the grid average.
 - Transmission loss, f, and CH4 mass fraction each move the gap by ≤3 points.
+
+## Planned technology mix (main-figure sublabels, added 2026-10-25)
+Cleanview reports market share by manufacturer, not technology, for the ~27 GW of ~90 GW planned BTM capacity with identified equipment (`data/cleanview_shares.json`, quotes included). Our split: recips = Caterpillar minus the 2.7 GW of permitted Solar Turbines, plus Jenbacher (~34%); simple-cycle turbines = GE Vernova + Solar Turbines + ProEnergy (~46%); fuel cells = Bloom (14%); ~6% is unattributed. On-site CC is labelled "almost none planned" (Cleanview: "only one of the behind-the-meter data center projects we reviewed plans to use heavy-duty turbines onsite"). If Caterpillar's turbine share exceeds the permitted Solar Turbines count, the recip share falls and the turbine share rises. These are shares of capacity, mostly announced or permitted, not of generation.
 
 ## V2: Frost Methane's fleet numbers
 - A pure-CH4 mass balance, with 7.49% of produced CH4 emitted and the rest burned, reproduces 724/380 to four figures (1.9057 vs 1.9053), using AR5 GWPs 28/84 as Irzak states them.
