@@ -14,6 +14,7 @@ The pre-registered plan, frozen 2026-10-24, is in `PLAN.md`. Its §11 records th
 | Cases, decision table, break-even, Monte Carlo, sensitivities | `scripts/cases.py` | `results/cases.csv`, `decision_table.csv`, `breakeven.csv`, `mc_primary_cells.csv`, `sensitivities.csv` |
 | FaIR fleet runs | `scripts/fair_fleet.py` | `results/fair_fleet.json`, `.npz` |
 | Figure | `scripts/make_figure.py` | `figures/offgrid_gas_vs_grid.png` |
+| Recip slip sensitivity | `scripts/slip_sensitivity.py` | `results/slip_sensitivity.csv` |
 
 Python 3.13, FaIR 2.2.2. The raw eGRID and Cambium workbooks are git-ignored. `data/grid_inputs.json` holds everything derived from them.
 
@@ -178,6 +179,19 @@ Recips, turbines and rich-burn are above at L = 0 everywhere.
   The split cannot be identified from the episode.
 - About 2 GW of behind-the-meter capacity is operating, against the 50 GW assumed (Cleanview).
 
+## Recip slip sensitivity (added 2026-10-25, post hoc)
+Irzak says the EPA lean-burn average is about 3% of CH4 in at full load, and that she has "seen measurements up to 12%" at partial load. AP-42 Table 3.2-2, which W-7 shares lineage with, says its factors "are for engines at all loads".
+Recip totals at L = 2.3%, GWP100, central HR 8.40 (`results/slip_sensitivity.csv`):
+
+| Fleet-average slip (% of CH4 in) | kg CO2e/MWh | × ERCOT / PJM / US average | × new grid NGCC |
+|---|---|---|---|
+| 2.8% (W-7, central) | 736 | 1.75 / 1.80 / 1.70 | 1.62 |
+| 4% | 793 | 1.88 / 1.94 / 1.84 | 1.74 |
+| 6% | 887 | 2.11 / 2.18 / 2.05 | 1.95 |
+| 12% | 1,171 | 2.78 / 2.87 / 2.71 | 2.57 |
+
+Higher slip only raises recips, which are already above both references on CO2 alone, so no verdict changes. No published field measurements were found for the large gensets being ordered (Jenbacher J620/J920, Cat G3520K), and AI-training load swings could add low-load hours. The part-load bracket in Caveats (slip ×1.0–1.3) is narrower than 12%.
+
 ## V3 and FaIR
 V3 is a partial pass. On an SSP2-4.5 2030 background with Thornhill2021 CH4 lifetime, FaIR's 100-year integrated-forcing ratio for CH4 is 37.2 (5–95%: 29–47). AR6 gives 27.0 ± 11 for
 non-fossil CH4 (from memory, verify). The temperature ratio at 100 years is 8.0 (3.2–15.2), against AR6 GTP100 4.7.
@@ -209,7 +223,7 @@ Because FaIR's CH4 metric runs about 38% above AR6 GWP100 on this background (37
 - **Grid vintage.** eGRID is 2023. The grid serving 2027+ load may be cleaner or dirtier, and holding it fixed favors BTM if the grid decarbonizes.
 - **Bridge and backup power.** BTM plants often serve as bridge power until the grid connection arrives, or later become backup. Their lifetime emissions depend on hours run, which is not modelled here.
 - **Redundancy.** The N+1 and part-load penalty (+3–5% HR, slip ×1.0–1.3) applies to islanded plants only and is not in the central case. Including it would raise recip and turbine totals.
-- **Permian.** It is oil-driven, so the marginal molecule for new gas demand may come from the Haynesville. No verified Haynesville loss rate was found.
+- **Permian.** It is oil-driven, so the marginal molecule for new gas demand may come from the Haynesville. The main analysis has no Haynesville case; the regional section uses Haynesville 0.7% (0.4–1.0%) for Memphis.
 - **Measurement gaps.** No CH4 measurement exists for Bloom SOFC exhaust (0 assumed). No aeroderivative slip measurements were found (W-7 turbine factor used).
 - **Cambium.** LRMER is pre-OBBBA and, by NREL's own guidance, not for 2020s conditions. It is shown for context only.
 
