@@ -216,6 +216,8 @@ def spec_setup(region, boundary, regressor, renew):
 
 
 def keep_mask(P, flags, systems, ycols):
+    """Hours kept: demand not missing/imputed for the systems, and no 5xMAD spike in demand or the screened series.
+    region_estimate screens on the system's CO2e for every dependent variable, so fuel equations share one sample."""
     k = pd.Series(True, index=P.index)
     for s in systems:
         k &= ~flags[s]
@@ -233,7 +235,7 @@ def region_estimate(P, flags, region, est='levels', boundary='primary', regresso
                 xs = [f'{s}_gload'] if regressor == 'fossil' else [f'{s}_D']
                 if renew:
                     xs += [f'{s}_wind', f'{s}_solar']
-                k = keep_mask(P, flags, [s], [f'{s}_{y}'])
+                k = keep_mask(P, flags, [s], [f'{s}_co2e'])
                 b = estimate(P, k, f'{s}_{y}', xs, LST[s], est)
                 load = P[f'{s}_D'].sum()
                 out += b * load
@@ -242,10 +244,10 @@ def region_estimate(P, flags, region, est='levels', boundary='primary', regresso
         xs = ['L48_gload'] if regressor == 'fossil' else ['L48_D']
         if renew:
             xs += ['L48_wind', 'L48_solar']
-        k = keep_mask(P, flags, ['L48'], [f'L48_{y}'])
+        k = keep_mask(P, flags, ['L48'], ['L48_co2e'])
         return estimate(P, k, f'L48_{y}', xs, LST['EI'], est)
     ys, xs, fl, lst = spec_setup(region, boundary, regressor, renew)
-    k = keep_mask(P, flags, fl, [f'{ys}_{y}'])
+    k = keep_mask(P, flags, fl, [f'{ys}_co2e'])
     return estimate(P, k, f'{ys}_{y}', xs, lst, est)
 
 
@@ -389,8 +391,9 @@ def main():
             bnd = bnd_used if reg != 'PJM' else ('primary' if bnd_used == 'primary' else 'own')
             fb = {y: region_estimate(P, flags, reg, boundary=bnd, renew=True, y=y) for y in YCOLS}
             sysn = {'ERCOT': 'ERCOT', 'PJM': 'EI' if bnd == 'primary' else 'PJM', 'US': 'L48'}[reg]
-            ratios = {f: P[f'{sysn}_{f}_co2'].sum() / max(P[f'{sysn}_{f}_hi'].sum(), 1e-9) for f in ('gas', 'coal', 'oil', 'other')}
-            closure = sum(ratios[f] * fb[f'{f}_hi'] for f in ratios) / fb['co2'] - 1
+            ratios = {f: P[f'{sysn}_{f}_co2'].sum() / P[f'{sysn}_{f}_hi'].sum() for f in ('gas', 'coal', 'oil', 'other')
+                      if P[f'{sysn}_{f}_hi'].sum() > 0}
+            closure = (sum(ratios[f] * fb[f'{f}_hi'] for f in ratios) + (fb['other_co2'] if 'other' not in ratios else 0)) / fb['co2'] - 1
             boot = bootstrap(P, flags, reg, renew=True, boundary=bnd)
             passing = sr[sr.d1e_pass]
             prim.append(dict(year=year, region=reg, spec=f'levels+FE, demand, wind/solar controls, boundary={bnd}',

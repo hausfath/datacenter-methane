@@ -9,7 +9,10 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from cases import CASES, L_PRIMARY, btm, grid_avg, grid_ngcc, tot
+import json
+
+import emissions as em
+from cases import CASES, CMM, F_SUPPLY, GRID_LOSS, L_PRIMARY, btm, grid_avg, grid_ngcc, tot
 
 ROOT = Path(__file__).resolve().parents[1]
 R = ROOT / 'results' / 'marginal'
@@ -17,6 +20,19 @@ YEAR = 2025
 W, W_RANGE = 0.25, (0.15, 0.35)
 CAMBIUM_GEA = {'ERCOT': 'ERCOT', 'PJM': 'PJM_East', 'US': 'US (pop-weighted)'}
 OPTIONS = [c for c, v in CASES.items() if v[3]]
+
+
+def average_2025(reg, ef_coal=96.0):
+    """Same-vintage grid average: EIA-930 2025 consumption CO2 intensity (data/eia930_intensity.json) with the
+    main analysis's upstream gas CH4, supply CO2 and coal-mine CH4, /(1 - 0.03). Not available for the US."""
+    ba = {'ERCOT': 'ERCO', 'PJM': 'PJM'}.get(reg)
+    if ba is None:
+        return np.nan
+    e = json.load(open(ROOT / 'data' / 'eia930_intensity.json'))[ba]['2025']
+    c = e['consumption_kg_mwh']
+    gas, coal = c * e['gas_share_gen_co2'] / em.EF_CO2, c * e['coal_share_gen_co2'] / ef_coal
+    g = em.GWP['AR6_100']['ch4']
+    return (c + gas * em.EF_CO2 * F_SUPPLY + gas * em.upstream_ch4(L_PRIMARY) * g + coal * CMM * g) / (1 - GRID_LOSS)
 
 
 def metrics():
@@ -52,6 +68,9 @@ def metrics():
                          central=rt, lo=min(rt, rw), hi=max(rt, rw), note='Tool 07 20% sample; bar to 2020-24 window'))
         rows.append(dict(region=reg, metric='ngcc', label='New gas plant on the grid', horizon='long',
                          central=tot(grid_ngcc(L_PRIMARY)), lo=np.nan, hi=np.nan, note='H-class NGCC, 3% losses'))
+        rows.append(dict(region=reg, metric='average_2025', label='Grid average, 2025 (same vintage as the short-run rate)',
+                         horizon='today', central=average_2025(reg), lo=np.nan, hi=np.nan,
+                         note='table only: EIA-930 2025 consumption-basis CO2 with the main analysis upstream terms; no US aggregate in EIA-930 intensities'))
     return pd.DataFrame(rows)
 
 
@@ -63,6 +82,8 @@ def verdicts(m):
     mc = mc.set_index(['region', 'reference', 'case']).tie_band
     out = []
     for _, r in m.iterrows():
+        if np.isnan(r.central):
+            continue
         half = np.nanmax([r.central - r.lo, r.hi - r.central]) / r.central if not np.isnan(r.lo) else 0.0
         for o in OPTIONS:
             band = max(0.05, half, mc[(r.region, 'B' if r.metric == 'ngcc' else 'A', o)])

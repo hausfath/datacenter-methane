@@ -107,7 +107,7 @@ EFFS = ['Fuel cells (Bloom SOFC)', 'Combined cycle (on site)']
 lr = v[v.option.isin(ENGS) & v.metric.isin(['blend', 'cambium', 'planned', 'recent', 'ngcc'])]
 assert (lr.verdict == 'worse').all(), 'title assumes engines/turbines are worse on every long-run metric'
 lr_min = np.floor(lr.ratio.min() * 10) / 10
-title = f"Off-grid engines and turbines emit {lr_min:.1f}× or more than the grid on any long-run measure"
+title = f"Off-grid engines and turbines emit at least {lr_min:.1f}× the grid on every long-run measure"
 sre = v[v.option.isin(ENGS) & (v.metric == 'srmer')].ratio
 srf = v[v.option.isin(EFFS) & (v.metric == 'srmer')].ratio
 r1 = lambda x: f'{x:.1f}'
@@ -117,11 +117,10 @@ sub = (f"Against today's short-run marginal grid the comparison is much closer: 
 fig.text(0.04, 0.955, title, fontsize=17.5, fontweight='bold', color=INK, va='top')
 fig.text(0.04, 0.903, sub, fontsize=12, color=INK2, va='top', linespacing=1.45)
 fig.text(0.04, 0.03,
-         "Short-run: EPA CEMS hourly emissions regressed on EIA-930 demand with wind/solar controls, 2025 (Holland et al. 2022 method, reproduced for Jan–Sep 2019), 6% marginal\n"
-         "losses; thick bar = 90% CI. Long-run: NREL Cambium 2024 High Demand Growth, 2027–46, with Aug 2024 policies (before OBBBA and EPA's 2026 partial repeal of its\n"
-         "power-plant rule), so likely too low. "
-         "Blend: Gagnon & O'Shaughnessy 2024, weight 0.25 on short-run (0.15–0.35). Additions: EIA-860M Sep 2026 and EIA-923 2025; annual energy, not hourly.\n"
-         "All grid values add upstream gas and coal-mine methane at the same leak rate as the off-grid side.   Analysis: Zeke Hausfather / The Climate Brink",
+         "Short-run: EPA CEMS hourly emissions regressed on EIA-930 demand with wind/solar controls, 2025 (Holland et al. 2022 method, reproduced for Jan–Sep 2019),\n"
+         "6% marginal losses; thick bar = 90% CI. Long-run: NREL Cambium 2024 High Demand Growth, 2027–46, with Aug 2024 policies (before OBBBA and EPA's 2026 partial\n"
+         "repeal of its power-plant carbon rule), so likely too low. Blend: Gagnon & O'Shaughnessy 2024, weight 0.25 on short-run (0.15–0.35). Additions: EIA-860M Sep 2026\n"
+         "and EIA-923 2025, annual energy. All grid values add upstream gas and coal-mine methane at the off-grid leak rate.   Analysis: Zeke Hausfather / The Climate Brink",
          fontsize=9.2, color=MUTED, va='bottom', linespacing=1.45)
 out = ROOT / 'figures' / 'marginal_vs_average.png'
 fig.savefig(out, dpi=150, facecolor=SURF)

@@ -222,3 +222,17 @@ New grid H-class NGCC: 455 kg CO2e/MWh at L = 2.3% (`grid_ngcc()`), with 3% loss
     - (4) The bootstrap CI is computed on the new primary spec.
   - The uncontrolled values and the median of passing specs are reported alongside.
   - ERCOT's result came in below the pre-registered 650–780 expectation. Law-firm alerts (Beveridge & Diamond; Jackson Walker) report that EPA finalized a partial repeal of the 2024 rule on 2026-09-17, effective 2026-11-16, and proposed a full repeal. Not checked in the Federal Register.
+- **2026-10-26, verdict rule (post hoc, after the first verdicts.csv).** The band is now max(5%, the main analysis's Monte Carlo tie band for that option and region, the metric's half-range). The pre-registered rule omitted the MC term.
+  - Effect: SOFC against the 2023 grid average flips from "worse" to "tie" in ERCOT (1.09×) and the US (1.06×), which reproduces the post's own verdicts.
+  - No engine or turbine cell changes, and no short-run or long-run cell changes.
+  - Reason: the MC band carries the off-grid side's own uncertainty, which does not depend on how the grid is counted.
+- **2026-10-26, figure subtitle (post hoc).** Per-region short-run verdicts were replaced by ratio ranges (engines and turbines 0.9–1.4×; fuel cells and CC 0.6–0.9×).
+  - Reason: ERCOT's short-run verdict flips between the primary levels spec (538 → engines 1.31–1.37×, "worse") and the daily-totals spec, which nets battery charging (663 → 1.06–1.11×, "tie").
+  - Neither is clearly right, so the figure states the ratio range, and METHODS gives both.
+- **2026-10-26, D1d fuel closure.** The first run missed for PJM (−3.7% vs ±3%). Cause: each dependent variable had its own 5×MAD outlier screen, so the fuel equations ran on slightly different hours from the CO2 equation (methods review SF6). All dependent variables now share the CO2e-screened sample.
+  - Closure is now +1.2% / −0.8% / 0.0% (pass).
+  - Headline CO2e values are unchanged, because they were already screened on CO2e.
+- **2026-10-26, same-vintage average (both reviews asked for it; missing from v2's outputs).** Added as a table-only metric, `average_2025`: EIA-930 2025 consumption CO2 with the main analysis's upstream terms.
+  - ERCOT 389, PJM 417. There is no US aggregate in the EIA-930 intensity file.
+  - Engines and turbines are 1.81–1.89× (ERCOT) and 1.69–1.77× (PJM) of it.
+- **2026-10-26, §111.** Verified in the Federal Register: doc. 2026-19071, "Partial Repeal of the Carbon Pollution Standards for Fossil Fuel-Fired Electric Generating Units", published 2026-09-17.

@@ -154,10 +154,10 @@
    "passed": true
   },
   "PJM": {
-   "fossil_load": 622.7700685988251,
+   "fossil_load": 623.1721730984235,
    "demand": 535.4265294556784,
    "avert": 574.0,
-   "fossil_rel": 0.0849652763045734,
+   "fossil_rel": 0.08566580679167868,
    "demand_rel": -0.06720116819568223,
    "passed": true
   },

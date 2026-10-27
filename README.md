@@ -32,7 +32,7 @@ Several readers argued that the grid side should use a marginal emission rate in
   - Results: ERCOT 538, PJM 768, US 659 kg CO2e/MWh (6% marginal losses, upstream methane added).
   - Engines and turbines come out at 0.9–1.4× these rates, fuel cells and on-site combined cycle at 0.6–0.9×.
   - In ERCOT, a daily-total specification that nets out battery charging gives 663.
-- **Long-run.** Engines and turbines emit 1.5× or more than every long-run measure:
+- **Long-run.** Engines and turbines emit at least 1.5× the grid on every long-run measure:
   - NREL Cambium 2024 LRMER (pre-OBBBA, so likely too low);
   - a 5-year short-run/long-run blend;
   - the average of planned or recent additions;
@@ -73,7 +73,7 @@ python3.13 write_regional_methods.py  # regenerates the regional section of METH
 # average vs marginal grid emissions (PLAN_marginal.md)
 python3.13 marginal_eia930.py    # EIA-930 hourly demand/generation, 2019 + 2023-25 -> data/marginal/eia930_hourly.parquet (~5 min)
 EPA_API_KEY=... python3.13 marginal_campd.py 2019 2023 2025   # EPA CEMS hourly, streamed (~2 GB/quarter, deleted after aggregation)
-python3.13 marginal_srmer.py     # short-run rates, specification envelope, diagnostics (uses committed data/marginal/srmer_panel_*.parquet if present)
+python3.13 marginal_srmer.py     # short-run rates, envelope, diagnostics; uses committed data/marginal/srmer_panel_*.parquet (delete them to rebuild from new CEMS data)
 python3.13 marginal_cambium.py   # Cambium 2024 LRMER, matched to this project's methane accounting
 python3.13 marginal_build.py     # recent/planned additions (needs EIA-860M Sep 2026 + EIA-923 2025 in data/marginal/tmp/)
 python3.13 marginal_compare.py   # all grid metrics, ratios and verdicts -> results/marginal/

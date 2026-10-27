@@ -397,7 +397,7 @@ Results are in `results/marginal/`. Off-grid values are unchanged (GWP100, L = 2
   - **D1c, AVERT v4.3 2023** at generation level (Texas 560, Mid-Atlantic 574, national about 600):
     - Fossil-load variant: −7.7%, +8.5% and −0.8%. Pass.
     - Demand spec: −23.5%, −6.7% and −18.8%, outside the pre-registered 5–15%-below expectation for ERCOT and the US.
-  - **D1d, fuel closure:** −0.9% / −3.7% / −1.1%. PJM misses the 3% tolerance slightly.
+  - **D1d, fuel closure:** +1.2% / −0.8% / 0.0%. These values come after all fuel equations were moved to a shared outlier-screened sample; the first run missed PJM by −3.7% (change log).
   - **D1e, plausibility (primary):**
     - fossil share 0.79 / 0.93 / 0.85;
     - marginal gas heat rate 8.0 / 9.3 / 8.7 MMBtu/MWh.
@@ -418,7 +418,17 @@ Results are in `results/marginal/`. Off-grid values are unchanged (GWP100, L = 2
   - US = GEA regions weighted by county population (Census 2024 estimates; 10 counties unmatched).
   - PJM = PJM_East, where Loudoun County sits. The population-weighted East/West value is 271.
 - **Scenario range (3%):** ERCOT 140–175, PJM_East 200–306, US 166–237. The simple means (0%) are 165 / 276 / 199.
-- **Bias.** All Cambium 2024 scenarios keep IRA credits without phase-out and include the 2024 EPA §111 rule. EPA partially repealed that rule on 2026-09-17 (law-firm alerts; not checked in the Federal Register). Both points make the long-run rate too low by an unknown amount.
+- **Bias.** All Cambium 2024 scenarios keep IRA credits without phase-out and include the 2024 EPA §111 rule. EPA partially repealed that rule in Federal Register doc. 2026-19071, "Partial Repeal of the Carbon Pollution Standards for Fossil Fuel-Fired Electric Generating Units", published 2026-09-17, effective 2026-11-16 per law-firm alerts. Both points make the long-run rate too low by an unknown amount.
+
+## Blend and framing conventions
+- The blend follows Gagnon & O'Shaughnessy 2024 (NREL/TP-6A40-91580): MER = w·SRMER + (1 − w)·LRMER. Their worked example (a 3-year lag on a 20-year load) gives w = 0.15. We use w = 0.25 (a 5-year lag) with a range of 0.15–0.35. **The report was funded by Amazon**; cite it with that disclosure.
+- **Concession.** For crediting, the CDM grid-emission-factor convention (Tool 07) appears to assign projects that *increase* grid consumption the operating margin only (w_OM = 1, w_BM = 0). On that convention the short-run rate is the relevant comparator.
+  - This comes from Verra's Oct 2024 draft methodology text; the UNFCCC TOOL07 text itself was not read.
+  - It is a crediting rule, not a consequential estimate.
+- Holland et al. (reply to Gagnon et al., PNAS 2022) describe their estimates as short-run and say "a range of possible impacts is most informative". The quote was read by the domain reviewer, not re-checked here. That supports showing both horizons.
+
+## Same-vintage grid average (table only)
+EIA-930 2025 consumption-basis CO2 with the same upstream terms gives ERCOT 389 and PJM 417 kg CO2e/MWh, against eGRID2023's 421 and 408. Engines and turbines are 1.81–1.89× and 1.69–1.77× these values. No US value is computed.
 
 ## Build margins (M3, M4)
 - **Units.** Units are plant × prime-mover groups (CC parts merged). Data: EIA-860M Sep 2026 and EIA-923 2025 Final (Page 1, fuel for electricity). Storage is excluded. Gas CO2e uses `em.intensity()` with W-7 slip by prime mover.
