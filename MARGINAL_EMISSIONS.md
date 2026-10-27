@@ -10,7 +10,7 @@ The figure below shows the results. The shaded bands are the off-grid options fr
 
 ### Short-run marginal emissions
 
-The short-run marginal rate asks what happens on today's grid, with today's power plants, when demand goes up by one MWh. I estimated it the way [Holland et al. (2022)](https://doi.org/10.1073/pnas.2116632119) did, regressing hourly power plant emissions from EPA's [CEMS](https://campd.epa.gov/data) data on hourly demand from [EIA-930](https://www.eia.gov/electricity/gridmonitor/) for 2025.[^1] Run on January to September 2019 data, this approach reproduces their published 2019 values for Texas and the Eastern US to within 4%.
+The short-run marginal rate asks what happens on today's grid, with today's power plants, when demand goes up by one MWh. I estimated it the way [Holland et al. (2022)](https://doi.org/10.1073/pnas.2116632119) did, regressing hourly power plant emissions from EPA's [CEMS](https://campd.epa.gov/data) data on hourly demand from [EIA-930](https://www.eia.gov/electricity/gridmonitor/) for 2025.[^1] This approach reproduces their published 2019 values for Texas and the Eastern US to within 3%.
 
 Here the critics have a point. The short-run marginal grid comes out at 538 kg per MWh in ERCOT, 768 in PJM and 659 for the US, well above the averages I used (408 to 432). Against that benchmark, off-grid engines and turbines emit between 0.9 and 1.4 times as much as the grid (roughly level in PJM and the US, higher in ERCOT). Fuel cells and on-site combined cycle come out at 0.6 to 0.9 times, so on today's margin they are cleaner than the grid in PJM and nationally.[^2]
 

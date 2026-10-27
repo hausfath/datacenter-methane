@@ -28,7 +28,7 @@ Several readers argued that the grid side should use a marginal emission rate in
 
 ![Marginal vs average](figures/marginal_vs_average.png)
 
-- **Short-run marginal rate (today's grid).** EPA CEMS hourly emissions regressed on EIA-930 demand for 2025, with wind and solar controls. The method follows Holland et al. 2022, whose 2019 Texas and Eastern values it reproduces within 4%.
+- **Short-run marginal rate (today's grid).** EPA CEMS hourly emissions regressed on EIA-930 demand for 2025, with wind and solar controls. The method follows Holland et al. 2022, whose 2019 Texas and Eastern values it reproduces within 3%.
   - Results: ERCOT 538, PJM 768, US 659 kg CO2e/MWh (6% marginal losses, upstream methane added).
   - Engines and turbines come out at 0.9–1.4× these rates, fuel cells and on-site combined cycle at 0.6–0.9×.
   - In ERCOT, a daily-total specification that nets out battery charging gives 663.

@@ -117,7 +117,7 @@ sub = (f"Against today's short-run marginal grid the comparison is much closer: 
 fig.text(0.04, 0.955, title, fontsize=17.5, fontweight='bold', color=INK, va='top')
 fig.text(0.04, 0.903, sub, fontsize=12, color=INK2, va='top', linespacing=1.45)
 fig.text(0.04, 0.03,
-         "Short-run: EPA CEMS hourly emissions regressed on EIA-930 demand with wind/solar controls, 2025 (Holland et al. 2022 method, reproduced for Jan–Sep 2019),\n"
+         "Short-run: EPA CEMS hourly emissions regressed on EIA-930 demand with wind/solar controls, 2025 (Holland et al. 2022 method, reproduced for 2019),\n"
          "6% marginal losses; thick bar = 90% CI. Long-run: NREL Cambium 2024 High Demand Growth, 2027–46, with Aug 2024 policies (before OBBBA and EPA's 2026 partial\n"
          "repeal of its power-plant carbon rule), so likely too low. Blend: Gagnon & O'Shaughnessy 2024, weight 0.25 on short-run (0.15–0.35). Additions: EIA-860M Sep 2026\n"
          "and EIA-923 2025, annual energy. All grid values add upstream gas and coal-mine methane at the off-grid leak rate.   Analysis: Zeke Hausfather / The Climate Brink",

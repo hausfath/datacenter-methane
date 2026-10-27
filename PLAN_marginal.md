@@ -236,3 +236,4 @@ New grid H-class NGCC: 455 kg CO2e/MWh at L = 2.3% (`grid_ngcc()`), with 3% loss
   - ERCOT 389, PJM 417. There is no US aggregate in the EIA-930 intensity file.
   - Engines and turbines are 1.81–1.89× (ERCOT) and 1.69–1.77× (PJM) of it.
 - **2026-10-26, §111.** Verified in the Federal Register: doc. 2026-19071, "Partial Repeal of the Carbon Pollution Standards for Fossil Fuel-Fired Electric Generating Units", published 2026-09-17.
+- **2026-10-26 (later), D1b on full-year 2019.** Once 2019 Q4 arrived, D1b was rerun on the full year: Texas 482 vs 492 (−2.1%), Eastern 621 vs 638 (−2.7%). Pass. No 2025 result depends on 2019.

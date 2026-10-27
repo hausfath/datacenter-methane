@@ -390,10 +390,10 @@ Results are in `results/marginal/`. Off-grid values are unchanged (GWP100, L = 2
   - **D1a timestamps.** CEMS gross load vs EIA-930 fossil generation peaks at lag 0 in every month for ERCOT in 2023 and 2025 (r = 0.99). PJM peaks at lag 0 in 2025.
     - PJM's EIA-930 fuel-mix columns run 1 h off in 2019 and 2023 and are shifted to align; PJM demand is aligned.
     - The pre-registered demand-vs-CO2 lag test peaks at +1 to +2 h in ERCOT from spring through fall. This is physical: batteries and solar move the net-load ramp.
-  - **D1b, Holland reproduction** (January–September 2019, no controls, interconnection demand):
-    - Texas 484 vs 492 kg CO2/MWh, a −1.6% difference with tolerance ±40;
-    - Eastern 614 vs 638, −3.7% with tolerance ±32.
-    - Pass.
+  - **D1b, Holland reproduction** (full-year 2019, no controls, interconnection demand):
+    - Texas 482 vs 492 kg CO2/MWh, −2.1% (NW SE 15);
+    - Eastern 621 vs 638, −2.7% (NW SE 8).
+    - Pass. An earlier January–September run gave 484 and 614.
   - **D1c, AVERT v4.3 2023** at generation level (Texas 560, Mid-Atlantic 574, national about 600):
     - Fossil-load variant: −7.7%, +8.5% and −0.8%. Pass.
     - Demand spec: −23.5%, −6.7% and −18.8%, outside the pre-registered 5–15%-below expectation for ERCOT and the US.
@@ -405,7 +405,7 @@ Results are in `results/marginal/`. Off-grid values are unchanged (GWP100, L = 2
   - At 663, engines and turbines would tie the short-run margin in ERCOT too (1.06–1.11×).
   - The ERCOT short-run verdict is therefore sensitive to storage treatment. The figure subtitle reports ratio ranges rather than per-region verdicts.
 - **Not done.**
-  - 2024: the EPA DEMO_KEY rate limit blocked it.
+  - 2024: the EPA DEMO_KEY rate limit blocked it. (2019 Q4 arrived later, and D1b was rerun on the full year.)
   - Substitute-data screening: no indicators were kept.
   - Regional coal-mine CH4: 0.199 is used throughout, which raises the grid rate.
 
