@@ -24,7 +24,7 @@ For seven data-center hotspots, each region uses its 2025 EIA-930 consumption-ba
 How much each region's result moves across its basin's measured leak range is shown in `figures/regional_basin_ranges.png`.
 
 ## Average vs marginal grid emissions (added after publication)
-Several readers argued that the grid side should use a marginal emission rate instead of the average. This section tests both short-run and long-run versions (`PLAN_marginal.md`, reviewed and pre-registered; METHODS § Marginal emission factors).
+Several readers argued that the grid side should use a marginal emission rate instead of the average. This section tests both short-run and long-run versions. A short write-up is in [MARGINAL_EMISSIONS.md](MARGINAL_EMISSIONS.md); details are in `PLAN_marginal.md` (reviewed and pre-registered) and METHODS § Marginal emission factors.
 
 ![Marginal vs average](figures/marginal_vs_average.png)
 
