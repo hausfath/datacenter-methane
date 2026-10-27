@@ -7,7 +7,7 @@ Code and data for a [Climate Brink](https://www.theclimatebrink.com/) analysis o
 ## Main results (100-year GWP, 2.3% upstream methane leakage on both sides)
 - Reciprocating engines (about 736 kg CO2e/MWh) and simple-cycle turbines (about 705) emit 63–80% more than the 2023 ERCOT, PJM and US grid averages (408–432). They are already 31–63% higher on CO2 alone, because they burn more gas per MWh. Methane (upstream leaks plus engine slip) adds 70–190 kg/MWh to the gap.
 - Fuel cells (Bloom) and on-site combined cycle come in 7–17% above the grid averages and level with a new grid combined-cycle plant (455).
-- Planned technology mix: of the ~27 GW of planned off-grid data-center capacity with identified equipment in Cleanview's 2026 behind-the-meter report, roughly 46% is simple-cycle turbines, 34% reciprocating engines and 14% fuel cells, with almost no combined cycle. Cleanview reports equipment by manufacturer, and the grouping into technologies is ours (`data/planned_technology_shares.json`, METHODS).
+- Planned technology mix: of the ~27 GW of planned off-grid data-center capacity with identified equipment in [Cleanview's 2026 behind-the-meter report](https://cleanview.co/reports/behind-the-meter-data-centers), roughly 46% is simple-cycle turbines, 34% reciprocating engines and 14% fuel cells, with almost no combined cycle. Cleanview reports equipment by manufacturer, and the grouping into technologies is ours (`data/planned_technology_shares.json`, METHODS).
 - Engine slip: the central case uses EPA's 40 CFR 98 Table W-7 factor (about 2.8% of methane in). Even at 12% fleet-average slip, the upper end Frost Methane's Olya Irzak cited for part-load operation, engines reach about 1,170 kg/MWh, 2.7–2.9 times the grid averages (`results/slip_sensitivity.csv`).
 - Frost Methane's fleet estimate (380 Mt CO2e over 18 months for 50 GW) is reproduced to four figures by a mass balance in which 7.5% of produced methane escapes (`scripts/v2_frost.py`). That is above the 5–6% total loss implied here, and the 18-month total assumes all 50 GW running from day one.
 
@@ -97,7 +97,7 @@ Requirements: Python 3.13, numpy, pandas, scipy, matplotlib, openpyxl, and fair=
 | Basin leak rates (MacKay et al. 2026, Varon et al. 2026, Sherwin et al. 2024, others) | values cited in `data/basin_leak_rates.json`; papers not redistributed |
 | EPA CAMPD (CEMS) hourly emissions; EIA-860M, EIA-923, EIA-930 | US government works, public domain |
 | US Census county population estimates (2024) | public domain |
-| Cleanview behind-the-meter report (2026) | only our derived technology shares are included (`data/planned_technology_shares.json`); Cleanview's manufacturer figures and report text are not redistributed |
+| [Cleanview behind-the-meter report (2026)](https://cleanview.co/reports/behind-the-meter-data-centers) | only our derived technology shares are included (`data/planned_technology_shares.json`); Cleanview's manufacturer figures and report text are not redistributed |
 
 Vendor data sheets (Caterpillar, GE Vernova, Solar Turbines, Bloom, Generac, Wärtsilä, INNIO), papers and web pages are cited, not redistributed. `sources/` holds our research notes (`FINDINGS.md`, `FINDINGS2.md`, `BASINS.md`), with quotes and URLs for every value used. The plans, reviews and notes sometimes cite local copies of pages under `sources/`. Those copies are not in this repository; use the URLs given alongside them.
 
