@@ -20,4 +20,13 @@ sources/basins/*
 !sources/coal/
 sources/coal/*
 !sources/coal/acr_table1.xlsx
+!sources/marginal/
+sources/marginal/*
+!sources/marginal/MARGINAL_SOURCES.md
+!sources/marginal/cambium2024_lrmer_annual_by_region.csv
 .DS_Store
+
+data/marginal/tmp/
+data/marginal/campd/
+data/marginal/old/
+data/marginal/eia930_hourly.parquet

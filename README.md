@@ -23,6 +23,22 @@ For seven data-center hotspots, each region uses its 2025 EIA-930 consumption-ba
 
 How much each region's result moves across its basin's measured leak range is shown in `figures/regional_basin_ranges.png`.
 
+## Average vs marginal grid emissions (added after publication)
+Several readers argued that the grid side should use a marginal emission rate instead of the average. This section tests both short-run and long-run versions (`PLAN_marginal.md`, reviewed and pre-registered; METHODS § Marginal emission factors).
+
+![Marginal vs average](figures/marginal_vs_average.png)
+
+- **Short-run marginal rate (today's grid).** EPA CEMS hourly emissions regressed on EIA-930 demand for 2025, with wind and solar controls. The method follows Holland et al. 2022, whose 2019 Texas and Eastern values it reproduces within 4%.
+  - Results: ERCOT 538, PJM 768, US 659 kg CO2e/MWh (6% marginal losses, upstream methane added).
+  - Engines and turbines come out at 0.9–1.4× these rates, fuel cells and on-site combined cycle at 0.6–0.9×.
+  - In ERCOT, a daily-total specification that nets out battery charging gives 663.
+- **Long-run.** Engines and turbines emit 1.5× or more than every long-run measure:
+  - NREL Cambium 2024 LRMER (pre-OBBBA, so likely too low);
+  - a 5-year short-run/long-run blend;
+  - the average of planned or recent additions;
+  - a new grid gas plant.
+- **Deviations from the plan are logged in `PLAN_marginal.md`.** The pre-registered short-run spec failed a plausibility check in ERCOT and PJM and was replaced by a rule stated before regenerating results. 2024 was not computed because of an EPA API rate limit.
+
 ## Supplementary
 - A 20-year GWP view and FaIR 2.2.2 fleet warming runs (`results/fair_fleet.json`). FaIR's calibrated ensemble weights methane more heavily than AR6 metrics.
 - Monte Carlo tie bands, break-even leak rates and sensitivity tests (`results/`).
@@ -53,6 +69,15 @@ python3.13 eia930_intensity.py   # streams EIA-930 per-BA workbooks -> data/eia9
 python3.13 regional.py           # hotspot regions x basin leak rates, per-region MC, four-state classification
 python3.13 make_regional_figures.py   # figures/regional_heatmap.png, figures/regional_basin_ranges.png
 python3.13 write_regional_methods.py  # regenerates the regional section of METHODS.md
+
+# average vs marginal grid emissions (PLAN_marginal.md)
+python3.13 marginal_eia930.py    # EIA-930 hourly demand/generation, 2019 + 2023-25 -> data/marginal/eia930_hourly.parquet (~5 min)
+EPA_API_KEY=... python3.13 marginal_campd.py 2019 2023 2025   # EPA CEMS hourly, streamed (~2 GB/quarter, deleted after aggregation)
+python3.13 marginal_srmer.py     # short-run rates, specification envelope, diagnostics (uses committed data/marginal/srmer_panel_*.parquet if present)
+python3.13 marginal_cambium.py   # Cambium 2024 LRMER, matched to this project's methane accounting
+python3.13 marginal_build.py     # recent/planned additions (needs EIA-860M Sep 2026 + EIA-923 2025 in data/marginal/tmp/)
+python3.13 marginal_compare.py   # all grid metrics, ratios and verdicts -> results/marginal/
+python3.13 make_marginal_figure.py   # figures/marginal_vs_average.png
 ```
 Requirements: Python 3.13, numpy, pandas, scipy, matplotlib, openpyxl, and fair==2.2.2.
 
@@ -70,6 +95,8 @@ Requirements: Python 3.13, numpy, pandas, scipy, matplotlib, openpyxl, and fair=
 | NETL Rev1 (DOE/NETL-2025/4933) | public |
 | EIA-930 hourly grid data, EIA coal tables | US government works, public domain |
 | Basin leak rates (MacKay et al. 2026, Varon et al. 2026, Sherwin et al. 2024, others) | values cited in `data/basin_leak_rates.json`; papers not redistributed |
+| EPA CAMPD (CEMS) hourly emissions; EIA-860M, EIA-923, EIA-930 | US government works, public domain |
+| US Census county population estimates (2024) | public domain |
 | Cleanview behind-the-meter tracker | manufacturer shares cited in `data/cleanview_shares.json`; page not redistributed |
 
 Vendor data sheets (Caterpillar, GE Vernova, Solar Turbines, Bloom, Generac, Wärtsilä, INNIO), papers and web pages are cited, not redistributed. `sources/` holds our research notes (`FINDINGS.md`, `FINDINGS2.md`, `BASINS.md`), with quotes and URLs for every value used. The plans, reviews and notes sometimes cite local copies of pages under `sources/`. Those copies are not in this repository; use the URLs given alongside them.

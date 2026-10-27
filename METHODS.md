@@ -340,3 +340,108 @@ The two partly offset, and neither changes a main verdict.
   - Rockies values are low confidence.
   - Powder River and San Juan have no verified rate.
 - **Cambium.** The 2024 LRMER for each site's GEA region is in `results/regional/regional_cases.csv` as pre-OBBBA context only.
+
+# Marginal emission factors (PLAN_marginal.md v2; added 2026-10-26)
+Scripts:
+- `marginal_campd.py`, `marginal_eia930.py`: data.
+- `marginal_srmer.py`: short-run.
+- `marginal_cambium.py`: long-run.
+- `marginal_build.py`: build margins.
+- `marginal_compare.py`: assembly and verdicts.
+- `make_marginal_figure.py` → `figures/marginal_vs_average.png`.
+
+Results are in `results/marginal/`. Off-grid values are unchanged (GWP100, L = 2.3%): recip 736, turbine 705, SOFC 460, on-site CC 475. Every grid metric is rebuilt from marginal heat input by fuel, with the same upstream gas CH4, supply CO2 (9.3%) and coal-mine CH4 (0.199 kg/MMBtu) as `grid_avg()`.
+
+## Results (kg CO2e per MWh delivered)
+
+| Metric | ERCOT | PJM | US | Range shown |
+|---|---|---|---|---|
+| Grid average (eGRID2023, as posted) | 421 | 408 | 432 | — |
+| Short-run marginal, 2025 | 538 | 768 | 659 | passing-spec envelope 501–690 / 612–856 / 514–821 |
+| Blend, w = 0.25 | 265 | 404 | 322 | w 0.15–0.35 |
+| Cambium 2024 LRMER (High Demand Growth, matched) | 174 | 283 (PJM_East) | 210 | 8 scenarios |
+| Planned additions 2026–30 (all statuses) | 239 | 231 | 226 | to under-construction only |
+| Recent additions (Tool 07 20% sample) | 27 | 397 | 210 | to the 2020–24 window |
+| New grid NGCC | 455 | 455 | 455 | — |
+
+- **Long-run.** Engines and turbines are 1.55× (vs new NGCC) up to 27× (ERCOT recent additions) every long-run comparator, and are classified worse in every cell.
+- **Short-run.** Engines and turbines are 0.92–1.37× the short-run marginal grid:
+  - worse in ERCOT on the primary spec (1.31–1.37, band 28%);
+  - tie in PJM (0.92–0.96) and the US (1.07–1.12).
+- **Fuel cells and on-site CC on the short run:** 0.60–0.88×, tie in ERCOT and better in PJM and the US.
+- **Verdict rule.** band = max(5%, the main analysis's Monte Carlo tie band for that option and region, the metric's half-range). For the average and NGCC rows this reproduces the main analysis's verdicts.
+
+## Short-run marginal rate (M1)
+- **Data.**
+  - EPA CAMPD Part 75 hourly unit data (quarterly bulk files, streamed and aggregated to BA × fuel × unit class × UTC hour).
+  - EIA-930 hourly "Demand (Adjusted)".
+  - Fuel is classified per unit-hour by CO2/heat input (<60 gas, 60–85 oil, ≥85 kg/MMBtu coal).
+  - Plant→BA comes from eGRID2023, falling back to EIA-860M (Sep 2026) Operating and Retired. Unmapped CO2 is ≤0.4 Mt per quarter.
+  - Part 75 contains no reciprocating engines and few units under 25 MW, so a marginal recip fleet on the grid side is missing. This biases the grid rate low.
+- **Primary spec (after the change-log rule):** levels, CO2e_t = β·D_t + γ·(wind_t, solar_t) + month FE + hour-of-day FE, 2025.
+  - Boundaries:
+    - ERCOT: ERCOT CEMS on ERCO demand.
+    - PJM: PJM-own CEMS on PJM demand. The joint Eastern-Interconnection boundary failed the plausibility check: fossil share 1.24, and the PJM and rest-of-EI demand series correlate at 0.88 after fixed effects.
+    - US: load-weighted mean of the TX, Eastern and Western interconnection estimates.
+  - Delivered = β/(1 − 0.06), using marginal losses. At 3% average losses the values are 521 / 745 / 638.
+  - 90% block-bootstrap CI: 420–632 / 729–785 / 632–669.
+- **Pre-registered spec.** Without wind and solar controls, ERCOT = 383 (fossil share 0.55) and PJM joint = 1,053 (fossil share 1.24). Both failed D1e. The US value of 622 passed.
+- **Diagnostics:**
+  - **D1a timestamps.** CEMS gross load vs EIA-930 fossil generation peaks at lag 0 in every month for ERCOT in 2023 and 2025 (r = 0.99). PJM peaks at lag 0 in 2025.
+    - PJM's EIA-930 fuel-mix columns run 1 h off in 2019 and 2023 and are shifted to align; PJM demand is aligned.
+    - The pre-registered demand-vs-CO2 lag test peaks at +1 to +2 h in ERCOT from spring through fall. This is physical: batteries and solar move the net-load ramp.
+  - **D1b, Holland reproduction** (January–September 2019, no controls, interconnection demand):
+    - Texas 484 vs 492 kg CO2/MWh, a −1.6% difference with tolerance ±40;
+    - Eastern 614 vs 638, −3.7% with tolerance ±32.
+    - Pass.
+  - **D1c, AVERT v4.3 2023** at generation level (Texas 560, Mid-Atlantic 574, national about 600):
+    - Fossil-load variant: −7.7%, +8.5% and −0.8%. Pass.
+    - Demand spec: −23.5%, −6.7% and −18.8%, outside the pre-registered 5–15%-below expectation for ERCOT and the US.
+  - **D1d, fuel closure:** −0.9% / −3.7% / −1.1%. PJM misses the 3% tolerance slightly.
+  - **D1e, plausibility (primary):**
+    - fossil share 0.79 / 0.93 / 0.85;
+    - marginal gas heat rate 8.0 / 9.3 / 8.7 MMBtu/MWh.
+- **Storage (methods review SF2).** Hourly estimators count battery discharge as zero-emission. In ERCOT the daily-total spec with controls, which nets intra-day storage, gives 663 against the primary's 538.
+  - At 663, engines and turbines would tie the short-run margin in ERCOT too (1.06–1.11×).
+  - The ERCOT short-run verdict is therefore sensitive to storage treatment. The figure subtitle reports ratio ranges rather than per-region verdicts.
+- **Not done.**
+  - 2024: the EPA DEMO_KEY rate limit blocked it.
+  - Substitute-data screening: no indicators were kept.
+  - Regional coal-mine CH4: 0.199 is used throughout, which raises the grid rate.
+
+## Long-run marginal rate (M2, Cambium 2024)
+- **Matched reconstruction.** Gas and coal heat input are backed out of Cambium's combustion CO2 and CH4 (53.06 G + 95.52 C; 1.0 G + 11.0 C g), and the project's upstream accounting is then applied.
+  - Check: the reconstruction reproduces Cambium's precombustion CO2 within 2.9% (ERCOT Mid-case) and ≤1.6% in the other cases.
+  - The matched values sit within about 2 kg of native.
+- **Levelization.** It reproduces the workbook's cached ERCOT, PJM East and PJM West values to 1e-12.
+- **Central choices.** High Demand Growth, 2027–2046, 3% discount (Cambium default), end-use → busbar (3.6% distribution loss) then /0.97.
+  - US = GEA regions weighted by county population (Census 2024 estimates; 10 counties unmatched).
+  - PJM = PJM_East, where Loudoun County sits. The population-weighted East/West value is 271.
+- **Scenario range (3%):** ERCOT 140–175, PJM_East 200–306, US 166–237. The simple means (0%) are 165 / 276 / 199.
+- **Bias.** All Cambium 2024 scenarios keep IRA credits without phase-out and include the 2024 EPA §111 rule. EPA partially repealed that rule on 2026-09-17 (law-firm alerts; not checked in the Federal Register). Both points make the long-run rate too low by an unknown amount.
+
+## Build margins (M3, M4)
+- **Units.** Units are plant × prime-mover groups (CC parts merged). Data: EIA-860M Sep 2026 and EIA-923 2025 Final (Page 1, fuel for electricity). Storage is excluded. Gas CO2e uses `em.intensity()` with W-7 slip by prime mover.
+- **Recent additions.**
+  - Tool 07 rule (as quoted in the Verra Oct 2024 draft): the newest groups with a full year of 2025 data that together supply ≥20% of 2025 regional generation.
+    - ERCOT reaches back to 2018 (3% gas by MWh).
+    - PJM reaches back to 2017 (81% gas, the CC wave).
+  - Mixed-vintage groups (>3 years between units) are excluded: 50 / 147 / 1,321.
+- **Planned additions.** Nameplate × region-technology capacity factor from 2020–24 units, with national fallbacks; nuclear CF 0.92.
+  - ERCOT all statuses: 58 GW, of which 17 GW is gas. Under construction: 20 GW, 3.9 GW gas.
+  - PJM under construction is almost entirely solar and wind (1 kg/MWh); all statuses give 231.
+- **Caveats.** These are averages of what is being built, not what a new load induces. Matching is on annual energy, with no night-time firming.
+
+## Prediction vs outcome (PLAN_marginal pre-registered expectations)
+- **Short-run** (expected ERCOT 650–780, PJM 680–800, US 700–820):
+  - ERCOT came in below, at 538.
+  - PJM (768) was inside.
+  - US came in slightly below, at 659.
+  - Engines and turbines were expected to "most likely tie". They tie in PJM and the US and are worse in ERCOT on the primary spec, but tie on the daily spec.
+  - Fuel cells and CC were expected to be "clearly below": below in PJM and the US, tied in ERCOT.
+- **Long-run:**
+  - Recent additions were expected at 100–300 for ERCOT; it came in below, at 27.
+  - PJM was expected at 300–500 and came in at 397.
+  - Planned additions were expected at 150–400 and came in at 226–239.
+  - The blend was expected at 300–400; it came in at 265–404, with ERCOT below.
+  - Pre-committed interpretation: engines and turbines exceed every long-run comparator (held). SOFC and CC tie the all-gas new build (held) and exceed the renewable-heavy comparators. This held, except PJM recent additions (SOFC 1.16×, tie). SOFC also 'ties' PJM planned additions at 1.99×, but only as an artifact: the range runs down to about 1 kg (PJM's under-construction pipeline is all renewables), which makes the band ±99.6%.

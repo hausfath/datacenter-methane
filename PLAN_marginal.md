@@ -191,4 +191,34 @@ New grid H-class NGCC: 455 kg CO2e/MWh at L = 2.3% (`grid_ngcc()`), with 3% loss
   - Tool 07 OM-only weighting for consumption: one sentence, flagged as from a Verra draft, unverified in TOOL07 itself.
 
 ## Change log
-(empty)
+- **2026-10-26, D1a.** On the earlier 2023 CEMS aggregate (combustion CO2 only, before any CO2e or 2024–25 result was seen), the pre-registered lag test peaks at +1 h for ERCOT in June–October and at −1 h in November–December. PJM peaks at 0 all year.
+  - Comparing CEMS gross load with EIA-930 fossil generation (the same physical quantity) shows ERCOT aligned at lag 0 in every month. Of 18 large BAs checked, every one except PJM aligns at 0, with correlations of 0.95–0.99.
+  - So ERCOT's summer offset is physical: solar shifts the net-load ramp relative to demand. It is not a timestamp error.
+  - Added a timestamp check: CEMS gross load vs EIA-930 demand, excluding June–August. The pre-registered test is still reported.
+- **2026-10-26, PJM.** PJM's EIA-930 fuel-mix columns are offset by 1 h relative to CEMS in 2019, 2023 and 2024, but not in 2025. PJM demand is aligned with CEMS at lag 0 (correlation 0.92–0.93 in every season).
+  - The primary spec uses demand and is unaffected.
+  - The PJM wind/solar controls (R2) are shifted by the detected lag, and the lag is recorded in diagnostics.json.
+- **2026-10-26, cleaning.** The CEMS "unit count departs from the day's mode" rule was replaced by a 5×MAD screen on CEMS CO2 against its rolling 24-hour median. The count of operating units changes with dispatch, so the original rule would have removed real responses.
+- **2026-10-26, CEMS fuel and mapping.**
+  - Fuel is classified per unit-hour by the CO2/heat-input ratio (multi-fuel labels such as "Coal, Natural Gas").
+  - EIA-860M is the plant→BA fallback.
+  - Remaining unmapped plants are assigned by EIA-860M lookup: TX→ERCO, LA→MISO, MD/OH→PJM.
+  - Part 75 data contain no reciprocating engines, so CEMS slip assignment for IC units never triggers.
+- **2026-10-26, Cambium US weights.** County population is the Census 2024 estimate, not Census 2020.
+- **2026-10-26, data gaps (Zeke: "validate on what we have").** EPA's DEMO_KEY hit its rate limit.
+  - The Holland reproduction (D1b) uses January–September 2019, not the full year.
+  - The AVERT check (D1c) uses the earlier 2023 aggregate. That aggregate classifies fuel by the primary-fuel label, which does not affect CO2 or gross load.
+  - 2024 is not computed.
+  - D1b passed: Texas 484 vs 492, Eastern 614 vs 638.
+  - D1c fossil-load passed: ERCOT −7.7%, PJM +8.5%.
+  - D1c demand spec vs AVERT came in at ERCOT −23.5%, PJM −6.7% and US −18.8%. Two of the three are outside the pre-registered 5–15%-below expectation.
+- **2026-10-26, D1e failure and the rule adopted (written before regenerating any output).** The pre-registered 2025 primary (levels, demand, no renewables controls, joint PJM boundary) fails D1e in two regions:
+  - ERCOT fossil share is 0.55. Every uncontrolled demand spec there gives 0.33–0.57, except the daily spec at 0.71. Every spec with wind and solar controls passes (0.77–0.96). This is the solar/demand weather confounding that the methods review predicted (MF2). The 2019 Holland pass does not carry over, because ERCOT had little solar in 2019.
+  - PJM: the joint Graff Zivin boundary gives a fossil share of 1.24 (1.06 with controls), which is not physical. PJM's own boundary passes (0.93).
+  - **Rule:**
+    - (1) Adopt MF2 uniformly: wind and solar controls become the primary R2 setting in all three regions. The estimator stays levels and the regressor stays demand, as pre-registered.
+    - (2) If the primary boundary still fails D1e, fall back to the alternative boundary. That applies to PJM, where the own boundary is used. Own-CEMS understates PJM's response, because part of a demand change is met by changing exports, so this choice biases the grid number low, in off-grid gas's disfavor.
+    - (3) The figure's envelope uses only D1e-passing specifications, including the fossil-load (R4) variants.
+    - (4) The bootstrap CI is computed on the new primary spec.
+  - The uncontrolled values and the median of passing specs are reported alongside.
+  - ERCOT's result came in below the pre-registered 650–780 expectation. Law-firm alerts (Beveridge & Diamond; Jackson Walker) report that EPA finalized a partial repeal of the 2024 rule on 2026-09-17, effective 2026-11-16, and proposed a full repeal. Not checked in the Federal Register.

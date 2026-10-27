@@ -1,0 +1,22 @@
+region,metric,label,horizon,central,lo,hi,note,ci05,ci95
+ERCOT,average,Grid average (as in the post),today,420.9041349721966,,,"eGRID2023, 3% losses",,
+ERCOT,srmer,Short-run marginal (today's grid),short,537.6329269537802,500.6451881708532,690.038884342714,"2025 CEMS + EIA-930, levels + FE, 6% marginal losses; bar = specification envelope",420.19459401659606,631.9029685093846
+ERCOT,cambium,Long-run marginal (NREL Cambium 2024),long,173.92363441963144,140.09434773628362,175.46842289496544,"ERCOT, High Demand Growth, 2027-2046 levelized 3%; bar = 8 scenarios; pre-OBBBA",,
+ERCOT,blend,"Blend: 5 years short-run, then long-run",blend,264.85095755316866,228.48002829975377,301.2218868065835,Gagnon & O'Shaughnessy 2024; w = 0.25 (0.15-0.35),,
+ERCOT,planned,Planned additions 2026-30 (average),long,238.94169202420693,144.00206914282234,238.94169202420693,"EIA-860M Sep 2026; central = all statuses, bar to under-construction only",,
+ERCOT,recent,Recent additions (average),long,27.412662593306734,22.873068194456543,27.412662593306734,Tool 07 20% sample; bar to 2020-24 window,,
+ERCOT,ngcc,New gas plant on the grid,long,455.47287483291973,,,"H-class NGCC, 3% losses",,
+PJM,average,Grid average (as in the post),today,407.80592292432505,,,"eGRID2023, 3% losses",,
+PJM,srmer,Short-run marginal (today's grid),short,768.3980810554174,611.5930676374909,856.2126975793761,"2025 CEMS + EIA-930, levels + FE, 6% marginal losses; bar = specification envelope",729.1079503660036,784.7005107183797
+PJM,cambium,Long-run marginal (NREL Cambium 2024),long,282.6818655950027,199.5666094423472,305.7111240740669,"PJM_East, High Demand Growth, 2027-2046 levelized 3%; bar = 8 scenarios; pre-OBBBA",,
+PJM,blend,"Blend: 5 years short-run, then long-run",blend,404.1109194601064,355.5392979140649,452.6825410061478,Gagnon & O'Shaughnessy 2024; w = 0.25 (0.15-0.35),,
+PJM,planned,Planned additions 2026-30 (average),long,231.2114838959343,0.9766806732568848,231.2114838959343,"EIA-860M Sep 2026; central = all statuses, bar to under-construction only",,
+PJM,recent,Recent additions (average),long,397.4572567115485,331.49573535581726,397.4572567115485,Tool 07 20% sample; bar to 2020-24 window,,
+PJM,ngcc,New gas plant on the grid,long,455.47287483291973,,,"H-class NGCC, 3% losses",,
+US,average,Grid average (as in the post),today,431.9035303429731,,,"eGRID2023, 3% losses",,
+US,srmer,Short-run marginal (today's grid),short,658.774658203125,513.9871215820312,820.7476985848982,"2025 CEMS + EIA-930, levels + FE, 6% marginal losses; bar = specification envelope",632.3527574721134,668.9572539386984
+US,cambium,Long-run marginal (NREL Cambium 2024),long,210.13390360330737,165.650404107399,236.73327703963335,"US (pop-weighted), High Demand Growth, 2027-2046 levelized 3%; bar = 8 scenarios; pre-OBBBA",,
+US,blend,"Blend: 5 years short-run, then long-run",blend,322.2940922532618,277.43001679328,367.15816771324353,Gagnon & O'Shaughnessy 2024; w = 0.25 (0.15-0.35),,
+US,planned,Planned additions 2026-30 (average),long,226.0020182858391,122.61878128322309,226.0020182858391,"EIA-860M Sep 2026; central = all statuses, bar to under-construction only",,
+US,recent,Recent additions (average),long,210.2785883062101,133.22207758608295,210.2785883062101,Tool 07 20% sample; bar to 2020-24 window,,
+US,ngcc,New gas plant on the grid,long,455.47287483291973,,,"H-class NGCC, 3% losses",,
