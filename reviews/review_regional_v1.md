@@ -25,15 +25,15 @@ The tie-band reuse is not acceptable for coal-heavy or high-L regions, and re-ru
 ## MUST-FIX (before any regional run)
 
 ### M1. Crusoe Goodnight is not in ERCOT; the Panhandle is missing as a region
-- Cleanview lists "Crusoe Goodnight Campus, Crusoe / Google, Armstrong County, TX, ~933 MW" [OPENED, `sources/lit_scan/cleanview_btm.html`].
+- Cleanview lists the Crusoe Goodnight campus in Armstrong County, TX [quoted Cleanview detail removed at Cleanview's request].
 - The Cambium 2024 County Mapping sheet maps Armstrong County, TX to ReEDS BA p48, GEA **SPP_South** [OPENED, `data/cambium/Cambium24_Workbook.xlsx`].
 - eGRID2023 places the neighbouring Panhandle plants (Harrington and Nichols in Potter County) in **BA SWPP / subregion SPSO** [OPENED, `egrid2023_data_rev2.xlsx` PLNT23].
-- The same Cleanview table lists Fermi America Project Matador (Amarillo, TX, "up to 17 GW", first 2 GW "100% natural gas") [OPENED]. That is the largest single BTM project in the tracker, and it is also in SPP.
+- Cleanview also lists Fermi America's Project Matador near Amarillo, TX [quoted Cleanview detail removed at Cleanview's request]. It is the largest single BTM project in the tracker, and it is also in SPP.
 - Gas supply in the Panhandle is plausibly Anadarko or Permian, not the Permian alone [MEMORY]. BASINS.md gives Anadarko 1.7% (1.4–2.1%) [BASINS.md, VERIFIED-FULLTEXT].
 - **Fix.** Remove Goodnight from the West Texas row. Either add a "Texas Panhandle (SPP / SPSO)" region with an Anadarko–Permian pairing, or state explicitly that the Panhandle is excluded and why. The plan claims to cover "every region where BTM data centers are actually being built", and as written it omits the largest project.
 
 ### M2. Southaven / Colossus 2: the plan's MISO assignment is contested by the data
-- Cleanview: "Colossus 1 & 2 xAI Memphis, TN and Southaven, MS ~1.5 GW", and "Colossus 2's behind-the-meter power at the site of the old Southaven Power Plant" [OPENED].
+- Cleanview places xAI's Colossus 1 and 2 in Memphis, TN and Southaven, MS, with Colossus 2's behind-the-meter power at the old Southaven Power Plant site [quoted Cleanview detail removed at Cleanview's request].
 - eGRID2023: "Southaven Combined Cycle Plant", DeSoto County MS, is **BA TVA / SR SRTV** [OPENED, PLNT23].
 - Cambium maps DeSoto County to MISO_South [OPENED]. The county is therefore split between service territories in at least one dataset.
 - The relevant counterfactual grid is the one that would serve the **load**, not the turbines. Colossus 2's data hall is in Memphis (Tulane Road area, MLGW/TVA) [MEMORY, verify]. If so, both xAI sites are TVA cases and the MISO row is a mis-assignment.
@@ -101,7 +101,7 @@ Open Grid Emissions (Singularity) and the Stanford gridemissions dataset (de Cha
 - **Fix.** Make the Utah central a Rockies supply mix, or use Greater Green River (5.2%) as the BTM-favourable central, with Uinta 6.5–8% as high. Note that the Rockies alternatives are also high-L: GGR 5.2% (low confidence, 44% coverage) and Piceance 7.9% [BASINS.md, MacKay]. The practical change in L is therefore only about 1–1.5 points. The rule inconsistency is the bigger problem.
 
 ### M5. Wyoming basin pairing: DJ alone is the most BTM-favourable option on the table and should be labelled as such
-- Cleanview: "Project Jade, Crusoe / Tallgrass, Laramie County, WY 2.7 GW", "900 MW of Bloom ... alongside approximately 1.8 GW of natural gas turbines", "recently approved for up to 10 GW" [OPENED].
+- Cleanview lists Crusoe/Tallgrass Project Jade in Laramie County, WY, combining Bloom fuel cells and gas turbines [quoted Cleanview detail removed at Cleanview's request].
 - Tallgrass operates or owns stakes in Rockies Express and other pipelines out of the Cheyenne Hub. That hub aggregates Greater Green River, Piceance, Powder River, Wind River and DJ gas [MEMORY].
 - The likely physical supply is therefore a Rockies mix, not DJ alone. The candidate basins:
   - DJ 1.2% [BASINS.md].
@@ -297,7 +297,7 @@ The flat 3% transmission-only loss on the grid side, against 1% for BTM, is adeq
 ## Verification log
 - [OPENED] eGRID2023 rev2 PLNT23: plant BA and subregion for Laramie, Platte, Campbell, Converse (WY); Millard, Emery, Juab (UT); DeSoto (MS); Shelby (TN); Doña Ana (NM); El Paso, Taylor, Shackelford, Potter, Randall (TX). BA-by-subregion decomposition for WACM, PACE, TVA, EPE, PNM, MISO, ERCO, PJM, and BA composition of SRTV, RMPA, NWPP, AZNM, MROW, SRMV. The plant-sum CO2e/generation reproduces the BA rates in `grid_inputs.json` (854, 644, 292, 459, 179, 448, 334, 326). Script: `/private/tmp/claude-501/-Users-hausfath-Desktop-Climate-Science-The-Climate-Brink/b6426cdf-39dc-4a8b-80be-b965c2c3cd9b/scratchpad/ba_sr.py`.
 - [OPENED] Cambium24_Workbook.xlsx: GEA list (18), County Mapping rows for 13 site counties.
-- [OPENED] Cleanview page: project counties, Tallgrass partnership, Joule 4 GW and 12 GW, Jade up to 10 GW, Southaven site, Fermi Matador, NM HB93.
+- [OPENED] Cleanview page: project counties and sites [quoted Cleanview detail removed at Cleanview's request].
 - [OPENED] EIA-930 about page: consumption (load) CO2 intensity via MRIO. Its footnote reference was not opened.
 - [BASINS.md] All basin L values and the MacKay boe shares. I did not re-open the primary papers; the tags are the subagent's.
 - [MEMORY, unverified] Colossus 2 load location; pipeline geography (Kern River, REX, Cheyenne Hub, EPNG/Waha); Tallgrass CCS; EPE's Palo Verde share; PRB vs underground CMM magnitudes; EIA-923 and GHGI annex data fields; coal retirement dates and DOE 202(c) orders; NM ETA targets; Alvarez segment split; NETL coal supply-chain CO2; site altitudes; Open Grid Emissions / gridemissions coverage.

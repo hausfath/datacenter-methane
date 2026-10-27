@@ -101,8 +101,7 @@ CO2 / slip / upstream CH4, by case, with grid reference lines; GWP20 as a second
 - Lit scan (`sources/lit_scan/FINDINGS.md`): latest eGRID is still eGRID2023 rev2. The US total output rate is 770.9 lb CO2e/MWh (≈350 kg) and ERCT is 736.6
   (≈334 kg); non-baseload rates are 1,379 and 1,248 lb. EIA Table 8.2 gives 2025 tested heat rates of CC 7,535, GT 10,975 and IC 8,853 Btu/kWh.
   An IC engine therefore emits ≈470 kg CO2/MWh from combustion alone, which already exceeds the eGRID US and ERCT averages before any methane. For
-  context, Cleanview's tracker lists 59 BTM projects totalling about 90 GW, with 2 GW operating; equipment is Caterpillar 33%, GE Vernova 32%,
-  Bloom 14% and Jenbacher 11%.
+  context, Cleanview's tracker lists about 90 GW of planned BTM capacity, with 2 GW operating. [Equipment-by-manufacturer detail removed at Cleanview's request.]
 - Cambium 2024 workbook (downloaded to `data/cambium/`) has levelized LRMER, combustion and precombustion, by GEA region and for 8 scenarios. **Caveat:**
   its policy assumptions date from Aug 2024, with the IRA intact. The 2025 law changes (OBBBA credit phase-outs) are not in it, so its post-2027
   marginal rates are probably too low, which flatters the grid. NREL also says not to use it for near-term (2020s) conditions. Options: the 2025

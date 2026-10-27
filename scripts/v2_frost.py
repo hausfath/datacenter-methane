@@ -58,6 +58,6 @@ res = dict(
     implied_annual_rate_if_18_months_Mt=round(380 / 1.5, 0),
     residual_upstream_plus_facility_pct_by_recip_share=dict(recip_share=[round(r, 1) for r in recip_share], **surface),
     note='Residual = share of produced CH4 lost before the engine implied once fleet slip is removed; Irzak states 4% '
-         'wellhead + gathering for the Permian. Cleanview identified equipment is ~34% recips, ~46% simple-cycle turbines, ~14% fuel cells (data/cleanview_shares.json).')
+         'wellhead + gathering for the Permian. Cleanview identified equipment is ~34% recips, ~46% simple-cycle turbines, ~14% fuel cells (data/planned_technology_shares.json).')
 print(json.dumps(res, indent=1))
 json.dump(res, open(OUT / 'v2_frost.json', 'w'), indent=1)

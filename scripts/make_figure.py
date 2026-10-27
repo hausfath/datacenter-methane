@@ -1,6 +1,6 @@
 """Main 16:9 figure: life-cycle kg CO2e per MWh delivered, off-grid gas options vs grid, at matched L = 2.3%, GWP100.
 
-All displayed numbers are computed from results/cases.csv, results/decision_table.csv and data/cleanview_shares.json.
+All displayed numbers are computed from results/cases.csv, results/decision_table.csv and data/planned_technology_shares.json.
 The small rich-burn genset case (one project, Meta El Paso) stays in cases.csv and METHODS but is not drawn.
 """
 import json
@@ -29,13 +29,8 @@ for d in (c100, c20):
 
 btm = c100[(c100.kind == 'BTM') & (c100.name != 'Small rich-burn gensets')].sort_values('total', ascending=True)
 
-# share of identified planned BTM capacity by technology, derived from Cleanview's OEM shares
-cv = json.load(open(ROOT / 'data/cleanview_shares.json'))
-mw = cv['oem_mw']
-base = mw['Caterpillar'] / cv['caterpillar_share']
-SHARE = {'Recip engines (lean-burn)': (mw['Caterpillar'] - cv['solar_turbines_mw'] + mw['INNIO Jenbacher']) / base,
-         'Simple-cycle turbines': (mw['GE Vernova'] + cv['solar_turbines_mw'] + mw['ProEnergy']) / base,
-         'Fuel cells (Bloom SOFC)': mw['Bloom'] / base}
+# share of identified planned BTM capacity by technology (our grouping of Cleanview's equipment data; data file notes)
+SHARE = {k: v for k, v in json.load(open(ROOT / 'data/planned_technology_shares.json'))['technology_share'].items() if v > 0}
 grid_names = ['US grid average', 'PJM grid average', 'ERCOT grid average', 'New grid NGCC']
 grid = c100[c100.kind != 'BTM'].set_index('name').loc[grid_names].reset_index()
 LABEL = {'Recip engines (lean-burn)': 'Reciprocating engines (lean-burn)',

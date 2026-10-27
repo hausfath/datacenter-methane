@@ -1,0 +1,11 @@
+{
+ "source": "Cleanview, 'Bypassing the Grid' (2026). Cleanview reports identified behind-the-meter equipment by manufacturer; those figures are not redistributed here at Cleanview's request.",
+ "basis": "Share of the ~27 GW of planned off-grid data-center capacity with identified equipment, grouped into technologies by us (Caterpillar recips and Jenbacher as engines; GE Vernova, Solar Turbines and ProEnergy as simple-cycle turbines; Bloom as fuel cells). About 6% is unattributed.",
+ "technology_share": {
+  "Recip engines (lean-burn)": 0.335,
+  "Simple-cycle turbines": 0.462,
+  "Fuel cells (Bloom SOFC)": 0.144,
+  "Combined cycle (on site)": 0.0
+ },
+ "combined_cycle_note": "Cleanview found almost no on-site heavy-duty (combined-cycle) turbines planned."
+}
