@@ -1,0 +1,9 @@
+reference,observed,levelized_inflation_only,levelized_gas_indexed
+"PJM wholesale + transmission, 2025 (IMM total price)",82.7,101.6,107.4
+"PJM same, capacity at 2026/27 BRA, 80% LF",86.7,106.6,112.3
+"ERCOT wholesale all-in, 2025 (IMM: 2024 $34 x 1.138)",38.7,47.6,52.1
+"EIA industrial retail, Jan-Aug 2026: US",90.9,109.3,
+"EIA industrial retail, Jan-Aug 2026: Texas",67.7,81.4,
+"EIA industrial retail, Jan-Aug 2026: Virginia",100.7,121.0,
+"EIA industrial retail, Jan-Aug 2026: Ohio",102.3,123.0,
+"EIA industrial retail, Jan-Aug 2026: Pennsylvania",108.2,130.1,

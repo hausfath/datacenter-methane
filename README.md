@@ -4,6 +4,8 @@ Code and data for a [Climate Brink](https://www.theclimatebrink.com/) analysis o
 
 ![Off-grid gas vs the grid](figures/offgrid_gas_vs_grid.png)
 
+Companion cost estimate: [what off-grid gas power costs a data center](https://hausfath.github.io/datacenter-methane/costs/) (levelized $/MWh at current equipment prices vs PJM and Texas grid supply; details in [COSTS.md](COSTS.md)).
+
 ## Main results (100-year GWP, 2.3% upstream methane leakage on both sides)
 - Reciprocating engines (about 736 kg CO2e/MWh) and simple-cycle turbines (about 705) emit 63–80% more than the 2023 ERCOT, PJM and US grid averages (408–432). They are already 31–63% higher on CO2 alone, because they burn more gas per MWh. Methane (upstream leaks plus engine slip) adds 70–190 kg/MWh to the gap.
 - Fuel cells (Bloom) and on-site combined cycle come in 7–17% above the grid averages and level with a new grid combined-cycle plant (455).
@@ -27,6 +29,13 @@ How much each region's result moves across its basin's measured leak range is sh
 Several readers argued that the grid side should use a marginal emission rate instead of the average. This section tests both short-run and long-run versions. A short write-up is in [MARGINAL_EMISSIONS.md](MARGINAL_EMISSIONS.md); details are in `PLAN_marginal.md` (reviewed and pre-registered) and METHODS § Marginal emission factors.
 
 ![Marginal vs average](figures/marginal_vs_average.png)
+
+## What off-grid gas costs (quick estimate, added 30 Oct 2026)
+**Shareable page: [hausfath.github.io/datacenter-methane/costs](https://hausfath.github.io/datacenter-methane/costs/)**
+
+This is a levelized cost estimate in nominal $/MWh delivered over 20 years, not pre-registered. It covers engines, turbines, SOFC and on-site CC, each as a bare plant and as a redundant islanded system, at current order-book capex (Brattle/S&L 2026, ~$3,000/kW for engines and aeroderivatives). It compares them with PJM and ERCOT grid supply.
+
+At a 300 MW site the system cost is about $126/MWh for engines, $150 for turbines and $162 for fuel cells. Engines are 12–17% above delivered PJM wholesale power on a like-for-like levelized basis, and turbines 33–40% above it. In Texas, off-grid gas is 1.5–1.8× the average industrial retail price. Inputs, the Lazard 2026 reproduction check and caveats are in [COSTS.md](COSTS.md).
 
 - **Short-run marginal rate (today's grid).** EPA CEMS hourly emissions regressed on EIA-930 demand for 2025, with wind and solar controls. The method follows Holland et al. 2022, whose 2019 Texas and Eastern values it reproduces within 3%.
   - Results: ERCOT 538, PJM 768, US 659 kg CO2e/MWh (6% marginal losses, upstream methane added).
@@ -63,6 +72,8 @@ python3.13 v3_fair_metrics.py    # FaIR pulse check vs AR6 metrics
 python3.13 fair_fleet.py         # FaIR fleet-scale runs (~5 min)
 python3.13 make_figure.py        # figures/offgrid_gas_vs_grid.png
 python3.13 slip_sensitivity.py   # recip slip at 2.8% (W-7) / 4 / 6 / 12% -> results/slip_sensitivity.csv
+python3.13 costs.py              # levelized cost vs grid -> results/costs/ (COSTS.md)
+python3.13 make_costs_page.py    # docs/costs/index.html (GitHub Pages) from results/costs/
 
 # regional sensitivity (PLAN_regional.md)
 python3.13 eia930_intensity.py   # streams EIA-930 per-BA workbooks -> data/eia930_intensity.json (~10 min, deletes raw)
@@ -97,6 +108,8 @@ Requirements: Python 3.13, numpy, pandas, scipy, matplotlib, openpyxl, and fair=
 | Basin leak rates (MacKay et al. 2026, Varon et al. 2026, Sherwin et al. 2024, others) | values cited in `data/basin_leak_rates.json`; papers not redistributed |
 | EPA CAMPD (CEMS) hourly emissions; EIA-860M, EIA-923, EIA-930 | US government works, public domain |
 | US Census county population estimates (2024) | public domain |
+| EIA AEO2025 / AEO2026 Table 13 (`data/costs/`), AEO2026 EMM assumptions, STEO, Electric Power Monthly | US government works, public domain |
+| Cost inputs from Lazard LCOE+ 2026, Brattle/S&L ERCOT CONE (2026), PJM and ERCOT market monitors, Solaris Q2 2026, NRG market update | values cited with quotes in `COSTS.md`; documents not redistributed |
 | [Cleanview behind-the-meter report (2026)](https://cleanview.co/reports/behind-the-meter-data-centers) | only our derived technology shares are included (`data/planned_technology_shares.json`); Cleanview's manufacturer figures and report text are not redistributed |
 
 Vendor data sheets (Caterpillar, GE Vernova, Solar Turbines, Bloom, Generac, Wärtsilä, INNIO), papers and web pages are cited, not redistributed. `sources/` holds our research notes (`FINDINGS.md`, `FINDINGS2.md`, `BASINS.md`), with quotes and URLs for every value used. The plans, reviews and notes sometimes cite local copies of pages under `sources/`. Those copies are not in this repository; use the URLs given alongside them.

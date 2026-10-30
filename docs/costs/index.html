@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Levelized cost of islanded gas power for US data centers at current equipment prices, compared with PJM and Texas grid supply.">
+<style>body{margin:0}</style>
+<title>Off-Grid Gas Power Costs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: one reading column (~44rem) for a research brief; figures and tables may run wider (56rem) inside their own scroll boxes. */
+:root {
+  --bg: #f4f6f8; --surface: #fcfcfd; --ink: #0f141a; --ink-2: #47515d; --muted: #7d8692;
+  --rule: #dfe3e8; --axis: #bfc6ce; --accent: #1c5cab; --band: rgba(28,92,171,0.09);
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+  --down: #2a78d6; --up: #e34948;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1114; --surface: #161a1e; --ink: #edf0f3; --ink-2: #bfc6ce; --muted: #8a939d;
+    --rule: #2a3037; --axis: #3b434c; --accent: #6da7ec; --band: rgba(109,167,236,0.12);
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --down: #3987e5; --up: #e66767;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1114; --surface: #161a1e; --ink: #edf0f3; --ink-2: #bfc6ce; --muted: #8a939d;
+  --rule: #2a3037; --axis: #3b434c; --accent: #6da7ec; --band: rgba(109,167,236,0.12);
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --down: #3987e5; --up: #e66767;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; }
+.wrap { max-width: 56rem; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 64px; display: grid; gap: 48px; }
+.col { max-width: 44rem; }
+header { display: grid; gap: 14px; }
+.eyebrow { font-family: var(--display); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 15px; color: var(--accent); }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(36px, 6vw, 54px); line-height: 1.02; margin: 0; text-wrap: balance; letter-spacing: -0.005em; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 28px; line-height: 1.1; margin: 0; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 600; font-size: 20px; margin: 0; letter-spacing: 0.01em; }
+p { margin: 0; }
+.lede { font-size: 19px; color: var(--ink-2); max-width: 44rem; }
+.lede strong { color: var(--ink); }
+section { display: grid; gap: 16px; }
+section > p, section > ul { max-width: 44rem; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+.figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.fig { background: var(--surface); padding: 16px 18px; display: grid; gap: 2px; align-content: start; }
+.fig .k { font-size: 14px; color: var(--ink-2); }
+.fig .v { font-family: var(--display); font-weight: 600; font-size: 38px; line-height: 1.05; }
+.fig .v small { font-family: var(--body); font-size: 14px; font-weight: 400; color: var(--muted); margin-left: 3px; }
+.fig .n { font-size: 13px; color: var(--muted); }
+.fig.ref .v { color: var(--ink-2); }
+@media (max-width: 640px) { .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 20px; display: grid; gap: 14px; min-width: 0; }
+.panel-head { display: grid; gap: 4px; }
+.panel-head p { color: var(--ink-2); font-size: 15px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.sw.line { width: 16px; height: 0; border-top: 2px solid var(--ink-2); border-radius: 0; }
+.sw.band { background: var(--band); border: 1px solid var(--axis); }
+.sw.whisk { width: 16px; height: 8px; border-left: 1.5px solid var(--ink); border-right: 1.5px solid var(--ink); background: linear-gradient(var(--ink), var(--ink)) center/100% 1.5px no-repeat; border-radius: 0; }
+.sw.tick { width: 3px; height: 14px; background: var(--ink); border-radius: 1px; }
+.scroll { overflow-x: auto; min-width: 0; }
+svg text { font-family: var(--body); }
+.note { font-size: 14px; color: var(--muted); }
+
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+thead th { font-size: 13px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--axis); vertical-align: bottom; }
+tbody th { font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.strong { font-weight: 700; }
+td.src { color: var(--ink-2); font-size: 14px; min-width: 16rem; }
+.sub { display: block; font-size: 12.5px; color: var(--muted); font-weight: 400; }
+.tbl { min-width: 0; overflow-x: auto; }
+.tbl table { min-width: 34rem; }
+.tbl.wide table { min-width: 38rem; }
+tr.srcrow td { color: var(--ink-2); font-size: 14px; padding-top: 0; }
+tr.main th, tr.main td { border-bottom: 0; padding-bottom: 4px; }
+
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 760px) { .two { grid-template-columns: 1fr; } }
+
+.kv { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 10px 20px; font-size: 15.5px; }
+.kv dt { font-weight: 600; }
+.kv dd { margin: 0; color: var(--ink-2); }
+@media (max-width: 560px) { .kv { grid-template-columns: 1fr; gap: 2px 0; } .kv dd { margin-bottom: 10px; } }
+
+.callout { border-left: 3px solid var(--s2); padding: 4px 0 4px 16px; display: grid; gap: 6px; max-width: 44rem; }
+ul.caveats { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
+ul.caveats li::marker { color: var(--muted); }
+.flag { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); border: 1px solid var(--axis); border-radius: 3px; padding: 0 5px; margin-right: 4px; white-space: nowrap; }
+ol.sources { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 15px; color: var(--ink-2); }
+footer { font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; max-width: 44rem; }
+
+#tip { position: fixed; pointer-events: none; z-index: 20; background: var(--surface); color: var(--ink); border: 1px solid var(--axis); border-radius: 5px; padding: 8px 10px; font-size: 13.5px; line-height: 1.4; box-shadow: 0 4px 14px rgba(0,0,0,0.12); max-width: 16rem; font-variant-numeric: tabular-nums; }
+#tip b { font-weight: 700; }
+.hit { cursor: default; }
+@media (prefers-reduced-motion: no-preference) { .seg { transition: opacity 120ms; } }
+.dim .seg { opacity: 0.35; }
+.dim .seg.on { opacity: 1; }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Data-center power · quick estimate · 30 Oct 2026</div>
+    <h1>What does off-grid gas power cost a data center?</h1>
+    <p class="lede">At a 300 MW islanded site, with enough spare units for four-nines reliability and today’s equipment prices, gas power costs about <strong>$126/MWh from engines</strong> and <strong>$150/MWh from turbines</strong>, averaged over 20 years. That is 12–17% above delivered PJM wholesale power for engines and 33–40% for turbines. In Texas it is 1.5–1.8× the average industrial retail price.</p>
+  </header>
+
+  <div class="figs" role="list">
+    <div class="fig" role="listitem"><span class="k">Engines, islanded</span><span class="v">$126<small>/MWh</small></span><span class="n">capex range 114–137</span></div>
+    <div class="fig" role="listitem"><span class="k">Turbines, islanded</span><span class="v">$150<small>/MWh</small></span><span class="n">capex range 130–165</span></div>
+    <div class="fig" role="listitem"><span class="k">Fuel cells, islanded</span><span class="v">$162<small>/MWh</small></span><span class="n">$132 with the 30% ITC</span></div>
+    <div class="fig ref" role="listitem"><span class="k">Grid, same basis</span><span class="v">$107–112</span><span class="n">PJM wholesale + transmission; Texas retail $81</span></div>
+  </div>
+
+  <section>
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Levelized cost at a 300 MW islanded site</h2>
+        <p>Nominal $/MWh delivered, flat over 20 years from a 2027 start. Bars include spare units (N+k); the tick marks the same plant with no spares. Hover a segment for its value.</p>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <span><i class="sw" style="background:var(--s1)"></i>Capital</span>
+        <span><i class="sw" style="background:var(--s2)"></i>Fixed O&amp;M</span>
+        <span><i class="sw" style="background:var(--s3)"></i>Variable O&amp;M</span>
+        <span><i class="sw" style="background:var(--s4)"></i>Fuel</span>
+        <span><i class="sw whisk"></i>Capex low–high</span>
+        <span><i class="sw tick"></i>No spares</span>
+        <span><i class="sw band"></i>Grid reference</span>
+      </div>
+      <div class="scroll"><svg id="chart" role="img" aria-labelledby="chart-desc" style="display:block;width:100%;min-width:560px;height:auto"></svg></div>
+      <p id="chart-desc" class="note">Engines 126 (capex range 114–137), turbines 150 (130–165), fuel cells 162, on-site combined cycle 90 as a bare plant. Grid references: ERCOT wholesale all-in 52, Texas industrial retail 81, PJM wholesale plus transmission 107–112. Combined cycle is shown without spares because islanding 250 MW blocks to four nines would take three times the capacity ($193/MWh), and nobody builds it that way.</p>
+      <div class="tbl">
+        <table>
+          <caption class="note" style="text-align:left;caption-side:top;padding-bottom:6px">Same numbers as a table ($/MWh)</caption>
+          <thead><tr><th>Technology</th><th class="num">Capital</th><th class="num">Fixed O&amp;M</th><th class="num">Var. O&amp;M</th><th class="num">Fuel</th><th class="num">Total</th><th class="num">Capex low–high</th><th class="num">No spares</th></tr></thead>
+          <tbody><tr><th scope="row">Reciprocating engines</th><td class="num">66</td><td class="num">9</td><td class="num">8</td><td class="num">43</td><td class="num strong">126</td><td class="num">114–137</td><td class="num">114</td></tr><tr><th scope="row">Simple-cycle turbines</th><td class="num">90</td><td class="num">3</td><td class="num">7</td><td class="num">50</td><td class="num strong">150</td><td class="num">130–165</td><td class="num">117</td></tr><tr><th scope="row">Solid oxide fuel cells</th><td class="num">121</td><td class="num">7</td><td class="num">1</td><td class="num">33</td><td class="num strong">162</td><td class="num">104–221</td><td class="num">155</td></tr><tr><th scope="row">On-site combined cycle (bare plant)</th><td class="num">48</td><td class="num">3</td><td class="num">5</td><td class="num">34</td><td class="num strong">90</td><td class="num">84–94</td><td class="num">90</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Compared with buying from the grid</h2>
+    <p>Grid prices are observed values from 2025 (retail from Jan–Aug 2026), carried to 2027 at inflation and then levelized on the same 20-year basis. In the last column the energy part of the price follows the same gas path as the off-grid plants, which makes it the fairer comparison.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Reference</th><th class="num">Observed</th><th class="num">Levelized, inflation only</th><th class="num">Levelized, energy tracks gas</th></tr></thead>
+        <tbody><tr><th scope="row">PJM wholesale + transmission (2025 IMM total)</th><td class="num">82.7</td><td class="num">102</td><td class="num">107</td></tr><tr><th scope="row">Same, capacity at 2026/27 auction price</th><td class="num">86.7</td><td class="num">107</td><td class="num">112</td></tr><tr><th scope="row">ERCOT wholesale all-in (excludes transmission)</th><td class="num">38.7</td><td class="num">48</td><td class="num">52</td></tr><tr><th scope="row">Industrial retail, Texas</th><td class="num">67.7</td><td class="num">81</td><td class="num">—</td></tr><tr><th scope="row">Industrial retail, US</th><td class="num">90.9</td><td class="num">109</td><td class="num">—</td></tr><tr><th scope="row">Industrial retail, Virginia</th><td class="num">100.7</td><td class="num">121</td><td class="num">—</td></tr><tr><th scope="row">Industrial retail, Ohio</th><td class="num">102.3</td><td class="num">123</td><td class="num">—</td></tr><tr><th scope="row">Industrial retail, Pennsylvania</th><td class="num">108.2</td><td class="num">130</td><td class="num">—</td></tr></tbody>
+      </table>
+    </div>
+    <p class="note">PJM’s capacity term assumes the site draws at peak during PJM’s summer peaks ($17.1/MWh; $13.7 if not). Its energy and transmission terms are system load-weighted averages, which overstate what a flat load pays, so the off-grid premiums over PJM are probably floors. ERCOT wholesale leaves out transmission and delivery charges that every large load pays, so Texas retail is the more realistic bound.</p>
+  </section>
+
+  <section>
+    <h2>What moves the number</h2>
+    <p>One input changed at a time from the 300 MW central case. Spare units and the plant’s write-off period matter most. Gas price paths and financing move the answer by about ±10%.</p>
+    <div class="two">
+      <div class="panel"><h3>Engines · central $126</h3><div class="scroll"><svg id="tor-Engines" role="img" aria-label="Sensitivity of engine cost to single input changes" style="display:block;width:100%;min-width:320px;height:auto"></svg></div></div>
+      <div class="panel"><h3>Turbines · central $150</h3><div class="scroll"><svg id="tor-Turbines" role="img" aria-label="Sensitivity of turbine cost to single input changes" style="display:block;width:100%;min-width:320px;height:auto"></svg></div></div>
+    </div>
+    <div class="legend"><span><i class="sw" style="background:var(--down)"></i>Lowers cost</span><span><i class="sw" style="background:var(--up)"></i>Raises cost</span></div>
+  </section>
+
+  <section>
+    <h2>Why spare capacity costs turbines more</h2>
+    <p>Each design gets the fewest units for which the chance that enough are available to carry peak load is at least 99.99%. Each unit is assumed to be available 95% of the time (engines and turbines), independently of the others. Small units need few spares, so 300 MW takes 82 engines for 69 needed (+19%). Turbines of 35 MW need many more: 14 for 9 (+56%). The premium shrinks as sites get bigger.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Islanded system, $/MWh</th><th class="num">100 MW</th><th class="num">300 MW</th><th class="num">1,000 MW</th></tr></thead>
+        <tbody><tr><th scope="row">Reciprocating engines<span class="sub">4.4 MW units</span></th><td class="num">133<span class="sub">30 units for 23</span></td><td class="num">126<span class="sub">82 units for 69</span></td><td class="num">122<span class="sub">255 units for 228</span></td></tr><tr><th scope="row">Simple-cycle turbines<span class="sub">35 MW units</span></th><td class="num">176<span class="sub">6 units for 3</span></td><td class="num">150<span class="sub">14 units for 9</span></td><td class="num">133<span class="sub">37 units for 29</span></td></tr><tr><th scope="row">Solid oxide fuel cells<span class="sub">0.3 MW units</span></th><td class="num">164<span class="sub">359 units for 334</span></td><td class="num">162<span class="sub">1054 units for 1000</span></td><td class="num">161<span class="sub">3478 units for 3334</span></td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Plants running today vs. ordered today</h2>
+    <div class="callout">
+      <p>The central case prices a plant ordered now. Most machines running at data centers today were bought in 2023–25, closer to the low end of the capex range: about $114 for engines and $130 for turbines.</p>
+      <p>Many sites lease bridge power rather than own it. The only public anchor we found is Solaris Energy Infrastructure’s Q2 2026 power segment: $158M of revenue on about 950 MW, or roughly $56/kW-month. With fuel bought by the customer, that is about <strong>$129/MWh</strong> in year 1. If the spare turbines are leased too, it is <strong>$182/MWh</strong>. This is a fleet revenue average, not a contract rate.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Assumptions</h2>
+    <p>Capex is 2026$ overnight and reflects current order-book prices. Brattle and Sargent &amp; Lundy’s draft ERCOT cost-of-new-entry study (Oct 2026) puts a large frame turbine at $1,853/kW, up 51% in 18 months. For the smaller frames, aeroderivatives and engines that data centers use, Brattle says “recent estimates for these approach or exceed $3,000/kW overnight costs.” EIA’s AEO2026 figures predate that rise and serve as the low case.</p>
+    <div class="tbl wide">
+      <table>
+        <thead><tr><th>Technology</th><th class="num">Capex $/kW</th><th class="num">Low–high</th><th class="num">Fixed O&amp;M $/kW-yr</th><th class="num">Var. O&amp;M $/MWh</th><th class="num">Heat rate MMBtu/MWh</th><th class="num">Unit MW</th></tr></thead>
+        <tbody><tr class="main"><th scope="row">Reciprocating engines</th><td class="num">3,000</td><td class="num">2,470–3,520</td><td class="num">43.7</td><td class="num">7.1</td><td class="num">8.40</td><td class="num">4.4</td></tr><tr class="srcrow"><td colspan="7">Central: Brattle, “approach or exceed $3,000/kW.” Low: EIA AEO2023 engine, $2,240 (2022$), pre-boom. High: AEO2026 aeroderivative × 1.51 escalation.</td></tr><tr class="main"><th scope="row">Simple-cycle turbines</th><td class="num">3,000</td><td class="num">2,330–3,520</td><td class="num">10.2</td><td class="num">6.1</td><td class="num">9.80</td><td class="num">35</td></tr><tr class="srcrow"><td colspan="7">Central: Brattle. Low: EIA AEO2026 aeroderivative, $2,275 (2025$). High: AEO2026 × 1.51, the frame-CT rise since the 2025 PJM study.</td></tr><tr class="main"><th scope="row">Solid oxide fuel cells</th><td class="num">5,700</td><td class="num">3,000–8,490</td><td class="num">38.7</td><td class="num">0.7</td><td class="num">6.40</td><td class="num">0.3</td></tr><tr class="srcrow"><td colspan="7">Central: AEP’s $4B, 702 MW Bloom plant for Google. High: EIA AEO2026 fuel cell. Low: ~$3,000 (unverified). Stack replacement of 15% of capex every 5 years is our assumption.</td></tr><tr class="main"><th scope="row">On-site combined cycle</th><td class="num">2,400</td><td class="num">2,100–2,600</td><td class="num">20.0</td><td class="num">4.0</td><td class="num">6.60</td><td class="num">250</td></tr><tr class="srcrow"><td colspan="7">Lazard 2026 range tops at $2,100; its CCGT market quotes are $2,400–2,600.</td></tr></tbody>
+      </table>
+    </div>
+    <dl class="kv">
+      <dt>Financing</dt><dd>Lazard 2026 structure: 60% debt at 8%, 40% equity at 12%. Combined tax 25.7%, giving an after-tax WACC of 8.4%. 15-year MACRS (20 for CC, 5 for fuel cells). O&amp;M escalates 2.25% a year.</dd>
+      <dt>Life and load</dt><dd>20-year life from a 2027 start. Load factor 0.80 (average/peak). Plants are sized to peak load. 1% on-site losses.</dd>
+      <dt>Gas price</dt><dd>Henry Hub follows the NYMEX strip for 2027–28, then blends into EIA’s AEO2025 Reference path by 2032. A $0.33/MMBtu delivery adder (EIA STEO power-sector cost minus Henry Hub) is added. Delivered gas runs from $3.33 in 2027 to $6.19 in 2040, and levelizes to <strong>$5.08/MMBtu</strong>. Alternatives: strip then inflation only $4.46; AEO2026 path $6.14; Permian (Waha) basis $3.99.</dd>
+      <dt>Heat rates</dt><dd>The same values as the emissions analysis, so cost and CO₂ describe the same machines.</dd>
+      <dt>Not included</dt><dd>Property tax and insurance (run as a sensitivity). Batteries for transient response (sensitivity). Grid interconnection costs and wait times. Resale value of bridge equipment.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Validation</h2>
+    <p>Run on Lazard’s own inputs, the cost model reproduces Lazard LCOE+ 2026 gas results within -5.7% to +3.5%. Lazard solves for an equity IRR, while we use a fixed charge rate, so the match is close but not exact.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Lazard 2026 row</th><th class="num">Published $/MWh</th><th class="num">Ours</th><th class="num">Error</th></tr></thead>
+        <tbody><tr><th scope="row">Gas peaking low</th><td class="num">144</td><td class="num">145.5</td><td class="num">+1.1%</td></tr><tr><th scope="row">Gas peaking high</th><td class="num">276</td><td class="num">285.6</td><td class="num">+3.5%</td></tr><tr><th scope="row">Gas CC low</th><td class="num">51</td><td class="num">48.1</td><td class="num">-5.7%</td></tr><tr><th scope="row">Gas CC high</th><td class="num">129</td><td class="num">131.8</td><td class="num">+2.1%</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Caveats</h2>
+    <ul class="caveats">
+      <li><span class="flag">Judgment</span>Engine and turbine central capex rests on one Brattle statement about grid-connected peakers, applied here to both technologies. No primary source gives an installed $/kW for an islanded data-center plant.</li>
+      <li><span class="flag">Judgment</span>The fuel-cell low case ($3,000/kW) and stack replacement (15% of capex every 5 years) are our assumptions. We found no verified Bloom contract price.</li>
+      <li><span class="flag">Unverified</span>Outside estimates seen only in search snippets: RaboResearch (June 2026), ~$107/MWh for engines; Modo Energy, an “illustrative” $125/MWh; Black Hills, $1.8B for 564 MW of gas for Google’s Cheyenne campus (~$3,200/kW).</li>
+      <li>The reliability model is simple. Failures are independent and load sits at peak. Real sites share backup with UPS and diesel, and most need batteries for fast AI load swings (about +$8/MWh).</li>
+      <li>The grid comparison leaves out the interconnection costs large loads increasingly pay and the years-long wait for service. That wait is why sites go off-grid. Grid prices are also likely to rise, since ERCOT’s draft cost of new entry doubles to $290/kW-yr.</li>
+      <li>The 30% fuel-cell ITC (§48E(j)) and the 100% bonus depreciation are based on secondary legal summaries. Bonus depreciation only helps an owner with taxable income.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Sources</h2>
+    <ol class="sources">
+      <li>Brattle &amp; Sargent &amp; Lundy, <a href="https://www.ercot.com/files/docs/2026/10/01/3.-SAWG_Oct2026_ERCOT_CONE_Draft_Report.pptx">2026 ERCOT CONE draft report</a> (Oct 2026) and <a href="https://www.ercot.com/files/docs/2026/10/05/11.-2601007-SAWG-presentation-to-WMS-v1.pdf">SAWG summary</a>.</li>
+      <li>Brattle, <a href="https://www.brattle.com/wp-content/uploads/2026/02/ERCOT-CONE-Workshop-Trends-in-Costs-and-Sketch-of-a-2026-ERCOT-CONE-Study.pdf">ERCOT CONE workshop: trends in costs</a> (Feb 2026).</li>
+      <li>EIA, <a href="https://www.eia.gov/Outlooks/Aeo/assumptions/pdf/EMM_Assumptions.pdf">AEO2026 Electricity Market Module assumptions</a>, Table 3; <a href="https://www.eia.gov/outlooks/aeo/assumptions/pdf/elec_cost_perf.pdf">AEO2023 cost and performance</a> (engine row).</li>
+      <li>Lazard, <a href="https://www.lazard.com/media/kcfconhf/lazards-lcoeplus_vf.pdf">LCOE+ 2026 (v19.0)</a>.</li>
+      <li>EIA, <a href="https://www.eia.gov/outlooks/archive/aeo25/excel/aeotab13.xlsx">AEO2025 Table 13</a> and <a href="https://www.eia.gov/outlooks/steo/archives/oct26.pdf">STEO, Oct 2026</a>. NYMEX Cal-27/28 strips via NRG daily market update, 26 Oct 2026. Waha basis from Aegis Hedging (Oct 2026).</li>
+      <li>Monitoring Analytics, <a href="https://www.pjm.com/-/media/DotCom/committees-groups/committees/mc/2026/20260424-special/2025-annual-state-of-the-market-report-for-pjm.pdf">2025 State of the Market for PJM</a>; PJM <a href="https://www.pjm.com/-/media/DotCom/about-pjm/newsroom/2025-releases/20250722-pjm-auction-procures-134311-mw-of-generation-resources-supply-responds-to-price-signal.pdf">2026/27 capacity auction</a>.</li>
+      <li>Potomac Economics, <a href="https://potomaceconomics.com/wp-content/uploads/2025/06/2024-State-of-the-Market-Report.pdf">2024 ERCOT State of the Market</a> and <a href="https://www.ercot.com/files/docs/2026/08/06/2026-08-SoM-for-TAC-JDMc.pdf">2025 summary to TAC</a>; EIA Electric Power Monthly Table 5.6.B.</li>
+      <li>Solaris Energy Infrastructure, <a href="https://ir.solaris-energy.com/~/media/Files/S/Solaris-IR/press-release/sei-q2-2026-earnings-release.pdf">Q2 2026 earnings release</a>; POWER, <a href="https://www.powermag.com/aep-plans-4-billion-fuel-cell-power-plant-for-google-signs-up-to-1-6-gw-mainspring-generator-deal/">AEP’s $4B Bloom fuel-cell plant</a> (Oct 2026).</li>
+    </ol>
+  </section>
+
+  <footer>Quick estimate; not peer reviewed. Zeke Hausfather. Code, inputs and full tables: <a href="https://github.com/hausfath/datacenter-methane">github.com/hausfath/datacenter-methane</a> (<a href="https://github.com/hausfath/datacenter-methane/blob/main/scripts/costs.py">scripts/costs.py</a>, <a href="https://github.com/hausfath/datacenter-methane/blob/main/COSTS.md">COSTS.md</a>). It is a companion to the <a href="https://github.com/hausfath/datacenter-methane#readme">emissions analysis</a> in the same repository.</footer>
+</div>
+<div id="tip" hidden></div>
+
+<script>
+const DATA = {"bars": [{"key": "Recip engines (lean-burn)", "name": "Engines", "long": "Reciprocating engines", "cc": false, "parts": [65.7, 8.8, 8.4, 43.1], "total": 126.0, "lo": 114.4, "hi": 137.4, "bare": 114.2, "system": 126.0, "n": 69, "m": 82, "over": 1.19}, {"key": "Simple-cycle turbines", "name": "Turbines", "long": "Simple-cycle turbines", "cc": false, "parts": [89.6, 2.7, 7.3, 50.3], "total": 149.9, "lo": 129.9, "hi": 165.4, "bare": 116.9, "system": 149.9, "n": 9, "m": 14, "over": 1.56}, {"key": "Fuel cells (Bloom SOFC)", "name": "Fuel cells", "long": "Solid oxide fuel cells", "cc": false, "parts": [121.3, 6.9, 0.9, 32.8], "total": 161.9, "lo": 104.5, "hi": 221.4, "bare": 155.4, "system": 161.9, "n": 1000, "m": 1054, "over": 1.05}, {"key": "Combined cycle (on site)", "name": "On-site CC", "long": "On-site combined cycle", "cc": true, "parts": [48.1, 3.4, 4.8, 33.9], "total": 90.1, "lo": 84.1, "hi": 94.1, "bare": 90.1, "system": 193.1, "n": 2, "m": 6, "over": 3.0}], "refs": {"pjm_lo": 107.4, "pjm_hi": 112.3, "ercot": 52.1, "tx": 81.4}, "tornado": {"Engines": {"base": 126.0, "items": [{"label": "No spare units", "d": -12.0}, {"label": "Capex low (pre-boom / AEO2026)", "d": -12.0}, {"label": "Capex high (AEO2026 \u00d7 1.51)", "d": 11.0}, {"label": "Gas at Waha (Permian)", "d": -9.0}, {"label": "Gas on AEO2026 path", "d": 9.0}, {"label": "Gas strip, then inflation only", "d": -5.0}, {"label": "WACC 6%", "d": -12.0}, {"label": "WACC 10%", "d": 9.0}, {"label": "100% bonus depreciation", "d": -7.0}, {"label": "Brattle carrying cost (\u00d71.28)", "d": 13.0}, {"label": "Property tax + insurance", "d": 9.0}, {"label": "Batteries, 0.25 MW per MW", "d": 8.0}, {"label": "Load factor 0.70", "d": 11.0}, {"label": "Load factor 0.90", "d": -8.0}, {"label": "Reliability target 99.9%", "d": -2.0}, {"label": "Written off after 10 yr", "d": 23.0}, {"label": "Written off after 5 yr", "d": 80.0}]}, "Turbines": {"base": 150.0, "items": [{"label": "No spare units", "d": -33.0}, {"label": "Capex low (pre-boom / AEO2026)", "d": -20.0}, {"label": "Capex high (AEO2026 \u00d7 1.51)", "d": 16.0}, {"label": "Gas at Waha (Permian)", "d": -11.0}, {"label": "Gas on AEO2026 path", "d": 10.0}, {"label": "Gas strip, then inflation only", "d": -6.0}, {"label": "WACC 6%", "d": -17.0}, {"label": "WACC 10%", "d": 13.0}, {"label": "100% bonus depreciation", "d": -10.0}, {"label": "Brattle carrying cost (\u00d71.28)", "d": 14.0}, {"label": "Property tax + insurance", "d": 12.0}, {"label": "Batteries, 0.25 MW per MW", "d": 8.0}, {"label": "Load factor 0.70", "d": 13.0}, {"label": "Load factor 0.90", "d": -10.0}, {"label": "Reliability target 99.9%", "d": -7.0}, {"label": "Written off after 10 yr", "d": 33.0}, {"label": "Written off after 5 yr", "d": 113.0}]}}};
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const tip = document.getElementById('tip');
+function showTip(html, ev) {
+  tip.innerHTML = html; tip.hidden = false;
+  const pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = ev.clientX + pad, y = ev.clientY + pad;
+  if (x + w > window.innerWidth - 8) x = ev.clientX - w - pad;
+  if (y + h > window.innerHeight - 8) y = ev.clientY - h - pad;
+  tip.style.left = Math.max(8, x) + 'px'; tip.style.top = Math.max(8, y) + 'px';
+}
+const hideTip = () => { tip.hidden = true; };
+// rounded-end bar path: square at x0, 4px radius at x1
+function barPath(x0, x1, y, h, r) {
+  r = Math.min(r, (x1 - x0), h / 2);
+  return `M${x0},${y}H${x1 - r}Q${x1},${y} ${x1},${y + r}V${y + h - r}Q${x1},${y + h} ${x1 - r},${y + h}H${x0}Z`;
+}
+
+function mainChart() {
+  const svg = document.getElementById('chart');
+  const W = 820, L = 150, R = 30, T = 40, rowH = 62, barH = 22;
+  const rows = DATA.bars, H = T + rows.length * rowH + 40;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const xmax = 240, x = v => L + (W - L - R) * v / xmax;
+  const ref = DATA.refs, top = T - 8, bottom = T + rows.length * rowH;
+  // grid + ticks
+  for (let v = 0; v <= xmax; v += 40) {
+    el('line', { x1: x(v), x2: x(v), y1: top, y2: bottom, stroke: 'var(--rule)', 'stroke-width': 1 }, svg);
+    const t = el('text', { x: x(v), y: bottom + 20, 'text-anchor': 'middle', 'font-size': 13, fill: 'var(--muted)' }, svg);
+    t.textContent = v === 0 ? '$0' : v;
+  }
+  const xl = el('text', { x: W - R, y: bottom + 38, 'text-anchor': 'end', 'font-size': 13, fill: 'var(--muted)' }, svg);
+  xl.textContent = 'Levelized cost, nominal $/MWh delivered';
+  // grid references
+  el('rect', { x: x(ref.pjm_lo), y: top, width: x(ref.pjm_hi) - x(ref.pjm_lo), height: bottom - top, fill: 'var(--band)' }, svg);
+  const refLine = (v, label, anchor, dy) => {
+    el('line', { x1: x(v), x2: x(v), y1: top, y2: bottom, stroke: 'var(--ink-2)', 'stroke-width': 1.5 }, svg);
+    const t = el('text', { x: x(v) + (anchor === 'end' ? -4 : 4), y: top - 6 + (dy || 0), 'text-anchor': anchor, 'font-size': 12.5, fill: 'var(--ink-2)' }, svg);
+    t.textContent = label;
+  };
+  refLine(ref.ercot, `ERCOT wholesale ${Math.round(ref.ercot)}`, 'end', -12);
+  refLine(ref.tx, `TX retail ${Math.round(ref.tx)}`, 'end', 0);
+  const pl = el('text', { x: x(ref.pjm_hi) + 4, y: top - 6, 'text-anchor': 'start', 'font-size': 12.5, fill: 'var(--ink-2)' }, svg);
+  pl.textContent = `PJM ${Math.round(ref.pjm_lo)}–${Math.round(ref.pjm_hi)}`;
+  const names = ['Capital', 'Fixed O&M', 'Variable O&M', 'Fuel'];
+  rows.forEach((b, i) => {
+    const y = T + i * rowH + 10, g = el('g', {}, svg);
+    const lab = el('text', { x: L - 12, y: y + barH / 2 + 5, 'text-anchor': 'end', 'font-size': 15, 'font-weight': 600, fill: 'var(--ink)' }, g);
+    lab.textContent = b.name;
+    const sub = el('text', { x: L - 12, y: y + barH / 2 + 22, 'text-anchor': 'end', 'font-size': 12, fill: 'var(--muted)' }, g);
+    sub.textContent = b.cc ? 'no spares shown' : `${b.m} units for ${b.n}`;
+    let acc = 0;
+    b.parts.forEach((v, j) => {
+      const x0 = x(acc) + (j ? 1 : 0), x1 = x(acc + v) - (j < 3 ? 1 : 0); acc += v;
+      const p = el('path', { d: j === 3 ? barPath(x0, x1, y, barH, 4) : `M${x0},${y}H${x1}V${y + barH}H${x0}Z`, fill: `var(--s${j + 1})`, class: 'seg' }, g);
+      p.addEventListener('pointermove', ev => { g.classList.add('dim'); p.classList.add('on'); showTip(`<b>${b.long}</b><br>${names[j]}: $${v.toFixed(0)}/MWh<br>Total: $${b.total.toFixed(0)}/MWh`, ev); });
+      p.addEventListener('pointerleave', () => { g.classList.remove('dim'); p.classList.remove('on'); hideTip(); });
+    });
+    // capex whisker below bar
+    const wy = y + barH + 9;
+    el('line', { x1: x(b.lo), x2: x(b.hi), y1: wy, y2: wy, stroke: 'var(--ink)', 'stroke-width': 1.5 }, g);
+    [b.lo, b.hi].forEach(v => el('line', { x1: x(v), x2: x(v), y1: wy - 4, y2: wy + 4, stroke: 'var(--ink)', 'stroke-width': 1.5 }, g));
+    // no-spares tick
+    if (!b.cc) {
+      el('rect', { x: x(b.bare) - 1.5, y: y - 5, width: 3, height: barH + 10, rx: 1, fill: 'var(--ink)', stroke: 'var(--surface)', 'stroke-width': 1.5 }, g);
+    }
+    const val = el('text', { x: x(acc) + 8, y: y + barH / 2 + 5, 'font-size': 15, 'font-weight': 700, fill: 'var(--ink)' }, g);
+    val.textContent = `$${Math.round(b.total)}`;
+    const hit = el('rect', { x: L, y: y - 6, width: W - L - R, height: barH + 22, fill: 'transparent', class: 'hit' });
+    g.insertBefore(hit, g.firstChild);
+    hit.addEventListener('pointermove', ev => showTip(`<b>${b.long}</b><br>${b.cc ? 'Bare plant' : 'With spares'}: $${b.total.toFixed(0)}/MWh<br>${b.cc ? '' : `No spares: $${b.bare.toFixed(0)}<br>`}Capex low–high: $${b.lo.toFixed(0)}–${b.hi.toFixed(0)}`, ev));
+    hit.addEventListener('pointerleave', hideTip);
+  });
+}
+
+function tornado(key) {
+  const svg = document.getElementById('tor-' + key), d = DATA.tornado[key];
+  const items = d.items.slice().sort((a, b) => Math.abs(b.d) - Math.abs(a.d));
+  const W = 420, L = 190, R = 44, T = 8, rh = 24, H = T + items.length * rh + 26;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const maxUp = Math.max(...items.map(i => i.d)), maxDn = Math.max(...items.map(i => -i.d));
+  const step = maxUp > 90 ? 40 : 20;
+  const hi = Math.ceil(maxUp / step) * step, lo = -Math.ceil((maxDn + 18) / step) * step;
+  const x = v => L + (W - L - R) * (v - lo) / (hi - lo);
+  for (let v = lo; v <= hi; v += step) {
+    el('line', { x1: x(v), x2: x(v), y1: T - 4, y2: T + items.length * rh, stroke: v === 0 ? 'var(--axis)' : 'var(--rule)', 'stroke-width': 1 }, svg);
+    const t = el('text', { x: x(v), y: T + items.length * rh + 17, 'text-anchor': 'middle', 'font-size': 12, fill: 'var(--muted)' }, svg);
+    t.textContent = v > 0 ? `+${v}` : v;
+  }
+  items.forEach((it, i) => {
+    const y = T + i * rh + 5, h = 14;
+    const lab = el('text', { x: L - 10, y: y + 11, 'text-anchor': 'end', 'font-size': 13, fill: 'var(--ink-2)' }, svg);
+    lab.textContent = it.label;
+    if (it.d !== 0) {
+      const a = x(Math.min(0, it.d)), b = x(Math.max(0, it.d)), r = Math.min(3, (b - a) / 2);
+      const p = it.d > 0 ? barPath(a, b, y, h, r) : `M${b},${y}H${a + r}Q${a},${y} ${a},${y + r}V${y + h - r}Q${a},${y + h} ${a + r},${y + h}H${b}Z`;
+      el('path', { d: p, fill: it.d > 0 ? 'var(--up)' : 'var(--down)' }, svg);
+    }
+    const v = el('text', { x: it.d >= 0 ? x(it.d) + 5 : x(it.d) - 5, y: y + 11, 'text-anchor': it.d >= 0 ? 'start' : 'end', 'font-size': 12.5, 'font-weight': 600, fill: 'var(--ink)' }, svg);
+    v.textContent = (it.d > 0 ? '+' : '') + it.d.toFixed(0);
+    const hit = el('rect', { x: 0, y: y - 5, width: W, height: rh, fill: 'transparent' }, svg);
+    hit.addEventListener('pointermove', ev => showTip(`<b>${it.label}</b><br>${(it.d > 0 ? '+' : '') + it.d.toFixed(0)} → $${(d.base + it.d).toFixed(0)}/MWh`, ev));
+    hit.addEventListener('pointerleave', hideTip);
+  });
+}
+mainChart(); tornado('Engines'); tornado('Turbines');
+</script>
+
+</body>
+</html>
