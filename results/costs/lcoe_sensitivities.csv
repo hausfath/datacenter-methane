@@ -1,0 +1,88 @@
+tech,test,lcoe,delta
+Recip engines (lean-burn),central,126,+0
+Recip engines (lean-burn),bare plant (no spares),114,-12
+Recip engines (lean-burn),capex low,114,-12
+Recip engines (lean-burn),capex high,137,+11
+Recip engines (lean-burn),gas: Waha (Permian) basis,117,-9
+Recip engines (lean-burn),gas: AEO2026 path,135,+9
+Recip engines (lean-burn),"gas: strip, then inflation only",121,-5
+Recip engines (lean-burn),WACC 6% / 10% (after tax),114 / 135,-12 / +9
+Recip engines (lean-burn),Lazard tax (40%),130,+4
+Recip engines (lean-burn),100% bonus depreciation (OBBBA),119,-7
+Recip engines (lean-burn),life 30 yr,123,-3
+Recip engines (lean-burn),bridge: 5-yr write-off,206,+80
+Recip engines (lean-burn),bridge: 10-yr write-off,149,+23
+Recip engines (lean-burn),load factor 0.70,137,+11
+Recip engines (lean-burn),load factor 0.90,118,-8
+Recip engines (lean-burn),reliability 99.9%,124,-2
+Recip engines (lean-burn),unit availability +2 pts,123,-3
+Recip engines (lean-burn),part-load heat rate +5%,128,+2
+Recip engines (lean-burn),property tax + insurance 1.5%/yr of capex,135,+9
+Recip engines (lean-burn),carrying cost as Brattle CT (installed/overnight 1.28),139,+13
+Recip engines (lean-burn),BESS 0.25 MW per MW peak,134,+8
+Recip engines (lean-burn),recips: 10 MW units,131,+5
+Simple-cycle turbines,central,150,+0
+Simple-cycle turbines,bare plant (no spares),117,-33
+Simple-cycle turbines,capex low,130,-20
+Simple-cycle turbines,capex high,165,+16
+Simple-cycle turbines,gas: Waha (Permian) basis,139,-11
+Simple-cycle turbines,gas: AEO2026 path,160,+10
+Simple-cycle turbines,"gas: strip, then inflation only",144,-6
+Simple-cycle turbines,WACC 6% / 10% (after tax),133 / 163,-17 / +13
+Simple-cycle turbines,Lazard tax (40%),154,+4
+Simple-cycle turbines,100% bonus depreciation (OBBBA),140,-10
+Simple-cycle turbines,life 30 yr,144,-6
+Simple-cycle turbines,bridge: 5-yr write-off,263,+113
+Simple-cycle turbines,bridge: 10-yr write-off,183,+33
+Simple-cycle turbines,load factor 0.70,163,+13
+Simple-cycle turbines,load factor 0.90,140,-10
+Simple-cycle turbines,reliability 99.9%,143,-7
+Simple-cycle turbines,unit availability +2 pts,143,-7
+Simple-cycle turbines,part-load heat rate +5%,152,+3
+Simple-cycle turbines,property tax + insurance 1.5%/yr of capex,162,+12
+Simple-cycle turbines,carrying cost as Brattle CT (installed/overnight 1.28),164,+14
+Simple-cycle turbines,BESS 0.25 MW per MW peak,158,+8
+Fuel cells (Bloom SOFC),central,162,+0
+Fuel cells (Bloom SOFC),bare plant (no spares),155,-7
+Fuel cells (Bloom SOFC),capex low,104,-57
+Fuel cells (Bloom SOFC),capex high,221,+59
+Fuel cells (Bloom SOFC),gas: Waha (Permian) basis,155,-7
+Fuel cells (Bloom SOFC),gas: AEO2026 path,169,+7
+Fuel cells (Bloom SOFC),"gas: strip, then inflation only",158,-4
+Fuel cells (Bloom SOFC),WACC 6% / 10% (after tax),144 / 176,-18 / +14
+Fuel cells (Bloom SOFC),Lazard tax (40%),163,+1
+Fuel cells (Bloom SOFC),100% bonus depreciation (OBBBA),157,-5
+Fuel cells (Bloom SOFC),life 30 yr,151,-11
+Fuel cells (Bloom SOFC),bridge: 5-yr write-off,275,+113
+Fuel cells (Bloom SOFC),bridge: 10-yr write-off,196,+34
+Fuel cells (Bloom SOFC),load factor 0.70,180,+18
+Fuel cells (Bloom SOFC),load factor 0.90,148,-14
+Fuel cells (Bloom SOFC),reliability 99.9%,161,-0
+Fuel cells (Bloom SOFC),unit availability +2 pts,158,-4
+Fuel cells (Bloom SOFC),part-load heat rate +5%,164,+2
+Fuel cells (Bloom SOFC),property tax + insurance 1.5%/yr of capex,177,+15
+Fuel cells (Bloom SOFC),carrying cost as Brattle CT (installed/overnight 1.28),185,+23
+Fuel cells (Bloom SOFC),BESS 0.25 MW per MW peak,170,+8
+Fuel cells (Bloom SOFC),fuel cells: 30% ITC (48E(j)),132,-30
+Fuel cells (Bloom SOFC),fuel cells: no stack replacement,141,-21
+Combined cycle (on site),central,193,+0
+Combined cycle (on site),bare plant (no spares),90,-103
+Combined cycle (on site),capex low,175,-18
+Combined cycle (on site),capex high,205,+12
+Combined cycle (on site),gas: Waha (Permian) basis,186,-7
+Combined cycle (on site),gas: AEO2026 path,200,+7
+Combined cycle (on site),"gas: strip, then inflation only",189,-4
+Combined cycle (on site),WACC 6% / 10% (after tax),163 / 216,-30 / +23
+Combined cycle (on site),Lazard tax (40%),202,+9
+Combined cycle (on site),100% bonus depreciation (OBBBA),175,-18
+Combined cycle (on site),life 30 yr,179,-14
+Combined cycle (on site),bridge: 5-yr write-off,387,+194
+Combined cycle (on site),bridge: 10-yr write-off,252,+59
+Combined cycle (on site),load factor 0.70,215,+22
+Combined cycle (on site),load factor 0.90,176,-17
+Combined cycle (on site),reliability 99.9%,167,-26
+Combined cycle (on site),unit availability +2 pts,167,-26
+Combined cycle (on site),part-load heat rate +5%,195,+2
+Combined cycle (on site),property tax + insurance 1.5%/yr of capex,211,+18
+Combined cycle (on site),carrying cost as Brattle CT (installed/overnight 1.28),212,+19
+Combined cycle (on site),BESS 0.25 MW per MW peak,201,+8
